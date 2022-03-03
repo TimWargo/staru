@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import { Link } from 'react-router-dom';
+import LoginForm from "../LoginForm/LoginForm";
+
 
 class NavBar extends Component {
     render() { 
@@ -10,6 +12,9 @@ class NavBar extends Component {
                 </li>
                 <li>
                     <Link to="/search">Search</Link>
+                </li>
+                <li>
+                    <LoginForm />
                 </li>
             </div>
         );

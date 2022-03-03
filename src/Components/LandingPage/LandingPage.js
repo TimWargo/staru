@@ -5,7 +5,7 @@ class LandingPage extends Component {
         super(props);
     }
     render() {
-        render (
+        return (
             <h1>Landing Page</h1>
         )
     }
