@@ -7,10 +7,19 @@ import NavBar from './Components/NavBar/NavBar';
 import Footer from './Components/Footer/Footer';
 
 class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      isLoggedIn: false,
+    }
+  }
+
   render() {
+    const { isLoggedIn } = this.state
     return (
+      <>
+      <NavBar isLoggedIn={isLoggedIn}/>
       <BrowserRouter basename='/'>
-        <NavBar />
         <Routes>
           <Route path="/" exact element={<LandingPage />} />
           <Route path="/about" element={<AboutContactUsPage />} />
@@ -18,6 +27,7 @@ class App extends Component {
         </Routes>
         <Footer />
       </BrowserRouter>
+      </>
   )}
 }
 

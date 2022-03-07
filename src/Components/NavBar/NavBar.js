@@ -1,22 +1,34 @@
 import React, { Component } from "react";
-import { Link } from 'react-router-dom';
+import { Container, Nav, Navbar } from "react-bootstrap";
 import LoginForm from "../LoginForm/LoginForm";
 
 
 class NavBar extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            isLoggedIn: this.props.isLoggedIn,
+        }
+    }
+
     render() { 
+        const { isLoggedIn } = this.state
         return (
-            <div>
-                <li>
-                    <Link to="/">Home</Link>
-                </li>
-                <li>
-                    <Link to="/search">Search</Link>
-                </li>
-                <li>
-                    <LoginForm />
-                </li>
-            </div>
+            <>
+                <Navbar bg="dark" variant="dark" expand="lg">
+                    <Container>
+                        <Navbar.Brand href="/">StarU</Navbar.Brand>
+                        <Nav>
+                            <Nav.Link href="/search">Search</Nav.Link>
+                            <Nav.Link href="/about">About</Nav.Link>
+                            { isLoggedIn && (<Nav.Link href="/account">Account</Nav.Link>)}
+                            { !isLoggedIn && (<LoginForm isLoggedIn={isLoggedIn}/>)}
+                        </Nav>
+                    </Container>
+                </Navbar>
+                <br />
+            </>
+            
         );
     }
 }
