@@ -1,11 +1,12 @@
 import React, { Component } from "react";
-import { Button, Form, Modal, Nav } from "react-bootstrap";
+import "bootstrap/dist/css/bootstrap.min.css";
+import { Image,  Button, Form, Modal, Nav } from "react-bootstrap";
+import './LoginForm.css';
 
 class LoginForm extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            sign: false,
             login: false,
         }
     }
@@ -20,17 +21,32 @@ class LoginForm extends Component {
                 <Nav.Link onClick={this.onOpenModal}>Login</Nav.Link>
                 <Modal show={login} onExit={this.onCloseModal} onHide={this.onCloseModal}>
                     <Modal.Header closeButton>
-                        <Modal.Title>Login</Modal.Title>
-
+                        <Modal.Title>Sign in</Modal.Title>
                     </Modal.Header>
                     <Modal.Body>
-                        <h1>hello</h1>
-                        <p>
-                        <img src="logo192.png" alt="Default Staru Logo" style="float:left;width:42px;height:42px;"></img>
-                        Screen Name:
-                        Password:
-                        </p>
-                    </Modal.Body>
+                    <div className="form-group">
+    <label for="exampleInputEmail1">Username</label>
+      <input
+        type="text"
+        className="form-control"
+        id="formGroupExampleInput"
+        placeholder="Username"
+      />
+    </div>        
+    <div className="form-group">
+      <label for="exampleInputPassword1">Password</label>
+      <input
+        type="password"
+        className="form-control"
+        id="exampleInputPassword1"
+        placeholder="Password"
+      />
+    </div>                                                 
+            </Modal.Body>
+                    <Modal.Footer>                                   
+                    <button type="button" class="btn btn-outline-secondary">Login</button>
+                    <button type="button" class="btn btn-outline-secondary">Forgot Password</button>
+                    </Modal.Footer>
                 </Modal>
             </>
         );

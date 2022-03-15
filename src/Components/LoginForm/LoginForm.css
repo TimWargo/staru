@@ -1,0 +1,18 @@
+.modal-header {
+background-color: #282c34;
+color: white;
+}
+
+.modal-body {
+    background-color: #282c34;
+    color: white;
+}
+
+.modal-footer {
+ background-color: #282c34;
+ color: #282c34;
+ height: 60px;
+}
+
+
+
