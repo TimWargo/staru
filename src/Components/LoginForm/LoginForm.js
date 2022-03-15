@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
-import { Image,  Button, Form, Modal, Nav } from "react-bootstrap";
+import { Image,  Button, Container, Form, Modal, Nav } from "react-bootstrap";
 import './LoginForm.css';
 
 class LoginForm extends Component {
@@ -25,12 +25,12 @@ class LoginForm extends Component {
                     </Modal.Header>
                     <Modal.Body>
                     <div className="form-group">
-    <label for="exampleInputEmail1">Username</label>
+    <label for="exampleInputEmail1">Email Address</label>
       <input
         type="text"
         className="form-control"
         id="formGroupExampleInput"
-        placeholder="Username"
+        placeholder="Email Address"
       />
     </div>        
     <div className="form-group">
@@ -41,11 +41,14 @@ class LoginForm extends Component {
         id="exampleInputPassword1"
         placeholder="Password"
       />
-    </div>                                                 
+    </div>                                               
             </Modal.Body>
-                    <Modal.Footer>                                   
-                    <button type="button" class="btn btn-outline-secondary">Login</button>
-                    <button type="button" class="btn btn-outline-secondary">Forgot Password</button>
+                    <Modal.Footer>
+                    <span class="border-top-0"></span>
+                     <div className="div-footer">                                                                                
+                    <button type="button" class="btn btn-outline-secondary">Login</button>                      
+                    <button type="button" class="btn btn-outline-secondary">Forgot Password</button>                                    
+                    </div>
                     </Modal.Footer>
                 </Modal>
             </>

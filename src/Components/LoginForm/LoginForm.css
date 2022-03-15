@@ -1,6 +1,7 @@
 .modal-header {
 background-color: #282c34;
 color: white;
+height: 50px;
 }
 
 .modal-body {
@@ -13,6 +14,14 @@ color: white;
  color: #282c34;
  height: 60px;
 }
+
+.div-footer {
+margin-top: -5px;
+margin-bottom: -5px;
+margin-right: 5px;
+margin-left: 5px;
+}
+
 
 
 
