@@ -20,9 +20,9 @@ class LoginForm extends Component {
                 <Nav.Link onClick={this.onOpenModal}>Login</Nav.Link>
                 <Modal show={login} onExit={this.onCloseModal} onHide={this.onCloseModal}>                
                     <Modal.Header closeButton>
-                        <Modal.Title>Sign in</Modal.Title>
+                        <Modal.Title>Login</Modal.Title>
                     </Modal.Header>
-                    <Modal.Body>                                         
+                    <Modal.Body>                                                            
                     <div className="form-group">
     <label for="exampleInputEmail1">Email Address</label>
       <input
