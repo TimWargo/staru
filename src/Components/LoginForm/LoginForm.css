@@ -1,7 +1,6 @@
 .modal-header {
 background-color: #282c34;
 color: white;
-height: 50px;
 }
 
 .modal-body {
@@ -9,18 +8,41 @@ height: 50px;
     color: white;
 }
 
+.div-form-group {
+margin-bottom: 25px;
+}
+
+
 .modal-footer {
  background-color: #282c34;
  color: #282c34;
  height: 60px;
 }
 
-.div-footer {
-margin-top: -5px;
-margin-bottom: -5px;
-margin-right: 5px;
-margin-left: 5px;
+.div-footer2 {
+    margin-top: -2px;
+    margin-bottom: 10px;
+    margin-right: 145px;
 }
+
+.div-footer1 {
+margin-top: -2px;
+margin-bottom: 10px;
+margin-right: 8px;
+}
+
+.div-footer3 {
+    margin-top: -2px;
+    margin-bottom: 10px;
+    margin-right: 5px;
+}
+
+
+
+
+
+
+
 
 
 
