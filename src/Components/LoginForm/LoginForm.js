@@ -46,6 +46,7 @@ class LoginForm extends Component {
  <div className="div-footer2">
  <button type="button" class="btn btn-outline-primary mr-1">Sign up</button>
    </div>  
+   
    <div className="div-footer1">                                                                            
                     <button type="button" class="btn btn-outline-primary mr-1">Forgot Password?</button>                                  
                     </div>       
