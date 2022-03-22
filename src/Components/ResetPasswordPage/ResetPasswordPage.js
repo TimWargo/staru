@@ -58,6 +58,7 @@ class ResetPasswordPage extends Component {
                         onChange={this.handleInputChange}
                         />
                     </label>
+                    <br />
                     <button type="submit">Reset Password</button>
                     </form>
                 </div>
