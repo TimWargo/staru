@@ -1,22 +1,44 @@
-import React, { Component } from "react";
-import { useNavigate } from "react-router-dom";
+import React, { useState } from "react";
+import { Navigate } from "react-router-dom";
 
-class ForgotPasswordPage extends Component {
+const ForgotPasswordPage = () => {
+    const [name, setName] = useState();
+    const [confirm, setConfirm] = useState(false);
 
-    render() {
+    const handleOnChange = (e) => {
+        e.preventDefault();
+        const value = e.target.value;
+        setName(value);
+    };
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        setConfirm(true);
+        console.log(name);
+    };
+
+     if (confirm) {
         return (
-            <>
-                <h1> Forgot Password</h1>
-
-                <p> If you have forgotten your password and wish to reset it, please enter your email below and we will send you a link allowing you to do so. </p>
-
-                <form>
-                    <input type="text" name="email" id="email" placeholder="Email" />
-                    <br />
-                    <button href="/reset" type="submit"> Submit </button>
-                </form>
-            </>
-        )
+            <Navigate
+                to={{
+                    pathname: "/reset",
+                }}
+            />
+        );
     }
-}
+
+    return (
+        <div>
+            <form onSubmit={handleSubmit}>
+                <input
+                type='text'
+                name='email'
+                placeholder='Email'
+                onChange={handleOnChange}
+                />
+                <button type='submit'>Submit</button>
+            </form>
+        </div>
+    );
+};
+
 export default ForgotPasswordPage;
