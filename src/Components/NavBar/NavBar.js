@@ -23,7 +23,6 @@ class NavBar extends Component {
                             <Nav.Link href="/about">About</Nav.Link>
                             { isLoggedIn && (<Nav.Link href="/account">Account</Nav.Link>)}
                             { !isLoggedIn && (<LoginForm isLoggedIn={isLoggedIn}/>)}
-                            <Nav.Link href="/">Logout</Nav.Link> {/* Link this to the logout page once created */}
                         </Nav>
                     </Container>
                 </Navbar>

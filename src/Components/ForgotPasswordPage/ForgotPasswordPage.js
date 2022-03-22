@@ -1,19 +1,22 @@
 import React, { Component } from "react";
-import { Link } from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
 
 class ForgotPasswordPage extends Component {
-    constructor(props) {
-        super(props);
-    }
+
     render() {
         return (
-            <div>
-                <h1>Forgot Password</h1>
-                <h4> <Link to="/reset">Reset Password</Link> </h4>
-            </div>
-        )
+            <>
+                <h1> Forgot Password</h1>
 
+                <p> If you have forgotten your password and wish to reset it, please enter your email below and we will send you a link allowing you to do so. </p>
+
+                <form>
+                    <input type="text" name="email" id="email" placeholder="Email" />
+                    <br />
+                    <button href="/reset" type="submit"> Submit </button>
+                </form>
+            </>
+        )
     }
 }
- 
 export default ForgotPasswordPage;

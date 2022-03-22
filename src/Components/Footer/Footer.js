@@ -12,7 +12,7 @@ class Footer extends Component {
                     <Link to="/contact">Contact Us</Link>
                 </li>
                 <li>
-                    <Link to="/forgot">Forgot Password?</Link> {/* Delete this and add this to the login page omce that is completed*/ }
+                    <Link to="/forgot">Forgot Password?</Link> {/* Delete this and add this to the login page once that is completed*/ }
                 </li>
             </div>
         );
