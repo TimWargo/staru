@@ -19,6 +19,11 @@ With a working Git installation, open the command line and type the following co
 ### ZIP Download
 If you would prefer to download the source code without using Git, access the GitHub Repository. From here, click on the green "Code" dropdown in the top right hand corner. Then, click the "Download ZIP" button. The StarU ZIP file will now be in your downloads. Unzip the file and move it into a directory of your choosing.
 
+### Installing required dependencies
+Since StarU was created with React, you must have a version of Node.js. If you do not have Node.js installed, you can download it here: https://nodejs.org/en/download/. Once you have Node.js installed, go into the project directory of StarU (.../staru) and type ```npm install``` to install the dependencies needed to run the application.
+
+### Setting up the database
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

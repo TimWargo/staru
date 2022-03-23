@@ -10,8 +10,8 @@ if(isset($postdata) && !empty($postdata)) {
 
     $email = $request->email;
     $screenname = $request->screenname;
-    $password = $request->password;
-    $sql = "INSERT INTO accounts (email, screen_name, password) VALUES ('$email', '$screenname', '$password')";
+    $pass = password_hash($request->pass, PASSWORD_DEFAULT);
+    $sql = "INSERT INTO accounts (email, screen_name, password) VALUES ('$email', '$screenname', '$pass')";
     if (mysqli_query($db, $sql)) {
         http_response_code(201);
     } else {
