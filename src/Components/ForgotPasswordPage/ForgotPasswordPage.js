@@ -27,17 +27,24 @@ const ForgotPasswordPage = () => {
     }
 
     return (
-        <div>
-            <form onSubmit={handleSubmit}>
-                <input
-                type='text'
-                name='email'
-                placeholder='Email'
-                onChange={handleOnChange}
-                />
-                <button type='submit'>Submit</button>
-            </form>
-        </div>
+        <>
+
+            <h1> Forgot Password? </h1>
+
+            <p> Enter your email below and we will send you a link to reset your password. </p>
+
+            <div>
+                <form onSubmit={handleSubmit}>
+                    <input
+                    type='text'
+                    name='email'
+                    placeholder='Email'
+                    onChange={handleOnChange}
+                    />
+                    <button type='submit'>Submit</button>
+                </form>
+            </div>
+        </>
     );
 };
 
