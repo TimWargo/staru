@@ -41,6 +41,7 @@ class ResetPasswordPage extends Component {
                     <form>
                     <label>
                         Password
+                        <br />
                         <input
                         name="password"
                         type="password"
@@ -51,6 +52,7 @@ class ResetPasswordPage extends Component {
                     <br />
                     <label>
                         Re-type password
+                        <br />
                         <input
                         name="passwordVerify"
                         type="password"

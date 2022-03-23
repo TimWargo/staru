@@ -1,6 +1,6 @@
 .modal-header {
-background-color: #282c34;
-color: white;
+    background-color: #282c34;
+    color: white;
 }
 
 .modal-body {
@@ -9,9 +9,9 @@ color: white;
 }
 
 .modal-footer {
- background-color: #282c34;
- color: #282c34;
- height: 60px;
+    background-color: #282c34;
+    color: #282c34;
+    height: 60px;
 }
 
 input {
@@ -26,15 +26,19 @@ input {
 }
 
 .div-footer1 {
-margin-top: -2px;
-margin-bottom: 10px;
-margin-right: 8px;
+    margin-top: -2px;
+    margin-bottom: 10px;
+    margin-right: 8px;
 }
 
 .div-footer3 {
     margin-top: -2px;
     margin-bottom: 10px;
     margin-right: 5px;
+}
+
+p {
+    color: white;
 }
 
 
