@@ -8,8 +8,6 @@ class LoginForm extends Component {
         super(props);
         this.state = {
             login: false,          
-            email: '',
-            password: '' 
           }
     }
     
@@ -23,22 +21,21 @@ class LoginForm extends Component {
       });
   }
 
-    //onSubmission = (event) => {
+    //onSubmit = (event) => {
     //backend db code
     // }
 
-
     render() { 
         const { login } = this.state
-        return (     
-          //<form onSubmit={this.onSubmit}></form>    
+        return (        
             <>
                 <Nav.Link onClick={this.onOpenModal}>Login</Nav.Link>
                 <Modal show={login} onExit={this.onCloseModal} onHide={this.onCloseModal}>                
                     <Modal.Header closeButton>
                         <Modal.Title>Login</Modal.Title>
                     </Modal.Header>
-                    <Modal.Body>                                                            
+                    <Modal.Body>  
+                      <form>                                                          
                     <div className="form-group">
     <label for="exampleInputEmail1">Email Address</label>
       <input
@@ -64,7 +61,8 @@ class LoginForm extends Component {
         onChange={ this.handleInputChange }
         required
       />
-    </div>                                        
+    </div>
+    </form>                                        
             </Modal.Body>           
  <Modal.Footer>           
      <div className="div-footer2">

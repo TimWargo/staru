@@ -1,0 +1,47 @@
+.modal-header {
+    background-color: #282c34;
+    color: white;
+    }
+    
+    .modal-body {
+        background-color: #282c34;
+        color: white;
+    }
+    
+    .modal-footer {
+     background-color: #282c34;
+     color: #282c34;
+     height: 60px;
+     display:flex;
+    }
+    
+    input {
+        margin-bottom: 8px;
+    }
+    
+    
+    .div-footer2 {
+        margin-top: -2px;
+        margin-bottom: 10px;
+        margin-right: 152px;
+    }
+    
+    .div-footer1 {
+    margin-top: -2px;
+    margin-bottom: 10px;
+    margin-right: 8px;
+    }
+    
+    .div-footer3 {
+        margin-top: -2px;
+        margin-bottom: 10px;
+        margin-right: 5px;
+    }
+
+    .div-footersu {
+        height: -5px;
+        width: 55px;
+        margin-top: -7px;
+        margin-right: 220px;
+        
+    }
