@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Image, Button, Container, Form, Modal, Nav } from "react-bootstrap";
-import { Link } from 'react-router-dom';
 import './LoginForm.css';
 
 class LoginForm extends Component {
