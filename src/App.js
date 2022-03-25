@@ -7,6 +7,7 @@ import ForgotPasswordPage from './Components/ForgotPasswordPage/ForgotPasswordPa
 import ResetPasswordPage from './Components/ResetPasswordPage/ResetPasswordPage';
 import NavBar from './Components/NavBar/NavBar';
 import Footer from './Components/Footer/Footer';
+import LoginForm from './Components/LoginForm/LoginForm';
 
 class App extends Component {
   constructor(props) {
@@ -28,7 +29,6 @@ class App extends Component {
           <Route path="/contact" element={<AboutContactUsPage />} />
           <Route path="/forgot" element={<ForgotPasswordPage />} />
           <Route path="/reset" element={<ResetPasswordPage />} />
-
         </Routes>
         <Footer />
       </BrowserRouter>

@@ -1,47 +1,88 @@
-.modal-header {
-    background-color: #282c34;
-    color: white;
+@import url('https://fonts.googleapis.com/css?family=Fira+Sans:400,500,600,700,800');
+* {
+  box-sizing: border-box;
+}
+body {
+  min-height: 100vh;
+  display: flex;
+  font-weight: 400;
+}
+h1,h2,h3,h4,h5,h6,label,span {
+  font-weight: 500;
+}
+body, html, .App, #root, .auth-wrapper {
+  width: 100%;
+  height: 100%;
+}
+.navbar-light {
+  box-shadow: 0px 14px 80px rgba(34, 35, 58, 0.2);
+}
+.auth-wrapper {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  text-align: left;
+}
+.auth-inner {
+  width: 450px;
+  margin: auto;
+  background: #ffffff;
+  box-shadow: 0px 14px 80px rgba(34, 35, 58, 0.2);
+  padding: 40px 55px 45px 55px;
+  border-radius: 15px;
+  transition: all .3s;
+}
+.auth-wrapper .form-control:focus {
+  border-color: #167bff;
+  box-shadow: none;
+}
+.auth-wrapper h3 {
+  text-align: center;
+  margin: 0;
+  line-height: 1;
+  padding-bottom: 20px;
+}
+.custom-control-label {
+  font-weight: 400;
+}
+.forgot-password,
+.forgot-password a {
+  text-align: center;
+  font-size: 16px;
+  padding-top: 5px;
+  color: #ffffff;
+  margin-top: 15px;
+  margin-bottom:-5px;
+}
+.forgot-password a {
+    text-align:center;
+  color: #167bff;
 }
 
-.modal-body {
-    background-color: #282c34;
-    color: white;
+.d-grid {
+    margin-top: 35px;
+    margin-bottom:-5px;
+}
+
+h3 {
+font-size: 35px;
+text-align: center;
+margin-bottom: 20px;
+margin-top:3px;
+}
+
+.form-group label {
+margin-top: 5px;
+margin-bottom:5px;
+}
+
+.modal-header {
+    border-bottom: 0 none;
 }
 
 .modal-footer {
-    background-color: #282c34;
-    color: #282c34;
-    height: 60px;
+    border-top: 0 none;
 }
-
-input {
-    margin-bottom: 8px;
-}
-
-
-.div-footer2 {
-    margin-top: -2px;
-    margin-bottom: 10px;
-    margin-right: 152px;
-}
-
-.div-footer1 {
-    margin-top: -2px;
-    margin-bottom: 10px;
-    margin-right: 8px;
-}
-
-.div-footer3 {
-    margin-top: -2px;
-    margin-bottom: 10px;
-    margin-right: 5px;
-}
-
-p {
-    color: white;
-}
-
-
 
 
 

@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Image, Button, Container, Form, Modal, Nav } from "react-bootstrap";
 import './LoginForm.css';
+import { MDBContainer, MDBRow, MDBCol, MDBInput, MDBBtn } from "mdbreact";
 
 class LoginForm extends Component {
   constructor(props) {
@@ -12,18 +13,7 @@ class LoginForm extends Component {
   }
 
   onOpenModal = () => { this.setState({ login: true }); }
-  onCloseModal = () => { this.setState({ login: false }); }
-
-  handleInputChange = (event) => {
-    const { value, name } = event.target;
-    this.setState({
-      [name]: value
-    });
-  }
-
-  //onSubmit = (event) => {
-  //backend db code
-  // }
+  onCloseModal = () => { this.setState({ login: false }); }  
 
   render() {
     const { login } = this.state
@@ -31,22 +21,20 @@ class LoginForm extends Component {
       <>
         <Nav.Link onClick={this.onOpenModal}>Login</Nav.Link>
         <Modal show={login} onExit={this.onCloseModal} onHide={this.onCloseModal}>
-          <Modal.Header closeButton>
-            <Modal.Title>Login</Modal.Title>
+        <Modal.Header closeButton>
           </Modal.Header>
           <Modal.Body>
             <form>
+            <h3>StarU</h3>         
               <div className="form-group">
                 <label for="exampleInputEmail1">Email Address</label>
                 <input
-                  type="email"
+                  type="text"
                   name="email"
                   className="form-control"
                   id="formGroupExampleInput"
                   placeholder="Email Address"
-                  value={this.state.email}
-                  onChange={this.handleInputChange}
-                  required
+                  value={this.state.email}                
                 />
               </div>
               <div className="form-group">
@@ -58,25 +46,19 @@ class LoginForm extends Component {
                   id="exampleInputPassword1"
                   placeholder="Password"
                   value={this.state.password}
-                  onChange={this.handleInputChange}
-                  required
                 />
               </div>
-              <br />
-              <div>
-                <a href="/forgot"> Forgot Password? </a>
+              <div className="d-grid gap-2">        
+              <Button onClick= {this.onCloseModal} variant="primary" size="lg">
+               Log In
+              </Button>
+              <p className="forgot-password text-right">
+                  Forgot your <a href="/forgot">password?</a>
+                </p>   
               </div>
-              <br />
+              <br></br>   
             </form>
           </Modal.Body>
-          <Modal.Footer>
-            <div className="div-footer2">
-              <Button type="button" class="btn btn-outline-primary mr-1">Login</Button>
-            </div>
-            <div>
-              <p> Don't have an account? <a href="/"> Sign Up </a> </p> {/* Link this to the signup modal */}
-            </div>
-          </Modal.Footer>
         </Modal>
       </>
     );

@@ -34,10 +34,10 @@ class SignupForm extends Component {
         <Nav.Link onClick={this.onOpenModal}>Signup</Nav.Link>
         <Modal show={signup} onExit={this.onCloseModal} onHide={this.onCloseModal}>
           <Modal.Header closeButton>
-            <Modal.Title>Signup</Modal.Title>
           </Modal.Header>
           <Modal.Body>
-            <form>
+          <form>
+            <h3>Sign Up</h3>         
               <div className="form-group">
                 <label for="exampleInputEmail1">Email Address</label>
                 <input
@@ -46,22 +46,18 @@ class SignupForm extends Component {
                   className="form-control"
                   id="formGroupExampleInput"
                   placeholder="Email Address"
-                  value={this.state.email}
-                  onChange={this.handleInputChange}
-                  required
+                  value={this.state.email}                
                 />
               </div>
               <div className="form-group">
                 <label for="exampleInputPassword1">Password</label>
                 <input
-                  type="text"
+                  type="password"
                   name="password"
                   className="form-control"
                   id="exampleInputPassword1"
                   placeholder="Password"
                   value={this.state.password}
-                  onChange={this.handleInputChange}
-                  required
                 />
               </div>
               <div className="form-group">
@@ -70,20 +66,22 @@ class SignupForm extends Component {
                   type="text"
                   name="screenname"
                   className="form-control"
-                  id="formGroupExampleInput"
+                  id="exampleInputPassword1"
                   placeholder="Screen Name"
-                  value={this.state.screenname}
-                  onChange={this.handleInputChange}
-                  required
+                  value={this.state.password}
                 />
               </div>
+              <div className="d-grid gap-2">        
+              <Button onClick= {this.onCloseModal} variant="primary" size="lg">
+               Submit
+              </Button>
+              <br></br>
+              <p classname="securitydet">
+              StarU will never share your email address or account information with any third party.
+                </p>  
+              </div>   
             </form>
           </Modal.Body>
-          <Modal.Footer>
-            <div className="div-footersu">
-              <button type="button" class="btn btn-primary btn-lg btn-block">Signup</button>
-            </div>
-          </Modal.Footer>
         </Modal>
       </>
     );
