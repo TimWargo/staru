@@ -15,13 +15,19 @@ class App extends Component {
     this.state = {
       isLoggedIn: false,
     }
+    this.onLoginChange = this.onLoginChange.bind(this);
+  }
+  onLoginChange(e) {
+    this.setState({
+      isLoggedIn: e.target.value
+    })
   }
 
   render() {
     const { isLoggedIn } = this.state
     return (
       <>
-      <NavBar isLoggedIn={isLoggedIn}/>
+      <NavBar isLoggedIn={isLoggedIn} onLoginChange={this.onLoginChange}/>
       <BrowserRouter basename='/'>
         <Routes>
           <Route path="/" exact element={<LandingPage />} />

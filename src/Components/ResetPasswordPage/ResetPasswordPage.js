@@ -1,9 +1,11 @@
+import axios from "axios";
 import React, { Component } from "react";
 
 class ResetPasswordPage extends Component {
     constructor(props) {
         super(props);
         this.state = {
+            email: '',
             password: "",
             passwordVerify: "",
         };
@@ -23,13 +25,23 @@ class ResetPasswordPage extends Component {
 
     handleSubmit(event) {
         event.preventDefault();
+        // temporary
+        const user = {
+            email: 'timothywargo@yahoo.com',
+            password: this.state.password
+        }
+        console.log(user);
         // Verify that the passwords match
         if (this.state.password !== this.state.passwordVerify) {
             return;
         }
 
         //submit new password to DB
-
+        axios.post('http://localhost/staru/src/php/resetPass.php', user)
+            .then(res => console.log(res.data))
+            .catch(error => {
+                console.log(error.response);
+            });
       }
 
     render() {
@@ -38,7 +50,7 @@ class ResetPasswordPage extends Component {
                 <h1>Reset Password</h1>
 
                 <div>
-                    <form>
+                    <form onSubmit={this.handleSubmit}>
                     <label>
                         Password
                         <br />

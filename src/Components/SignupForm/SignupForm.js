@@ -8,16 +8,17 @@ class SignupForm extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      signup: false,
+      show: this.props.show,
       email: '',
       password: '',
       screenName: '',
     };
     this.onSubmit = this.onSubmit.bind(this);
+    this.verifyInput = this.verifyInput.bind(this);
   }
 
-  onOpenModal = () => { this.setState({ signup: true }); }
-  onCloseModal = () => { this.setState({ signup: false }); }
+  onOpenModal = () => { this.setState({ show: true }); }
+  onCloseModal = () => { this.setState({ show: false, email: '', password: '', screenName: '' }); }
 
   handleInputChange = (event) => {
     const { value, name } = event.target;
@@ -26,8 +27,13 @@ class SignupForm extends Component {
     });
   }
 
+  verifyInput() {
+    return true
+  }
+
   onSubmit(e) {
     e.preventDefault();
+    if (this.verifyInput()) {
     const user = {
       email: this.state.email,
       password: this.state.password,
@@ -35,19 +41,27 @@ class SignupForm extends Component {
     };
     console.log(user);
     axios.post('http://localhost/staru/src/php/insertAcc.php', user)
-      .then(res => console.log(res.data))
+      .then(res => {
+        console.log(res.data);
+        this.onCloseModal();
+        window.location.pathname = "/";
+        this.props.onLoginChange(true);
+      })
       .catch(error => {
         console.log(error.response)
-      })
+      });
+    } else {
+      // display an error
+    }
   }
 
 
   render() {
-    const { signup } = this.state
+    const { show } = this.state
     return (  
       <>
         <Nav.Link onClick={this.onOpenModal}>Signup</Nav.Link>
-        <Modal show={signup} onExit={this.onCloseModal} onHide={this.onCloseModal}>
+        <Modal show={show} onExit={this.onCloseModal} onHide={this.onCloseModal}>
           <Modal.Header closeButton>
           </Modal.Header>
           <Modal.Body>

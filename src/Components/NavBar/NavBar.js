@@ -7,13 +7,10 @@ import SignupForm from "../SignupForm/SignupForm";
 class NavBar extends Component {
     constructor(props) {
         super(props);
-        this.state = {
-            isLoggedIn: this.props.isLoggedIn,
-        }
     }
 
     render() { 
-        const { isLoggedIn } = this.state
+        const { isLoggedIn } = this.props.isLoggedIn
         return (
             <>
                 <Navbar bg="dark" variant="dark" expand="lg">
@@ -23,9 +20,9 @@ class NavBar extends Component {
                             <Nav.Link href="/search">Search</Nav.Link>
                             <Nav.Link href="/about">About</Nav.Link>                           
                             { isLoggedIn && (<Nav.Link href="/account">Account</Nav.Link>)}
-                            { !isLoggedIn && (<LoginForm isLoggedIn={isLoggedIn}/>)}
+                            { !isLoggedIn && (<LoginForm show={isLoggedIn} onLoginChange={this.props.onLoginChange} />)}
                             {/*If not logged on, allow user to sign up. */}                                
-                            { !isLoggedIn && (<SignupForm isLoggedIn={isLoggedIn}/>)}             
+                            { !isLoggedIn && (<SignupForm show={isLoggedIn} onLoginChange={this.props.onLoginChange} />)}             
                         </Nav>
                     </Container>
                 </Navbar>

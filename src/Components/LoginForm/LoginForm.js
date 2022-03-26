@@ -3,20 +3,22 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { Image, Button, Container, Form, Modal, Nav } from "react-bootstrap";
 import './LoginForm.css';
 import axios from 'axios';
+import { Navigate } from "react-router-dom";
 
 class LoginForm extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      login: false,
+      show: this.props.show,
       email: '',
       password: '',
     }
     this.onSubmit = this.onSubmit.bind(this);
+    this.verifyInput = this.verifyInput.bind(this);
   }
 
-  onOpenModal = () => { this.setState({ login: true }); }
-  onCloseModal = () => { this.setState({ login: false }); }
+  onOpenModal = () => { this.setState({ show: true }); }
+  onCloseModal = () => { this.setState({ show: false, email: '', password: '' }); }
 
   handleInputChange = (event) => {
     const { value, name } = event.target;
@@ -25,31 +27,36 @@ class LoginForm extends Component {
     });
   }
 
+  verifyInput() {
+    return true;
+  }
+
   onSubmit(e) {
     e.preventDefault();
+    if (this.verifyInput()) {
     const user = {
       email: this.state.email,
       password: this.state.password,
     }
-    console.log(user);
     axios.post('http://localhost/staru/src/php/authLogin.php', user)
       .then(res=> {
         console.log(res.data);
-        this.setState({
-          email: '',
-          password: '',
-        })
         this.onCloseModal();
+        window.location.pathname = "/";
+        this.props.onLoginChange(true);
       })
       .catch(error => console.log(error.response));
+    } else {
+      // display error message
+    }
   }
 
   render() {
-    const { login } = this.state
+    const { show } = this.state
     return (
       <>
         <Nav.Link onClick={this.onOpenModal}>Login</Nav.Link>
-        <Modal show={login} onExit={this.onCloseModal} onHide={this.onCloseModal}>
+        <Modal show={show} onExit={this.onCloseModal} onHide={this.onCloseModal}>
         <Modal.Header closeButton>
           </Modal.Header>
           <Modal.Body>
