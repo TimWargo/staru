@@ -2,21 +2,52 @@ import React, { Component } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Image, Button, Container, Form, Modal, Nav } from "react-bootstrap";
 import './LoginForm.css';
-import { MDBContainer, MDBRow, MDBCol, MDBInput, MDBBtn } from "mdbreact";
+import axios from 'axios';
 
 class LoginForm extends Component {
   constructor(props) {
     super(props);
     this.state = {
       login: false,
+      user: {
+        email: '',
+        password: '',
+      }
     }
+    this.onChangeEmail = this.onChangeEmail.bind(this);
+    this.onChangePassword = this.onChangePassword.bind(this);
+    this.onSubmit = this.onSubmit.bind(this);
   }
 
   onOpenModal = () => { this.setState({ login: true }); }
-  onCloseModal = () => { this.setState({ login: false }); }  
+  onCloseModal = () => { this.setState({ login: false }); }
+
+  onChangeEmail(e) {
+    this.setState({
+      user: {
+        email: e.target.value
+      }
+    });
+  }
+
+  onChangePassword(e) {
+    this.setState({
+      user: {
+        password: e.target.value
+      }
+    });
+  }
+
+  onSubmit(e) {
+    e.preventDefault();
+    const user = this.state.user;
+    axios.post('http://localhost/staru/src/php/authLogin.php', user)
+      .then(res=> console.log(res.data))
+      .catch(error => console.log(error.response));
+  }
 
   render() {
-    const { login } = this.state
+    const { login, user } = this.state
     return (
       <>
         <Nav.Link onClick={this.onOpenModal}>Login</Nav.Link>
