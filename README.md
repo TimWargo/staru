@@ -33,7 +33,7 @@ CREATE TABLE staru;
 Then, create the database tables with the following commands, in order.
 ```sql
 CREATE TABLE accounts (
-    id INT PRIMARY KEY,
+    id INT PRIMARY KEY AUTO_INCREMENT,
     email VARCHAR(255) UNIQUE,
     screen_name VARCHAR(255) UNIQUE,
     password VARCHAR(255)

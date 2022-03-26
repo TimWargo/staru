@@ -9,45 +9,43 @@ class LoginForm extends Component {
     super(props);
     this.state = {
       login: false,
-      user: {
-        email: '',
-        password: '',
-      }
+      email: '',
+      password: '',
     }
-    this.onChangeEmail = this.onChangeEmail.bind(this);
-    this.onChangePassword = this.onChangePassword.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
   }
 
   onOpenModal = () => { this.setState({ login: true }); }
   onCloseModal = () => { this.setState({ login: false }); }
 
-  onChangeEmail(e) {
+  handleInputChange = (event) => {
+    const { value, name } = event.target;
     this.setState({
-      user: {
-        email: e.target.value
-      }
-    });
-  }
-
-  onChangePassword(e) {
-    this.setState({
-      user: {
-        password: e.target.value
-      }
+      [name]: value
     });
   }
 
   onSubmit(e) {
     e.preventDefault();
-    const user = this.state.user;
+    const user = {
+      email: this.state.email,
+      password: this.state.password,
+    }
+    console.log(user);
     axios.post('http://localhost/staru/src/php/authLogin.php', user)
-      .then(res=> console.log(res.data))
+      .then(res=> {
+        console.log(res.data);
+        this.setState({
+          email: '',
+          password: '',
+        })
+        this.onCloseModal();
+      })
       .catch(error => console.log(error.response));
   }
 
   render() {
-    const { login, user } = this.state
+    const { login } = this.state
     return (
       <>
         <Nav.Link onClick={this.onOpenModal}>Login</Nav.Link>
@@ -55,7 +53,7 @@ class LoginForm extends Component {
         <Modal.Header closeButton>
           </Modal.Header>
           <Modal.Body>
-            <form>
+            <form onSubmit={this.onSubmit}>
             <h3>StarU</h3>         
               <div className="form-group">
                 <label for="exampleInputEmail1">Email Address</label>
@@ -65,7 +63,8 @@ class LoginForm extends Component {
                   className="form-control"
                   id="formGroupExampleInput"
                   placeholder="Email Address"
-                  value={this.state.email}                
+                  value={this.state.email}
+                  onChange={this.handleInputChange}                
                 />
               </div>
               <div className="form-group">
@@ -77,10 +76,11 @@ class LoginForm extends Component {
                   id="exampleInputPassword1"
                   placeholder="Password"
                   value={this.state.password}
+                  onChange={this.handleInputChange}
                 />
               </div>
               <div className="d-grid gap-2">        
-              <Button onClick= {this.onCloseModal} variant="primary" size="lg">
+              <Button onClick= {this.onSubmit} variant="primary" size="lg">
                Log In
               </Button>
               <p className="forgot-password text-right">
