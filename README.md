@@ -1,3 +1,45 @@
+# About StarU
+
+StarU is a game review website where users can lookup reviews about top games accross various platforms, including Xbox, PlayStation, PC, and Nintendo Switch. Furthermore, users can create an account to leave their own review of the website, as well as give the game a score out of five stars. The inspiration behind StarU is that there are many current game review websites, but none that allow users to create their own reviews of the games.
+
+## Technologies used in StarU
+
+At the core of StarU, it was build using HTML, CSS, JavaScript, MySQL, and PHP. In addition, StarU was built using the React JavaScript library to allow for a more professional and efficient web-based application. Furthermore, the project has been flavored with React Bootstrap to allow for a more uniform and convenient styling. As such, the installation and start-up process will be different.
+
+## Installing StarU and Setting It Up
+
+To install and set up StarU, please do the following:
+First, make sure that you have a working version of XAMPP, and that you can start Apache and MySQL.
+Then, procede to the GitHub Repository (https://github.com/TimWargo/staru) to copy the source code of StarU. This can be done in two ways: (1) Using Git or (2) by downloading a ZIP file of the source code.
+
+### Using Git
+With a working Git installation, open the command line and type the following command into the directory in which you would like the source code to be copied:
+```$ git clone https://github.com/TimWargo/staru.git```
+
+### ZIP Download
+If you would prefer to download the source code without using Git, access the GitHub Repository. From here, click on the green "Code" dropdown in the top right hand corner. Then, click the "Download ZIP" button. The StarU ZIP file will now be in your downloads. Unzip the file and move it into a directory of your choosing.
+
+### Installing required dependencies
+Since StarU was created with React, you must have a version of Node.js. If you do not have Node.js installed, you can download it here: https://nodejs.org/en/download/. Once you have Node.js installed, go into the project directory of StarU (.../staru) and type ```npm install``` to install the dependencies needed to run the application.
+
+### Moving StarU into the appropriate location
+StarU was designed to work with XAMPP. Therefore, the source code of the project must be located under the subdirectory htdocs inside the xampp folder. Therefore, make sure that staru is placed directly inside the htdocs folder (i.e. xampp/htdocs/staru).
+
+### Setting up the database
+Now that you have the source code, it is now time to set up the database. Begin by booting up the Apache Web Server and MySQL database within XAMPP. Then, procede to localhost/phpmyadmin. From there, create a new database called staru and enter the following commands:
+```sql
+CREATE TABLE staru;
+```
+Then, create the database tables with the following commands, in order.
+```sql
+CREATE TABLE accounts (
+    id INT PRIMARY KEY,
+    email VARCHAR(255) UNIQUE,
+    screen_name VARCHAR(255) UNIQUE,
+    password VARCHAR(255)
+);
+```
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
