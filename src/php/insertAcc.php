@@ -9,8 +9,8 @@ if(isset($postdata) && !empty($postdata)) {
     $request = json_decode($postdata);
 
     $email = $request->email;
-    $screenname = $request->screenname;
-    $hash = password_hash($request->pass, PASSWORD_DEFAULT);
+    $screenname = $request->screenName;
+    $hash = password_hash($request->password, PASSWORD_DEFAULT);
     $sql = "INSERT INTO accounts (email, screen_name, password) VALUES ('$email', '$screenname', '$hash')";
     if (mysqli_query($db, $sql)) {
         http_response_code(201);
