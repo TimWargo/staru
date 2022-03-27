@@ -9,17 +9,22 @@ class LoginForm extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      show: this.props.show,
       email: '',
       password: '',
       remember_me: true,
     }
     this.onSubmit = this.onSubmit.bind(this);
     this.verifyInput = this.verifyInput.bind(this);
+    this.openSignup = this.openSignup.bind(this);
   }
 
-  onOpenModal = () => { this.setState({ show: true }); }
-  onCloseModal = () => { this.setState({ show: false, email: '', password: '' }); }
+  onOpenModal = () => { this.props.onLoginShowChange(true); }
+  onCloseModal = () => { this.props.onLoginShowChange(false); }
+
+  openSignup = () => {
+    this.onCloseModal();
+    setTimeout(this.props.onSignupShowChange(true), 500);
+  }
 
   handleInputChange = (event) => {
     const { value, name } = event.target;
@@ -65,18 +70,18 @@ class LoginForm extends Component {
           this.onCloseModal();
           window.location.pathname = "/";
         })
-        .catch(error => console.log(error.response));
+        .catch(error => {
+          // display invalid credentials message
+        });
     } else {
-      // display error message
+      // display invalid input message
     }
   }
 
   render() {
-    const { show } = this.state
     return (
       <>
-        <Nav.Link onClick={this.onOpenModal}>Login</Nav.Link>
-        <Modal show={show} onExit={this.onCloseModal} onHide={this.onCloseModal}>
+        <Modal show={this.props.show} onExit={this.onCloseModal} onHide={this.onCloseModal}>
         <Modal.Header closeButton>
           </Modal.Header>
           <Modal.Body>
@@ -115,7 +120,8 @@ class LoginForm extends Component {
                   onChange={this.handleCheckChange} />
                 <label htmlFor="exampleInputCheckbox">Remember Me</label>
               </div>
-              <div className="d-grid gap-2">        
+              <div className="d-grid gap-2">
+                <Button onClick={this.openSignup} variant="primary">Sign up</Button>
               <Button onClick= {this.onSubmit} variant="primary" size="lg">
                Log In
               </Button>

@@ -9,6 +9,11 @@ if(isset($postdata) && !empty($postdata)) {
     $request = json_decode($postdata);
 
     $email = $request->email;
+    $sql = "SELECT * FROM accounts WHERE email='$email'";
+    $result = mysqli_query($db, $sql);
+    if ($result->num_rows === 1) {
+        http_response_code(409);
+    }
     $screenname = $request->screenName;
     $hash = password_hash($request->password, PASSWORD_DEFAULT);
     $sql = "INSERT INTO accounts (email, screen_name, password) VALUES ('$email', '$screenname', '$hash')";

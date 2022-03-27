@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Container, Nav, Navbar } from "react-bootstrap";
+import LoginButton from "../LoginButton/LoginButton";
 import LoginForm from "../LoginForm/LoginForm";
 import SignupForm from "../SignupForm/SignupForm";
 
@@ -42,8 +43,7 @@ class NavBar extends Component {
         } else {
             return (
                 <>
-                    <LoginForm show={isLoggedIn} />
-                    <SignupForm show={isLoggedIn} />
+                    <LoginButton />
                 </>
             );
         }

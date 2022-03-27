@@ -8,17 +8,22 @@ class SignupForm extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      show: this.props.show,
       email: '',
       password: '',
       screenName: '',
     };
     this.onSubmit = this.onSubmit.bind(this);
     this.verifyInput = this.verifyInput.bind(this);
+    this.openLogin = this.openLogin.bind(this);
   }
 
-  onOpenModal = () => { this.setState({ show: true }); }
-  onCloseModal = () => { this.setState({ show: false, email: '', password: '', screenName: '' }); }
+  onOpenModal = () => { this.props.onSignupShowChange(true); }
+  onCloseModal = () => { this.props.onSignupShowChange(false); }
+
+  openLogin = () => {
+    this.onCloseModal();
+    setTimeout(this.props.onLoginShowChange(true), 500);
+  }
 
   handleInputChange = (event) => {
     const { value, name } = event.target;
@@ -39,7 +44,6 @@ class SignupForm extends Component {
         password: this.state.password,
         screenName: this.state.screenName,
       };
-      console.log(user);
       axios.post('http://localhost/staru/src/php/insertAcc.php', user)
         .then(res => {
           console.log(res.data);
@@ -47,20 +51,22 @@ class SignupForm extends Component {
           window.location.pathname = "/";
         })
         .catch(error => {
-          console.log(error.response)
+          if (error.responsestatus === 409) {
+            // display email account already exists error
+          } else {
+            // display "something went wrong" error
+          }
         });
     } else {
-      // display an error
+      // display invalid input error
     }
   }
 
 
   render() {
-    const { show } = this.state
     return (  
       <>
-        <Nav.Link onClick={this.onOpenModal}>Signup</Nav.Link>
-        <Modal show={show} onExit={this.onCloseModal} onHide={this.onCloseModal}>
+        <Modal show={this.props.show} onExit={this.onCloseModal} onHide={this.onCloseModal}>
           <Modal.Header closeButton>
           </Modal.Header>
           <Modal.Body>
@@ -102,7 +108,8 @@ class SignupForm extends Component {
                   onChange={this.handleInputChange}
                 />
               </div>
-              <div className="d-grid gap-2">        
+              <div className="d-grid gap-2">
+                <Button onClick={this.openLogin} variant="primary">Login</Button>
               <Button onClick= {this.onSubmit} variant="primary" size="lg">
                Submit
               </Button>
