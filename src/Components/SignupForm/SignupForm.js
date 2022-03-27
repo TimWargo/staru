@@ -71,7 +71,7 @@ class SignupForm extends Component {
           </Modal.Header>
           <Modal.Body>
           <form onSubmit={this.onSubmit}>
-            <h3>Sign Up</h3>         
+            <h3>StarU</h3>         
               <div className="form-group">
                 <label for="exampleInputEmail1">Email Address</label>
                 <input
@@ -109,14 +109,13 @@ class SignupForm extends Component {
                 />
               </div>
               <div className="d-grid gap-2">
-                <Button onClick={this.openLogin} variant="primary">Login</Button>
               <Button onClick= {this.onSubmit} variant="primary" size="lg">
                Submit
               </Button>
               <br></br>
-              <p className="securitydet">
-              StarU will never share your email address or account information with any third party.
-                </p>  
+              <p className="have-account text-right">
+                  Already have an account? <a href="#" onClick = {this.openLogin}>Log In</a>
+                </p>
               </div>   
             </form>
           </Modal.Body>

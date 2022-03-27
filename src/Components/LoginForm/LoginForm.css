@@ -54,13 +54,17 @@ body, html, .App, #root, .auth-wrapper {
   margin-top: 15px;
   margin-bottom:-5px;
 }
+.have-account {
+  text-align:center;
+}
+
 .forgot-password a {
     text-align:center;
   color: #167bff;
 }
 
 .d-grid {
-    margin-top: 35px;
+    margin-top: 30px;
     margin-bottom:-5px;
 }
 
@@ -85,12 +89,16 @@ margin-bottom:5px;
 }
 
 .remember-me-wrapper input {
+  margin-top:5px;
   margin-right: 5px;
+  margin-bottom: -3px;
 }
 
 label {
   user-select: none;
 }
+
+
 
 
 

@@ -47,6 +47,10 @@
     }
 
     .securitydet p {
-    margin-top: 15px;
     margin-bottom:-15px;
+    }
+
+    .d-grid {
+        margin-top: 30px;
+        margin-bottom:-5px;
     }
