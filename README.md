@@ -28,7 +28,10 @@ StarU was designed to work with XAMPP. Therefore, the source code of the project
 ### Setting up the database
 Now that you have the source code, it is now time to set up the database. Begin by booting up the Apache Web Server and MySQL database within XAMPP. Then, procede to localhost/phpmyadmin. From there, create a new database called staru and enter the following commands:
 ```sql
-CREATE TABLE staru;
+CREATE DATABASE staru;
+```
+```sql
+USE DATABASE staru;
 ```
 Then, create the database tables with the following commands, in order.
 ```sql
@@ -39,6 +42,9 @@ CREATE TABLE accounts (
     password VARCHAR(255)
 );
 ```
+
+## Starting StarU
+Once you are inside the project directory (staru/), type ```npm start```.
 
 # Getting Started with Create React App
 
