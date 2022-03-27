@@ -1,51 +1,68 @@
-import React, { useState } from "react";
-import { Navigate } from "react-router-dom";
+import React, { Component, createRef } from "react";
+import './ForgotPasswordPage.css';
 
-const ForgotPasswordPage = () => {
-    const [name, setName] = useState();
-    const [confirm, setConfirm] = useState(false);
+class ForgotPasswordPage extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            email: '',
+        };
 
-    const handleOnChange = (e) => {
-        e.preventDefault();
-        const value = e.target.value;
-        setName(value);
-    };
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        setConfirm(true);
-        console.log(name);
-    };
-
-     if (confirm) {
-        return (
-            <Navigate
-                to={{
-                    pathname: "/reset",
-                }}
-            />
-        );
+        this.handleInputChange = this.handleInputChange.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this);
     }
 
-    return (
-        <>
+    // Whenever an input changes value, change the corresponding state variable
+    handleInputChange(event) {
+        event.preventDefault();
+        const target = event.target;
+        this.setState({
+        [target.name]: target.value,
+        });
+    }
 
-            <h1> Forgot Password? </h1>
+    handleSubmit(event) {
+        event.preventDefault();
 
-            <p> Enter your email below and we will send you a link to reset your password. </p>
-
-            <div>
-                <form onSubmit={handleSubmit}>
-                    <input
-                    type='text'
-                    name='email'
-                    placeholder='Email'
-                    onChange={handleOnChange}
-                    />
-                    <button type='submit'>Submit</button>
-                </form>
-            </div>
-        </>
-    );
-};
-
+        //verify input
+        const emailField = document.getElementById("email");
+        if (!emailField.value) {
+            const nameError = document.getElementById("nameError");
+            nameError.classList.add("visible");
+            emailField.classList.add("invalid");
+            nameError.setAttribute("aria-hidden", false);
+            nameError.setAttribute("aria-invalid", true);
+            return;
+        }
+    }
+    
+    render() {
+        return (
+            <>
+    
+                <h1> Forgot Password? </h1>
+    
+                <p> Enter your email below and we will send you a link to reset your password. </p>
+    
+                <div>
+                    <form onSubmit={this.handleSubmit}>
+                        <input
+                            type='text'
+                            name='email'
+                            id='email'
+                            placeholder='Email'
+                            onChange={this.handleInputChange}
+                        />
+                        <button type='submit'>Submit</button>
+    
+                        <span role="alert" id="nameError" aria-hidden="true">
+                            Please enter an email address
+                        </span>
+                    </form>
+                </div>
+            </>
+        );
+    }
+}
+ 
 export default ForgotPasswordPage;
