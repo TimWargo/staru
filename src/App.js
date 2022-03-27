@@ -12,15 +12,6 @@ import LoginForm from './Components/LoginForm/LoginForm';
 class App extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      isLoggedIn: false,
-    }
-    this.onLoginChange = this.onLoginChange.bind(this);
-  }
-  onLoginChange(e) {
-    this.setState({
-      isLoggedIn: e.target.value
-    })
   }
 
   async componentDidMount() {
@@ -29,17 +20,13 @@ class App extends Component {
       if (!sessionStorage.getItem('session')) {
         sessionStorage.setItem('session', email);
       }
-      this.setState({
-        isLoggedIn: true
-      })
     }
   }
 
   render() {
-    const { isLoggedIn } = this.state
     return (
       <>
-      <NavBar isLoggedIn={isLoggedIn} onLoginChange={this.onLoginChange}/>
+      <NavBar />
       <BrowserRouter basename='/'>
         <Routes>
           <Route path="/" exact element={<LandingPage />} />

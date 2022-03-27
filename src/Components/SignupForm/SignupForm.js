@@ -45,7 +45,6 @@ class SignupForm extends Component {
           console.log(res.data);
           this.onCloseModal();
           window.location.pathname = "/";
-          this.props.onLoginChange(true);
         })
         .catch(error => {
           console.log(error.response)

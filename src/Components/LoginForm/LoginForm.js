@@ -64,7 +64,6 @@ class LoginForm extends Component {
           sessionStorage.setItem("session", this.state.email);
           this.onCloseModal();
           window.location.pathname = "/";
-          this.props.onLoginChange(true);
         })
         .catch(error => console.log(error.response));
     } else {
