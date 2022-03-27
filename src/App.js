@@ -23,6 +23,18 @@ class App extends Component {
     })
   }
 
+  async componentDidMount() {
+    if (document.cookie.split(';').some((item) => item.trim().startsWith('email'))) {
+      const email = document.cookie.split(';').find((item) => item.trim().startsWith("email=")).split('=')[1];
+      if (!sessionStorage.getItem('session')) {
+        sessionStorage.setItem('session', email);
+      }
+      this.setState({
+        isLoggedIn: true
+      })
+    }
+  }
+
   render() {
     const { isLoggedIn } = this.state
     return (

@@ -34,22 +34,22 @@ class SignupForm extends Component {
   onSubmit(e) {
     e.preventDefault();
     if (this.verifyInput()) {
-    const user = {
-      email: this.state.email,
-      password: this.state.password,
-      screenName: this.state.screenName,
-    };
-    console.log(user);
-    axios.post('http://localhost/staru/src/php/insertAcc.php', user)
-      .then(res => {
-        console.log(res.data);
-        this.onCloseModal();
-        window.location.pathname = "/";
-        this.props.onLoginChange(true);
-      })
-      .catch(error => {
-        console.log(error.response)
-      });
+      const user = {
+        email: this.state.email,
+        password: this.state.password,
+        screenName: this.state.screenName,
+      };
+      console.log(user);
+      axios.post('http://localhost/staru/src/php/insertAcc.php', user)
+        .then(res => {
+          console.log(res.data);
+          this.onCloseModal();
+          window.location.pathname = "/";
+          this.props.onLoginChange(true);
+        })
+        .catch(error => {
+          console.log(error.response)
+        });
     } else {
       // display an error
     }

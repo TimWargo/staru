@@ -12,6 +12,7 @@ class LoginForm extends Component {
       show: this.props.show,
       email: '',
       password: '',
+      remember_me: true,
     }
     this.onSubmit = this.onSubmit.bind(this);
     this.verifyInput = this.verifyInput.bind(this);
@@ -27,6 +28,24 @@ class LoginForm extends Component {
     });
   }
 
+  handleCheckChange = (e) => {
+    const isChecked = e.target.checked;
+    this.setState({
+      remember_me: isChecked
+    })
+  }
+
+  handleRememberme() {
+    try {
+      if (this.state.remember_me) {
+        const date = new Date(new Date().getDate() + 30).toUTCString;
+        document.cookie = "email=" + this.state.email + "; expires=" + date + ";";
+      }
+    } catch (e) {
+      console.log(e);
+    }
+  }
+
   verifyInput() {
     return true;
   }
@@ -34,18 +53,20 @@ class LoginForm extends Component {
   onSubmit(e) {
     e.preventDefault();
     if (this.verifyInput()) {
-    const user = {
-      email: this.state.email,
-      password: this.state.password,
-    }
-    axios.post('http://localhost/staru/src/php/authLogin.php', user)
-      .then(res=> {
-        console.log(res.data);
-        this.onCloseModal();
-        window.location.pathname = "/";
-        this.props.onLoginChange(true);
-      })
-      .catch(error => console.log(error.response));
+      const user = {
+        email: this.state.email,
+        password: this.state.password,
+      }
+      axios.post('http://localhost/staru/src/php/authLogin.php', user)
+        .then(res=> {
+          console.log(res.data);
+          this.handleRememberme();
+          sessionStorage.setItem("session", this.state.email);
+          this.onCloseModal();
+          window.location.pathname = "/";
+          this.props.onLoginChange(true);
+        })
+        .catch(error => console.log(error.response));
     } else {
       // display error message
     }
@@ -85,6 +106,15 @@ class LoginForm extends Component {
                   value={this.state.password}
                   onChange={this.handleInputChange}
                 />
+              </div>
+              <div className="remember-me-wrapper">
+                <input
+                  type="checkbox"
+                  name="remember_me"
+                  id="exampleInputCheckbox"
+                  defaultChecked={this.state.remember_me}
+                  onChange={this.handleCheckChange} />
+                <label htmlFor="exampleInputCheckbox">Remember Me</label>
               </div>
               <div className="d-grid gap-2">        
               <Button onClick= {this.onSubmit} variant="primary" size="lg">
