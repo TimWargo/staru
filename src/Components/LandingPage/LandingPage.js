@@ -1,4 +1,5 @@
 import React, { Component, createRef } from "react";
+import './main.css';
 
 class LandingPage extends Component {
     constructor(props) {
@@ -6,7 +7,9 @@ class LandingPage extends Component {
     }
     render() {
         return (
-            <h1>Landing Page</h1>
+            <div class="body">
+                <h1>Landing Page</h1>
+            </div>
         )
     }
 }

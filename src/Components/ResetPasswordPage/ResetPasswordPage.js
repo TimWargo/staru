@@ -74,10 +74,10 @@ class ResetPasswordPage extends Component {
 
     render() {
         return (
-            <>
+            <div class="body">
                 <h1>Reset Password</h1>
 
-                <div>
+                <div class="innerBody">
                     <form onSubmit={this.handleSubmit}>
                         <label>
                             Password
@@ -118,7 +118,7 @@ class ResetPasswordPage extends Component {
                         </span>
                     </form>
                 </div>
-            </>
+            </div>
         )
     }
 }

@@ -51,8 +51,8 @@ class NavBar extends Component {
 
     render() {
         return (
-            <>
-                <Navbar bg="dark" variant="dark" expand="lg">
+            <div>
+                <Navbar className="navBar" variant="dark" expand="lg">
                     <Container>
                         <Navbar.Brand href="/">StarU</Navbar.Brand>
                         <Nav>
@@ -62,9 +62,7 @@ class NavBar extends Component {
                         </Nav>
                     </Container>
                 </Navbar>
-                <br />
-            </>
-            
+            </div>
         );
     }
 }

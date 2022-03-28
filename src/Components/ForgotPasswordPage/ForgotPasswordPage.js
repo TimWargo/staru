@@ -38,10 +38,11 @@ class ForgotPasswordPage extends Component {
     
     render() {
         return (
-            <>
-    
+            <div class="body">
+                
                 <h1> Forgot Password? </h1>
     
+                <div class="innerBody">
                 <p> Enter your email below and we will send you a link to reset your password. </p>
     
                 <div>
@@ -60,7 +61,8 @@ class ForgotPasswordPage extends Component {
                         </span>
                     </form>
                 </div>
-            </>
+                </div>
+            </div>
         );
     }
 }
