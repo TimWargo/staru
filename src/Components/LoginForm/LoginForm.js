@@ -71,10 +71,14 @@ class LoginForm extends Component {
           window.location.pathname = "/";
         })
         .catch(error => {
-          // display invalid credentials message
+          alert("Incorrect Username or Password.\n Please try again.");
         });
     } else {
-      // display invalid input message
+      /* 
+         May not need this for login. 
+         Could just display a custom created dialog box or 
+         alert for bad input and open like shown above.
+    */
     }
   }
 
