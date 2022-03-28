@@ -86,6 +86,7 @@ class ResetPasswordPage extends Component {
                                 name="password"
                                 id="password"
                                 type="password"
+                                placeholder="Password"
                                 value={this.state.password}
                                 onChange={this.handleInputChange}
                             />
@@ -98,6 +99,7 @@ class ResetPasswordPage extends Component {
                                 name="passwordVerify"
                                 id="passwordVerify"
                                 type="password"
+                                placeholder="Password"
                                 value={this.state.passwordVerify}
                                 onChange={this.handleInputChange}
                             />
