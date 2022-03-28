@@ -33,7 +33,19 @@ class SignupForm extends Component {
   }
 
   verifyInput() {
+    var pattern = new RegExp(/^(("[\w-\s]+")|([\w-]+(?:\.[\w-]+)*)|("[\w-\s]+")([\w-]+(?:\.[\w-]+)*))(@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$)|(@\[?((25[0-5]\.|2[0-4][0-9]\.|1[0-9]{2}\.|[0-9]{1,2}\.))((25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\.){2}(25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\]?$)/i);
+    if (!pattern.test(this.state.email)) {
+    return false
+  }
+  else if (this.state.screenName.length < 5) {
+return false
+  }
+  else if (this.state.password.length < 8) {
+    return false
+  }
+  else {
     return true
+  }
   }
 
   onSubmit(e) {
@@ -52,13 +64,15 @@ class SignupForm extends Component {
         })
         .catch(error => {
           if (error.responsestatus === 409) {
-            // display email account already exists error
+            alert("Unknown Error. Try Again.");
           } else {
-            // display "something went wrong" error
+            alert("An account with this email already exists.");
+            //it appears the error for an email already being in the database is an error with a response status other than 409..
           }
         });
     } else {
-      // display invalid input error
+      // Initial Signup Error. Going to replace. 
+      alert("Please use a screen name that is greater than 5 characters long, a password that is greater than 8 characters long, and a valid email address.")
     }
   }
 
@@ -71,7 +85,19 @@ class SignupForm extends Component {
           </Modal.Header>
           <Modal.Body>
           <form onSubmit={this.onSubmit}>
-            <h3>StarU</h3>         
+            <h3>StarU</h3>     
+            <div className="form-group">
+                <label for="exampleInputScreenName1">Screen Name</label>
+                <input
+                  type="text"
+                  name="screenName"
+                  className="form-control"
+                  id="exampleInputScreenName1"
+                  placeholder="Screen Name"
+                  value={this.state.screenName}
+                  onChange={this.handleInputChange}
+                />
+              </div>    
               <div className="form-group">
                 <label for="exampleInputEmail1">Email Address</label>
                 <input
@@ -93,18 +119,6 @@ class SignupForm extends Component {
                   id="exampleInputPassword1"
                   placeholder="Password"
                   value={this.state.password}
-                  onChange={this.handleInputChange}
-                />
-              </div>
-              <div className="form-group">
-                <label for="exampleInputScreenName1">Screen Name</label>
-                <input
-                  type="text"
-                  name="screenName"
-                  className="form-control"
-                  id="exampleInputScreenName1"
-                  placeholder="Screen Name"
-                  value={this.state.screenName}
                   onChange={this.handleInputChange}
                 />
               </div>
