@@ -51,21 +51,22 @@ class NavBar extends Component {
 
     render() {
         return (
-            <Navbar className="navBar" variant="dark" expand="lg">
-                <div class="container-fluid">
-                    <a class="navbar-brand" href="/">StarU</a>
-                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
-                    <div class="collapse navbar-collapse" id="navbarNav">
-                        <Nav>
-                            <Nav.Link href="/search">Search</Nav.Link>
-                            <Nav.Link href="/about">About</Nav.Link>                           
-                            {this.renderAuth()}            
-                        </Nav> 
-                    </div>
-                </div>
+
+            // new and improved working NavBar
+            <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
+                <Container>
+                    <Navbar.Brand href="/">StarU</Navbar.Brand>
+                    <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+                    <Navbar.Collapse id="responsive-navbar-nav">
+                    <Nav className="ms-auto">
+                        <Nav.Link href="/search">Search</Nav.Link>
+                        <Nav.Link href="/about">About</Nav.Link>                           
+                        {this.renderAuth()}            
+                    </Nav>
+                    </Navbar.Collapse>
+                </Container>
             </Navbar>
+
 
             // the old NavBar style, kept just in case the new one is awful
             /*
@@ -82,7 +83,6 @@ class NavBar extends Component {
                             {this.renderAuth()}            
                         </Nav>
                     </Container>
-                    
                 </Navbar>
             </div>
             */
