@@ -11,11 +11,8 @@ if (isset($user) && !empty($user)) {
     $password = $request->password;
     $hash = password_hash($password, PASSWORD_DEFAULT);
     $query = "UPDATE accounts SET password = '$hash' WHERE email = '$email'";
-    $checker=mail($email,
-    "reset password", 
-    "your password has been changed", 
-    "From: staru4300@gmail.com");
-    if (!$check){
+    $checker=mail($email,"reset password", "your password has been changed", "From: staru4300@gmail.com" );
+     if (!$check){
         error_log("rip it doesn't work", 0);
     } else{
         error_log("rip it does work", 0);
