@@ -45,6 +45,11 @@ CREATE TABLE accounts (
     valid tinyint(1)
 );
 ```
+## Replacing .ini Files
+To allow for PHP sendmail to access gmail,replace the current files at \xampp\sendmail\sendmail.ini and \xampp\php\php.ini
+with
+\staru\sendmail-replace-sendmail-ini.ini
+\staru\php-replace-sendmail-ini.ini
 
 ## Starting StarU
 Once you are inside the project directory (staru/), type ```npm start```.
