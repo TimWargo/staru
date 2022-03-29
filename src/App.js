@@ -9,6 +9,7 @@ import NavBar from './Components/NavBar/NavBar';
 import Footer from './Components/Footer/Footer';
 import LoginForm from './Components/LoginForm/LoginForm';
 import AccountPage from './Components/AccountPage/AccountPage';
+import SearchPage from './Components/SearchPage/SearchPage';
 
 class App extends Component {
   constructor(props) {
@@ -34,6 +35,7 @@ class App extends Component {
           <Route path="/" exact element={<LandingPage />} />
           <Route path="/about" element={<AboutContactUsPage />} />
           <Route path="/contact" element={<AboutContactUsPage />} />
+          <Route path="/search" element={<SearchPage />} />
 
           {/* Protected Routes */}
           <Route path="/account" element={<AccountPage />} />

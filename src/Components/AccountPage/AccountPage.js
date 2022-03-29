@@ -13,9 +13,9 @@ class AccountPage extends Component {
     
     render() { 
         return (
-            <>
+            <div class="body">
                 <h1> Account Page </h1>
-            </>
+            </div>
         );
     }
 }
