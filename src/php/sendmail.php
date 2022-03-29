@@ -14,7 +14,7 @@ if (isset($postdata) && !empty($postdata)) {
     $check =  mail(
         $email,
         "forgot Password",
-        "http://localhost:3000/reset",
+        "http://localhost:3000/reset?email=$email",
         "From: staru4300@gmail.com");
     if (!$check) {
         error_log("rip it doesn't work", 0);

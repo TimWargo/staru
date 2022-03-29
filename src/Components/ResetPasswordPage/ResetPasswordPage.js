@@ -6,7 +6,7 @@ class ResetPasswordPage extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            email: '',
+            email: "",
             password: "",
             passwordVerify: "",
         };
@@ -26,27 +26,28 @@ class ResetPasswordPage extends Component {
 
     handleSubmit(event) {
         event.preventDefault();
-
+        const queryParams = new URLSearchParams(window.location.search);
+        const email1 = queryParams.get('email');
+        console.log(email1);
         // temporary
         const user = {
-            email: this.state.email,
+            email: email1,
             password: this.state.password
         }
 
         console.log(user);
 
         //verify input
-        const pass1 = this.state.password;
-        const pass2 = this.state.passwordVerify;
-        console.log(pass1);
-        if (!pass1) {
+        const pass1 = document.getElementById("password");
+        const pass2 = document.getElementById("passwordVerify");
+        if (!pass1.value) {
             const pass1Error = document.getElementById("pass1Error");
             pass1Error.classList.add("visible");
             pass1.classList.add("invalid");
             pass1Error.setAttribute("aria-hidden", false);
             pass1Error.setAttribute("aria-invalid", true);
             return;
-        } else if (!pass2) {
+        } else if (!pass2.value) {
             const pass2Error = document.getElementById("pass2Error");
             pass2Error.classList.add("visible");
             pass2.classList.add("invalid");
@@ -66,6 +67,7 @@ class ResetPasswordPage extends Component {
         }
 
         //submit new password to DB
+        console.log(user);
         axios.post('http://localhost/staru/src/php/resetPass.php', user)
             .then(res => console.log(res.data))
             .catch(error => {
@@ -77,7 +79,7 @@ class ResetPasswordPage extends Component {
         return (
             <div class="body">
                 <h1>Reset Password</h1>
-
+                
                 <div class="innerBody">
                     <form onSubmit={this.handleSubmit}>
                         <label>
