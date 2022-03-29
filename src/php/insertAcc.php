@@ -16,8 +16,19 @@ if(isset($postdata) && !empty($postdata)) {
     }
     $screenname = $request->screenName;
     $hash = password_hash($request->password, PASSWORD_DEFAULT);
-    $sql = "INSERT INTO accounts (email, screen_name, password) VALUES ('$email', '$screenname', '$hash')";
-    $check=mail($email, "confirm account", "welcome"+$screenname, "From: staru4300@gmail.com");
+    $vkey = md5(time().$screenname);
+    $sql = "INSERT INTO accounts (email, screen_name, password, vkey, valid) VALUES ('$email', '$screenname', '$hash', '$vkey', 'false')";
+
+    $msg=  "welcome to StarU please validate email <a href= 'http://localhost:3000/verify.php?vkey=$vkey> validate </a>";
+    $headers = "From: staru4300@gmail.com \r\n";
+    $headers.="MIME-Version: 1.0" . "\r\n";
+    $headers.="Content-Type: text/plain; charset=UTF-8" ."\r\n";
+     
+    $check=mail(
+        $email, 
+        "confirm account",
+        $msg, 
+        $headers);
     if (!$check){
         error_log("rip it doesn't work", 0);
     } else{
