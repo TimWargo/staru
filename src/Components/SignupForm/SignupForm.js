@@ -40,7 +40,7 @@ class SignupForm extends Component {
   else if (this.state.screenName.length < 5) {
 return false
   }
-  else if (this.state.password.length < 8) {
+  else if (this.state.password.length < 8 &&this.state.password.length > 16) {
     return false
   }
   else {

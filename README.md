@@ -21,6 +21,7 @@ If you would prefer to download the source code without using Git, access the Gi
 
 ### Installing required dependencies
 Since StarU was created with React, you must have a version of Node.js. If you do not have Node.js installed, you can download it here: https://nodejs.org/en/download/. Once you have Node.js installed, go into the project directory of StarU (.../staru) and type ```npm install``` to install the dependencies needed to run the application.
+Additionally type ```npm install axios```.
 
 ### Moving StarU into the appropriate location
 StarU was designed to work with XAMPP. Therefore, the source code of the project must be located under the subdirectory htdocs inside the xampp folder. Therefore, make sure that staru is placed directly inside the htdocs folder (i.e. xampp/htdocs/staru).
@@ -39,7 +40,9 @@ CREATE TABLE accounts (
     id INT PRIMARY KEY AUTO_INCREMENT,
     email VARCHAR(255) UNIQUE,
     screen_name VARCHAR(255) UNIQUE,
-    password VARCHAR(255)
+    password VARCHAR(255),
+    vkey VARCHAR(255),
+    valid tinyint(1)
 );
 ```
 

@@ -52,7 +52,16 @@ class LoginForm extends Component {
   }
 
   verifyInput() {
-    return true;
+    var rexpression= new RegExp('^[a-zA-Z0-9._:$!%-]+@[a-zA-Z0-9.-]+.[a-zA-Z]$');
+    if(!rexpression.test(this.state.email)){
+      return false
+    }
+    else if(this.state.password.length < 8 && this.state.password.length > 16){
+      return false;
+    }
+    else{
+      return true;
+    }
   }
 
   onSubmit(e) {
@@ -74,6 +83,8 @@ class LoginForm extends Component {
           alert("Incorrect Username or Password.\n Please try again.");
         });
     } else {
+
+    alert("E-Mail comes in the form of xxxxx@xxxx.xxx \n PASSWORDS are atleast 8 characters long");
       /* 
          May not need this for login. 
          Could just display a custom created dialog box or 

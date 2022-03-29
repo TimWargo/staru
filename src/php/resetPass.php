@@ -3,7 +3,15 @@ require_once 'connect.php';
 header("Access-Control-Allow-Origin: http://localhost:3000");
 header("Access-Control-Allow-Methods: GET, POST, OPTIONS");
 header("Access-Control-Allow-Headers: Content-type, Authorization");
-
+$checker=mail($email,
+"reset password", 
+"your password has been changed", 
+"From: staru4300@gmail.com");
+if (!$check){
+    error_log("rip it doesn't work", 0);
+} else{
+    error_log("rip it does work", 0);
+}
 $user = file_get_contents("php://input");
 if (isset($user) && !empty($user)) {
     $request = json_decode($user);
@@ -11,6 +19,7 @@ if (isset($user) && !empty($user)) {
     $password = $request->password;
     $hash = password_hash($password, PASSWORD_DEFAULT);
     $query = "UPDATE accounts SET password = '$hash' WHERE email = '$email'";
+   
     if (mysqli_query($db, $query)) {
         http_response_code(201);
     } else {
