@@ -1,9 +1,8 @@
-
 .body {
     display: flex;
-    height: 80%;
     flex-direction: column;
     justify-content: flex-start;
+    height: 80%;
     background-color: #CCC9DC;
     color: #0C1821;
     padding: 20px;
@@ -19,14 +18,13 @@
 
 .footer {
     background-color: #CCC9DC;
-    border-top: solid black 3px;
-    border-bottom: solid black 3px;
+    border-top: solid #0C1821 3px;
+    border-bottom: solid #0C1821 3px;
     padding: 20px;
 }
 
 .navBar {
     background-color: #0C1821;
-    background-color: #8B1E3F;
     border-bottom: solid #0C1821 3px;
 }
 
@@ -37,6 +35,7 @@
 .link:hover {
     color: #28B094;
 }
+
 
 h1 {
     padding-bottom: 20px;

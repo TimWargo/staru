@@ -1,56 +1,71 @@
 .modal-header {
     background-color: #282c34;
-    color: white;
-    }
+    color: #CCC9DC;
+    /*
+    border-left: solid #8B1E3F 3px;
+    border-right: solid #8B1E3F 3px;
+    border-top: solid #8B1E3F 3px;
+    */
+}
     
-    .modal-body {
-        background-color: #282c34;
-        color: white;
-    }
+.modal-body {
+    background-color: #282c34;
+    color: #CCC9DC;
+    /*
+    border-left: solid #8B1E3F 3px;
+    border-right: solid #8B1E3F 3px;
+    border-bottom: solid #8B1E3F 3px;
+    */
+}
     
-    .modal-footer {
-     background-color: #282c34;
-     color: #282c34;
-     height: 60px;
-     display:flex;
-    }
+.modal-footer {
+    background-color: #282c34;
+    color: #CCC9DC;
+    height: 60px;
+    display:flex;
+}
     
-    input {
-        margin-bottom: 8px;
-    }
+input {
+    margin-bottom: 8px;
+}    
     
+.div-footer2 {
+    margin-top: -2px;
+    margin-bottom: 10px;
+    margin-right: 152px;
+}
     
-    .div-footer2 {
-        margin-top: -2px;
-        margin-bottom: 10px;
-        margin-right: 152px;
-    }
-    
-    .div-footer1 {
+.div-footer1 {
     margin-top: -2px;
     margin-bottom: 10px;
     margin-right: 8px;
-    }
+}
     
-    .div-footer3 {
-        margin-top: -2px;
-        margin-bottom: 10px;
-        margin-right: 5px;
-    }
+.div-footer3 {
+    margin-top: -2px;
+    margin-bottom: 10px;
+    margin-right: 5px;
+}
 
-    .div-footersu {
-        height: -5px;
-        width: 55px;
-        margin-top: -7px;
-        margin-right: 230px;
+.div-footersu {
+    height: -5px;
+    width: 55px;
+    margin-top: -7px;
+    margin-right: 230px;
         
-    }
+}
 
-    .securitydet p {
+.securitydet p {
     margin-bottom:-15px;
-    }
+}
 
-    .d-grid {
-        margin-top: 30px;
-        margin-bottom:-5px;
-    }
+.d-grid {
+    margin-top: 30px;
+    margin-bottom:-5px;
+}
+
+.buttModal {
+    background-color: #28B094 !important;
+    border: #28B094;
+    color: #0C1821;
+}

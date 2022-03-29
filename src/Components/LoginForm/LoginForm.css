@@ -50,17 +50,23 @@ body, html, .App, #root, .auth-wrapper {
   text-align: center;
   font-size: 16px;
   padding-top: 5px;
-  color: #ffffff;
+  color: #CCC9DC;
   margin-top: 15px;
   margin-bottom:-5px;
 }
 .have-account {
   text-align:center;
+  color: #CCC9DC;
+}
+
+.have-account a {
+  text-align:center;
+  color: #28B094;
 }
 
 .forgot-password a {
     text-align:center;
-  color: #167bff;
+  color: #28B094;
 }
 
 .d-grid {

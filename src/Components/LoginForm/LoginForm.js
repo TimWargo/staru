@@ -125,10 +125,10 @@ class LoginForm extends Component {
                 <label htmlFor="exampleInputCheckbox">Remember Me</label>
               </div>
               <div className="d-grid gap-2">
-              <Button onClick= {this.onSubmit} variant="primary" size="lg">
-               Log In
-              </Button>
-              <p className="forgot-password text-right">
+                <Button onClick= {this.onSubmit} variant="primary" size="lg" className="buttModal">
+                Log In
+                </Button>
+                <p className="forgot-password text-right">
                   Forgot your <a href="/forgot">password?</a>
                 </p>   
                 <p className="forgot-password text-right">
