@@ -123,7 +123,7 @@ return false
                 />
               </div>
               <div className="d-grid gap-2">
-              <Button onClick= {this.onSubmit} variant="primary" size="lg">
+              <Button onClick= {this.onSubmit} variant="primary" size="lg" className="buttModal">
                Submit
               </Button>
               <br></br>
