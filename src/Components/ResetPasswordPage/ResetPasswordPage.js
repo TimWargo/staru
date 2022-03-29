@@ -29,23 +29,24 @@ class ResetPasswordPage extends Component {
 
         // temporary
         const user = {
-            email: 'timothywargo@yahoo.com',
+            email: this.state.email,
             password: this.state.password
         }
 
         console.log(user);
 
         //verify input
-        const pass1 = document.getElementById("password");
-        const pass2 = document.getElementById("passwordVerify");
-        if (!pass1.value) {
+        const pass1 = this.state.password;
+        const pass2 = this.state.passwordVerify;
+        console.log(pass1);
+        if (!pass1) {
             const pass1Error = document.getElementById("pass1Error");
             pass1Error.classList.add("visible");
             pass1.classList.add("invalid");
             pass1Error.setAttribute("aria-hidden", false);
             pass1Error.setAttribute("aria-invalid", true);
             return;
-        } else if (!pass2.value) {
+        } else if (!pass2) {
             const pass2Error = document.getElementById("pass2Error");
             pass2Error.classList.add("visible");
             pass2.classList.add("invalid");

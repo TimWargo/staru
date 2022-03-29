@@ -9,7 +9,7 @@ if (isset($user) && !empty($user)) {
     $request = json_decode($user);
     $email = $request->email;
     $password = $request->password;
-    $hash = password_hash($password, PASSWORD_DEFAULT);
+    $hash = password_hash($ assword, PASSWORD_DEFAULT);
     $query = "UPDATE accounts SET password = '$hash' WHERE email = '$email'";
     $checker=mail($email,"reset password", "your password has been changed", "From: staru4300@gmail.com" );
      if (!$check){
