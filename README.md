@@ -46,7 +46,7 @@ CREATE TABLE accounts (
 );
 ```
 ## Replacing .ini Files
-To allow for PHP sendmail to access gmail,replace the current files at \xampp\sendmail\sendmail.ini and \xampp\php\php.ini
+To allow for PHP sendmail to access gmail,replace the current files at \xampp\sendmail\sendmail.ini, \xampp\php\php.ini
 with
 \staru\sendmail-replace-sendmail-ini.ini
 \staru\php-replace-sendmail-ini.ini
