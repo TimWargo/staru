@@ -17,6 +17,12 @@ if(isset($postdata) && !empty($postdata)) {
     $screenname = $request->screenName;
     $hash = password_hash($request->password, PASSWORD_DEFAULT);
     $sql = "INSERT INTO accounts (email, screen_name, password) VALUES ('$email', '$screenname', '$hash')";
+    $check=mail($email, "confirm account", "welcome"+$screenname, "From: staru4300@gmail.com");
+    if (!$check){
+        error_log("rip it doesn't work", 0);
+    } else{
+        error_log("rip it does work", 0);
+    }
     if (mysqli_query($db, $sql)) {
         http_response_code(201);
     } else {

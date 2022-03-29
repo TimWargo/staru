@@ -1,5 +1,6 @@
 import React, { Component, createRef } from "react";
 import './ForgotPasswordPage.css';
+import axios from "axios";
 
 class ForgotPasswordPage extends Component {
     constructor(props) {
@@ -23,7 +24,10 @@ class ForgotPasswordPage extends Component {
 
     handleSubmit(event) {
         event.preventDefault();
-
+        const user = {
+            email: this.state.email,
+        }
+        //axios.post('http://localhost/staru/src/php/sendmail.php', user);
         //verify input
         const emailField = document.getElementById("email");
         if (!emailField.value) {
@@ -33,6 +37,9 @@ class ForgotPasswordPage extends Component {
             nameError.setAttribute("aria-hidden", false);
             nameError.setAttribute("aria-invalid", true);
             return;
+        }
+        else{
+            axios.post('http://localhost/staru/src/php/sendmail.php', user);            
         }
     }
     
