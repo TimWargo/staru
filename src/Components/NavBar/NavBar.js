@@ -8,8 +8,9 @@ import SignupForm from "../SignupForm/SignupForm";
 class NavBar extends Component {
     constructor(props) {
         super(props);
+        const isLoggedIn = (sessionStorage.getItem('session')) ? true : false;
         this.state = {
-            isLoggedIn: false,
+            isLoggedIn: isLoggedIn,
         }
         this.onLoginChange = this.onLoginChange.bind(this);
         this.renderAuth = this.renderAuth.bind(this);
@@ -27,12 +28,12 @@ class NavBar extends Component {
         if (document.cookie.split(';').some((item) => item.trim().startsWith('email'))) {
             document.cookie = "email=; max-age=0";
         }
+        this.onLoginChange(false);
     }
 
     renderAuth() {
         const { isLoggedIn } = this.state;
-        const user = sessionStorage.getItem('session');
-        if (user) {
+        if (isLoggedIn) {
             return (
                 <>
                     <Nav.Link href="/account">Account</Nav.Link>
