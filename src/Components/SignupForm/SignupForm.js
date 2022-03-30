@@ -51,80 +51,80 @@ class SignupForm extends Component {
     }
 
     if ((this.state.screenName.length < 6) && (this.state.screenName.length >= 1)) {
-    nameFormatError = "Screen Name must be at least 6 characters long."
+      nameFormatError = "Screen Name must be at least 6 characters long."
     } else {
       nameFormatError = "";
       this.setState({ nameFormatError });
     }
 
     const pattern = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/
-   if (!this.state.email) {
+    if (!this.state.email) {
       emailError = "Email Address field is required.";
-   } else {
-    emailError = "";
-    this.setState({ emailError });
-  }
+    } else {
+      emailError = "";
+      this.setState({ emailError });
+    }
 
-  if ((!pattern.test(this.state.email)) && (this.state.email)) {
-    emailFormatError = "Email must be in the format xxxxx@xxxxx.xxx"
-  } else {
-    emailFormatError = "";
-    this.setState ({ emailFormatError });
-  }
+    if ((!pattern.test(this.state.email)) && (this.state.email)) {
+      emailFormatError = "Email must be in the format xxxxx@xxxxx.xxx"
+    } else {
+      emailFormatError = "";
+      this.setState({ emailFormatError });
+    }
 
-  if (!this.state.password) {
-    passwordError = "Password field is required."; 
-  } else {
+    if (!this.state.password) {
+      passwordError = "Password field is required.";
+    } else {
       passwordError = "";
       this.setState({ passwordError });
-  }
-  if ((this.state.password.length < 8) && (this.state.password.length >= 1)) {
-    pwFormatError = "Password must be at least 8 characters long."
+    }
+    if ((this.state.password.length < 8) && (this.state.password.length >= 1)) {
+      pwFormatError = "Password must be at least 8 characters long."
     } else {
       pwFormatError = "";
       this.setState({ pwFormatError });
     }
 
 
-  if (nameError) {
-    this.setState({ nameError });
-    isValid = false;
-  }
+    if (nameError) {
+      this.setState({ nameError });
+      isValid = false;
+    }
 
-  if (nameFormatError) {
-    this.setState({ nameFormatError });
-    isValid = false;
-  }
+    if (nameFormatError) {
+      this.setState({ nameFormatError });
+      isValid = false;
+    }
 
-  if (emailError) {
+    if (emailError) {
       this.setState({ emailError });
       isValid = false;
-  }
-  
-  if (emailFormatError) {
-    this.setState({ emailFormatError });
-      isValid = false;
-  }
+    }
 
-  if (passwordError) {
+    if (emailFormatError) {
+      this.setState({ emailFormatError });
+      isValid = false;
+    }
+
+    if (passwordError) {
       this.setState({ passwordError });
       isValid = false;
-  }
+    }
 
-  if (pwFormatError) {
-    this.setState({ pwFormatError });
+    if (pwFormatError) {
+      this.setState({ pwFormatError });
       isValid = false;
-  }
+    }
 
-     return isValid; 
+    return isValid;
   }
 
 
   onSubmit(e) {
     let emailTakenError = "";
-    this.setState ({ emailTakenError });
+    this.setState({ emailTakenError });
     let nameTakenError = "";
-    this.setState ({ nameTakenError });
+    this.setState({ nameTakenError });
     /*
     * Enter php script here to check for duplicate username or email.
     * Then set the state in the if - else if below for each when each conidition 
@@ -149,7 +149,7 @@ class SignupForm extends Component {
             alert("Unknown Database Error. Please refer to the README file for this web application.");
           } else {
             emailTakenError = "This email is already in use by another StarU account.";
-            this.setState ({ emailTakenError });
+            this.setState({ emailTakenError });
           }
           /* above else will also be an else if for email with same format.
               Once implemented it is already in place to show error in the same location
@@ -167,15 +167,15 @@ class SignupForm extends Component {
 
 
   render() {
-    return (  
+    return (
       <>
         <Modal show={this.props.show} onExit={this.onCloseModal} onHide={this.onCloseModal}>
           <Modal.Header closeButton>
           </Modal.Header>
           <Modal.Body>
-          <form onSubmit={this.onSubmit}>
-            <h3>StarU</h3>  
-            <div className="form-group">
+            <form onSubmit={this.onSubmit}>
+              <h3>StarU</h3>
+              <div className="form-group">
                 <label for="exampleInputScreenName1">Screen Name</label>
                 <input
                   type="text"
@@ -184,11 +184,11 @@ class SignupForm extends Component {
                   placeholder="Screen Name"
                   value={this.state.screenName}
                   onChange={this.handleInputChange}
-                />            
-                <span className="text-danger">{this.state.nameError}</span>   
-                <span className="text-danger">{this.state.nameFormatError}</span>  
-              </div> 
-              
+                />
+                <span className="text-danger">{this.state.nameError}</span>
+                <span className="text-danger">{this.state.nameFormatError}</span>
+              </div>
+
               <div className="form-group">
                 <label for="exampleInputEmail1">Email Address</label>
                 <input
@@ -197,7 +197,7 @@ class SignupForm extends Component {
                   className="form-control"
                   placeholder="Email Address"
                   value={this.state.email}
-                  onChange={this.handleInputChange}                
+                  onChange={this.handleInputChange}
                 />
                 <span className="text-danger">{this.state.emailError}</span>
                 <span className="text-danger">{this.state.emailFormatError}</span>
@@ -216,18 +216,18 @@ class SignupForm extends Component {
                 <span className="text-danger">{this.state.pwFormatError}</span>
               </div>
               <div className="d-grid gap-2">
-              <Button onClick= {this.onSubmit} variant="primary" size="lg" className="buttModal">
-               Submit
-              </Button>
-              <div className="bad-email">
-              <span className="text-danger">{this.state.emailTakenError}</span>
-              <span className="text-danger">{this.state.nameTakenError}</span>
-              </div>
-              <br></br>
-              <p className="have-account text-right">
-                  Already have an account? <a href="/#" onClick = {this.openLogin}>Log In</a>
+                <Button onClick={this.onSubmit} variant="primary" size="lg" className="buttModal">
+                  Submit
+                </Button>
+                <div className="bad-email">
+                  <span className="text-danger">{this.state.emailTakenError}</span>
+                  <span className="text-danger">{this.state.nameTakenError}</span>
+                </div>
+                <br></br>
+                <p className="have-account text-right">
+                  Already have an account? <a href="/#" onClick={this.openLogin}>Log In</a>
                 </p>
-              </div>   
+              </div>
             </form>
           </Modal.Body>
         </Modal>

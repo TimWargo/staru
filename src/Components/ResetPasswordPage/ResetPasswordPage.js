@@ -27,25 +27,69 @@ class ResetPasswordPage extends Component {
 
     //validate input
     validate() {
+        let isValid = true;
         let passwordError = "";
         let verifyPasswordError = "";
         let notEqualError = "";
+        let passFormatError = "";
+        let passVerifFormatError = "";
 
         if (!this.state.password) {
             passwordError = "Password field cannot be empty";
-        }
-        if (!this.state.passwordVerify) {
-            verifyPasswordError = "Re-type password field cannot be empty";
-        }
-        if (this.state.password != this.state.passwordVerify) {
-            notEqualError = "Both passwords must be the same";
+        } else {
+            passwordError = "";
+            this.setState({ passwordError });
         }
 
-        if (passwordError || verifyPasswordError || notEqualError) {
-            this.setState({ passwordError, verifyPasswordError, notEqualError });
-            return false;
+        if ((this.state.password.length < 8) && (this.state.password.length > 0)) {
+            passFormatError = "Password must be at least 8 characters long."
+        } else {
+            passFormatError = "";
+            this.setState({ passFormatError });
         }
-        return true;
+
+        if (!this.state.passwordVerify) {
+            verifyPasswordError = "Re-type password field cannot be empty";
+        } else {
+            verifyPasswordError = "";
+            this.setState({ verifyPasswordError });
+        }
+
+        if ((this.state.passwordVerify.length < 8) && (this.state.passwordVerify.length > 0)) {
+            passVerifFormatError = "Password must be at least 8 characters long."
+        } else {
+            passVerifFormatError = "";
+            this.setState({ passVerifFormatError });
+        }
+
+        if ((this.state.password !== this.state.passwordVerify) && (this.state.passwordVerify.length >= 8 && this.state.password.length >= 8)) {
+            notEqualError = "Both passwords must be the same";
+        } else {
+            notEqualError = "";
+            this.setState({ notEqualError });
+        }
+
+        if (passwordError) {
+            this.setState({ passwordError });
+            isValid = false;
+        }
+        if (verifyPasswordError) {
+            this.setState({ verifyPasswordError });
+            isValid = false;
+        } 
+        if (notEqualError) {
+            this.setState({ notEqualError });
+            isValid = false;
+        } 
+        if (passFormatError) {
+            this.setState({ passFormatError });
+            isValid = false;
+        }
+        if (passVerifFormatError) {
+            this.setState({ passVerifFormatError });
+            isValid = false;
+        }
+        return isValid;
     }
 
     handleSubmit(event) {
@@ -66,7 +110,10 @@ class ResetPasswordPage extends Component {
             //submit new password to DB
             console.log(user);
             axios.post('http://localhost/staru/src/php/resetPass.php', user)
-                .then(res => console.log(res.data))
+                .then(res => {
+                    console.log(res.data);
+                    window.location.href = window.location.href.substring(0, window.location.href.indexOf('/') + 1);
+                })
                 .catch(error => {
                     console.log(error.response);
                 });
@@ -83,47 +130,49 @@ class ResetPasswordPage extends Component {
                 <div class="innerBody">
                     <form onSubmit={this.handleSubmit}>
                         <div>
-                        <label>
-                            Password
+                            <label>
+                                Password
+                                <br />
+                                <input
+                                    name="password"
+                                    id="password"
+                                    type="password"
+                                    placeholder="Password"
+                                    className="form-control"
+                                    value={this.state.password}
+                                    onChange={this.handleInputChange}
+                                />
+                            </label>
                             <br />
-                            <input
-                                name="password"
-                                id="password"
-                                type="password"
-                                placeholder="Password"
-                                className="form-control"
-                                value={this.state.password}
-                                onChange={this.handleInputChange}
-                            />
-                        </label>
-                        <br />
-                        <span className="text-danger">{this.state.passwordError}</span>
+                            <span className="text-danger">{this.state.passwordError}</span>
+                            <span className="text-danger">{this.state.passFormatError}</span>
                         </div>
                         <br />
                         <div>
-                        <label>
-                            Re-type password
+                            <label>
+                                Re-type password
+                                <br />
+                                <input
+                                    name="passwordVerify"
+                                    id="passwordVerify"
+                                    type="password"
+                                    placeholder="Password"
+                                    className="form-control"
+                                    value={this.state.passwordVerify}
+                                    onChange={this.handleInputChange}
+                                />
+                            </label>
                             <br />
-                            <input
-                                name="passwordVerify"
-                                id="passwordVerify"
-                                type="password"
-                                placeholder="Password"
-                                className="form-control"
-                                value={this.state.passwordVerify}
-                                onChange={this.handleInputChange}
-                            />
-                        </label>
-                        <br />
-                        <span className="text-danger">{this.state.verifyPasswordError}</span>
+                            <span className="text-danger">{this.state.verifyPasswordError}</span>
+                            <span className="text-danger">{this.state.passVerifFormatError}</span>
                             <br />
                             <span className="text-danger">{this.state.notEqualError}</span>
                         </div>
                         <br />
                         <div class="text-center">
-                        <Button onClick={this.handleSubmit} variant="primary" size="md" className="buttPass">
-                            Submit
-                        </Button>
+                            <Button onClick={this.handleSubmit} variant="primary" size="md" className="buttPass">
+                                Submit
+                            </Button>
                         </div>
                     </form>
                 </div>
