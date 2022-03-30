@@ -61,7 +61,7 @@ Under '\xampp\php\php.ini', change the following items under [mail function]:
 ```; SMTP=localhost```
 ```; smtp_port=25```
 ```sendmail_from = staru4300@gmail.com```
-```sendmail_path = "D:\xampp\sendmail\sendmail.exe -t"```
+```sendmail_path = "(your_path)\xampp\sendmail\sendmail.exe -t"```
 
 ## Starting StarU
 Once you are inside the project directory (staru/), type ```npm start```.
