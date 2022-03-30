@@ -41,6 +41,8 @@ class SignupForm extends Component {
     let emailFormatError = "";
     let pwFormatError = "";
 
+
+
     if (!this.state.screenName) {
       nameError = "Screen Name field is required. ";
     } else {
@@ -121,6 +123,13 @@ class SignupForm extends Component {
   onSubmit(e) {
     let emailTakenError = "";
     this.setState ({ emailTakenError });
+    let nameTakenError = "";
+    this.setState ({ nameTakenError });
+    /*
+    * Enter php script here to check for duplicate username or email.
+    * Then set the state in the if - else if below for each when each conidition 
+    * is met to display the proper error. 
+    */
     if (this.validate()) {
       e.preventDefault();
       const user = {
@@ -142,6 +151,16 @@ class SignupForm extends Component {
             emailTakenError = "This email is already in use by another StarU account.";
             this.setState ({ emailTakenError });
           }
+          /* above else will also be an else if for email with same format.
+              Once implemented it is already in place to show error in the same location
+              as the email taken error we have currently. Which right now is 
+              triggering because it is set as a unique value in database. 
+              
+            else if (username is taken) {
+            nameTakenError = "This username has already been taken."
+            this.setState ({ nameTakenError });
+          }
+          */
         });
     }
   }
@@ -202,6 +221,7 @@ class SignupForm extends Component {
               </Button>
               <div className="bad-email">
               <span className="text-danger">{this.state.emailTakenError}</span>
+              <span className="text-danger">{this.state.nameTakenError}</span>
               </div>
               <br></br>
               <p className="have-account text-right">
