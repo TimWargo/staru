@@ -1,6 +1,8 @@
-import React, { Component, createRef } from "react";
+import React, { Component } from "react";
+import {Button} from "react-bootstrap";
 import './ForgotPasswordPage.css';
 import axios from "axios";
+
 
 class ForgotPasswordPage extends Component {
     constructor(props) {
@@ -18,8 +20,23 @@ class ForgotPasswordPage extends Component {
         event.preventDefault();
         const target = event.target;
         this.setState({
-        [target.name]: target.value,
+            [target.name]: target.value,
         });
+    }
+
+    //validate input
+    validate() {
+        let emailError = "";
+
+        if (!this.state.email) {
+            emailError = "Email field cannot be empty ";
+        }
+
+        if (emailError) {
+            this.setState({ emailError });
+            return false;
+        }
+        return true;
     }
 
     handleSubmit(event) {
@@ -28,50 +45,62 @@ class ForgotPasswordPage extends Component {
             email: this.state.email,
         }
         //axios.post('http://localhost/staru/src/php/sendmail.php', user);
+
         //verify input
-        const emailField = document.getElementById("email");
-        if (!emailField.value) {
-            const nameError = document.getElementById("nameError");
-            nameError.classList.add("visible");
-            emailField.classList.add("invalid");
-            nameError.setAttribute("aria-hidden", false);
-            nameError.setAttribute("aria-invalid", true);
-            return;
-        }
-        else{
-            axios.post('http://localhost/staru/src/php/sendmail.php', user);            
+        if (this.validate()) {
+            axios.post('http://localhost/staru/src/php/sendmail.php', user);
         }
     }
-    
+
     render() {
         return (
             <div class="body">
-                
+
                 <h1> Forgot Password? </h1>
-    
+
                 <div class="innerBody">
-                <p> Enter your email below and we will send you a link to reset your password. </p>
-    
-                <div>
-                    <form onSubmit={this.handleSubmit}>
-                        <input
-                            type='text'
-                            name='email'
-                            id='email'
-                            placeholder='Email'
-                            onChange={this.handleInputChange}
-                        />
-                        <button type='submit'>Submit</button>
-    
-                        <span role="alert" id="nameError" aria-hidden="true">
-                            Please enter an email address
-                        </span>
-                    </form>
-                </div>
+                    <p> Enter your email below and we will send you a link to reset your password. </p>
+
+                    <div>
+                        <form onSubmit={this.handleSubmit}>
+                            <div className="form-row">
+                                <div className="form-group col-md-6">
+                                    <input
+                                        type='text'
+                                        name='email'
+                                        id='email'
+                                        placeholder='Email'
+                                        className="form-control"
+                                        onChange={this.handleInputChange}
+                                    />
+                                    <span className="text-danger">{this.state.emailError}</span>
+                                    <Button onClick= {this.handleSubmit} variant="primary" size="md" className="buttPass">
+                                        Submit
+                                    </Button>
+                                </div>
+                            </div>
+
+
+                            {/*
+                            <input
+                                type='text'
+                                name='email'
+                                id='email'
+                                placeholder='Email'
+                                onChange={this.handleInputChange}
+                            />
+                            <button type='submit'>Submit</button>
+
+                            <span role="alert" id="nameError" aria-hidden="true">
+                                Please enter an email address
+                            </span>
+                             */}
+                        </form>
+                    </div>
                 </div>
             </div>
         );
     }
 }
- 
+
 export default ForgotPasswordPage;
