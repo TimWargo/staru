@@ -29,16 +29,20 @@ class ResetPasswordPage extends Component {
     validate() {
         let passwordError = "";
         let verifyPasswordError = "";
+        let notEqualError = "";
 
         if (!this.state.password) {
             passwordError = "Password field cannot be empty";
         }
         if (!this.state.passwordVerify) {
-            verifyPasswordError = "Verify password field cannot be empty";
+            verifyPasswordError = "Re-type password field cannot be empty";
+        }
+        if (this.state.password != this.state.passwordVerify) {
+            notEqualError = "Both passwords must be the same";
         }
 
-        if (passwordError || verifyPasswordError) {
-            this.setState({ passwordError, verifyPasswordError });
+        if (passwordError || verifyPasswordError || notEqualError) {
+            this.setState({ passwordError, verifyPasswordError, notEqualError });
             return false;
         }
         return true;
@@ -66,6 +70,7 @@ class ResetPasswordPage extends Component {
                 .catch(error => {
                     console.log(error.response);
                 });
+
         }
 
     }
@@ -77,6 +82,7 @@ class ResetPasswordPage extends Component {
 
                 <div class="innerBody">
                     <form onSubmit={this.handleSubmit}>
+                        <div>
                         <label>
                             Password
                             <br />
@@ -89,9 +95,12 @@ class ResetPasswordPage extends Component {
                                 value={this.state.password}
                                 onChange={this.handleInputChange}
                             />
-                            <span className="text-danger">{this.state.passwordError}</span>
                         </label>
                         <br />
+                        <span className="text-danger">{this.state.passwordError}</span>
+                        </div>
+                        <br />
+                        <div>
                         <label>
                             Re-type password
                             <br />
@@ -104,12 +113,18 @@ class ResetPasswordPage extends Component {
                                 value={this.state.passwordVerify}
                                 onChange={this.handleInputChange}
                             />
-                            <span className="text-danger">{this.state.verifyPasswordError}</span>
                         </label>
                         <br />
+                        <span className="text-danger">{this.state.verifyPasswordError}</span>
+                            <br />
+                            <span className="text-danger">{this.state.notEqualError}</span>
+                        </div>
+                        <br />
+                        <div class="text-center">
                         <Button onClick={this.handleSubmit} variant="primary" size="md" className="buttPass">
                             Submit
                         </Button>
+                        </div>
                     </form>
                 </div>
             </div>
