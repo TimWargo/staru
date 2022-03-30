@@ -36,7 +36,10 @@ class VerifyPage extends Component {
         //submit new password to DB
         console.log(user);
         axios.post('http://localhost/staru/src/php/verify.php', user)
-            .then(res => console.log(res.data))
+            .then(res => {
+                console.log(res.data);
+                window.location.href = window.location.href.substring(0, window.location.href.indexOf('/') + 1);
+            })
             .catch(error => {
                 console.log(error.response);
             });
