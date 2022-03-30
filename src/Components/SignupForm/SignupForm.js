@@ -18,7 +18,9 @@ class SignupForm extends Component {
   }
 
   onOpenModal = () => { this.props.onSignupShowChange(true); }
-  onCloseModal = () => { this.props.onSignupShowChange(false); }
+  onCloseModal = () => { this.props.onSignupShowChange(false) };
+      
+
 
   openLogin = () => {
     this.onCloseModal();
@@ -40,7 +42,6 @@ class SignupForm extends Component {
     let nameFormatError = "";
     let emailFormatError = "";
     let pwFormatError = "";
-
 
 
     if (!this.state.screenName) {
@@ -140,9 +141,7 @@ class SignupForm extends Component {
       axios.post('http://localhost/staru/src/php/insertAcc.php', user)
         .then(res => {
           console.log(res.data);
-          sessionStorage.setItem("session", this.state.email);
-          this.onCloseModal();
-          window.location.pathname = "/";
+          this.openLogin();
         })
         .catch(error => {
           if (error.responsestatus === 409) {
