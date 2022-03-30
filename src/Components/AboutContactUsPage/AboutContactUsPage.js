@@ -4,7 +4,7 @@ class AboutContactUsPage extends Component {
     render() { 
         return (
             <div class="body">
-                <h1>About Us / Contact Us Page</h1>
+                <h1>About Us / Contact Us</h1>
             </div>
         );
     }
