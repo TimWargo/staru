@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
-import { Image, Button, Container, Form, Modal, Nav } from "react-bootstrap";
+import { Button, Modal } from "react-bootstrap";
 import './SignupForm.css';
 import axios from "axios";
 
@@ -156,7 +156,6 @@ class SignupForm extends Component {
       };
       axios.post('http://localhost/staru/src/php/insertAcc.php', user)
         .then(res => {
-          console.log(res.data);
           this.openLogin();
         })
         .catch(error => {
@@ -191,7 +190,7 @@ class SignupForm extends Component {
             <form onSubmit={this.onSubmit}>
               <h3>StarU</h3>
               <div className="form-group">
-                <label for="exampleInputScreenName1">Screen Name</label>
+                <label htmlFor="exampleInputScreenName1">Screen Name</label>
                 <input
                   type="text"
                   name="screenName"
@@ -205,7 +204,7 @@ class SignupForm extends Component {
               </div>
 
               <div className="form-group">
-                <label for="exampleInputEmail1">Email Address</label>
+                <label htmlFor="exampleInputEmail1">Email Address</label>
                 <input
                   type="text"
                   name="email"
@@ -218,7 +217,7 @@ class SignupForm extends Component {
                 <span className="text-danger">{this.state.emailFormatError}</span>
               </div>
               <div className="form-group">
-                <label for="exampleInputPassword1">Password</label>
+                <label htmlFor="exampleInputPassword1">Password</label>
                 <input
                   type="password"
                   className="form-control"

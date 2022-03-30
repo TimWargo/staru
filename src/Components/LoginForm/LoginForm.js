@@ -1,9 +1,8 @@
 import React, { Component } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
-import { Image, Button, Container, Form, Modal, Nav } from "react-bootstrap";
+import { Button, Modal } from "react-bootstrap";
 import './LoginForm.css';
 import axios from 'axios';
-import { Navigate } from "react-router-dom";
 
 class LoginForm extends Component {
   constructor(props) {
@@ -106,7 +105,6 @@ class LoginForm extends Component {
       }
       axios.post('http://localhost/staru/src/php/authLogin.php', user)
         .then(res=> {
-          console.log(res.data);
           this.handleRememberme();
           sessionStorage.setItem("session", this.state.email);
           this.onCloseModal();
@@ -134,7 +132,7 @@ class LoginForm extends Component {
             <form onSubmit={this.onSubmit}>
             <h3>StarU</h3>         
             <div className="form-group">
-                <label for="exampleInputEmail1">Email Address</label>
+                <label htmlFor="exampleInputEmail1">Email Address</label>
                 <input
                   type="text"
                   name="email"
@@ -147,7 +145,7 @@ class LoginForm extends Component {
                  <span className="text-danger">{this.state.emailError}</span>
               </div>
             <div className="form-group">
-                <label for="exampleInputPassword1">Password</label>
+                <label htmlFor="exampleInputPassword1">Password</label>
                 <input
                   type="password"
                   name="password"

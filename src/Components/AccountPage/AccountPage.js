@@ -10,7 +10,7 @@ class AccountPage extends Component {
     
     render() { 
         return (
-            <div class="body">
+            <div className="body">
                 <h1> Account Page </h1>
             </div>
         );

@@ -26,19 +26,14 @@ class VerifyPage extends Component {
         event.preventDefault();
         const queryParams = new URLSearchParams(window.location.search);
         const email1 = queryParams.get('vkey');
-        console.log(email1);
         // temporary
         const user = {
             vkey: email1,
         }
 
-        console.log(user);
-
         //submit new password to DB
-        console.log(user);
         axios.post('http://localhost/staru/src/php/verify.php', user)
             .then(res => {
-                console.log(res.data);
                 window.location.href = window.location.href.substring(0, window.location.href.indexOf('/') + 1);
             })
             .catch(error => {
@@ -48,15 +43,15 @@ class VerifyPage extends Component {
 
     render() {
         return (
-            <div class="body">
+            <div className="body">
                 <h1>Activate Account</h1>
                 
-                <div class="innerBody">
-                    <p class="pBody"> Click below to activate your account. </p>
+                <div className="innerBody">
+                    <p className="pBody"> Click below to activate your account. </p>
 
                     <form onSubmit={this.handleSubmit}>
 
-                    <div class="text-center">  
+                    <div className="text-center">  
                         <Button onClick={this.handleSubmit} variant="primary" size="md" className="buttPass">
                             Activate
                         </Button>

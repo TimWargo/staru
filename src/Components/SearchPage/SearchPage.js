@@ -3,7 +3,7 @@ import React, { Component } from "react";
 class SearchPage extends Component {
     render() { 
         return (
-            <div class="body">
+            <div className="body">
                 <h1>Search</h1>
             </div>
         );

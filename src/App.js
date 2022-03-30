@@ -1,6 +1,6 @@
 import './App.css';
 import React, { Component } from 'react'
-import { BrowserRouter, Routes, Route, Link } from 'react-router-dom'
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import AboutContactUsPage from './Components/AboutContactUsPage/AboutContactUsPage';
 import LandingPage from './Components/LandingPage/LandingPage';
 import ForgotPasswordPage from './Components/ForgotPasswordPage/ForgotPasswordPage';

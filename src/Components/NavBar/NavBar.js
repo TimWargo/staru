@@ -1,8 +1,6 @@
 import React, { Component } from "react";
 import { Container, Nav, Navbar } from "react-bootstrap";
 import LoginButton from "../LoginButton/LoginButton";
-import LoginForm from "../LoginForm/LoginForm";
-import SignupForm from "../SignupForm/SignupForm";
 
 
 class NavBar extends Component {
@@ -67,27 +65,6 @@ class NavBar extends Component {
                     </Navbar.Collapse>
                 </Container>
             </Navbar>
-
-
-            // the old NavBar style, kept just in case the new one is awful
-            /*
-            <div>
-                <Navbar className="navBar" variant="dark" expand="lg">
-                    <Container>
-                        <Navbar.Brand href="/">StarU</Navbar.Brand>
-                        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon"></span>
-                        </button>
-                        <Nav>
-                            <Nav.Link href="/search">Search</Nav.Link>
-                            <Nav.Link href="/about">About</Nav.Link>                           
-                            {this.renderAuth()}            
-                        </Nav>
-                    </Container>
-                </Navbar>
-            </div>
-            */
-
         );
     }
 }

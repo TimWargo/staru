@@ -111,7 +111,6 @@ class ResetPasswordPage extends Component {
             console.log(user);
             axios.post('http://localhost/staru/src/php/resetPass.php', user)
                 .then(res => {
-                    console.log(res.data);
                     window.location.href = window.location.href.substring(0, window.location.href.indexOf('/') + 1);
                 })
                 .catch(error => {
@@ -124,10 +123,10 @@ class ResetPasswordPage extends Component {
 
     render() {
         return (
-            <div class="body">
+            <div className="body">
                 <h1>Reset Password</h1>
 
-                <div class="innerBody">
+                <div className="innerBody">
                     <form onSubmit={this.handleSubmit}>
                         <div>
                             <label>
@@ -169,7 +168,7 @@ class ResetPasswordPage extends Component {
                             <span className="text-danger">{this.state.notEqualError}</span>
                         </div>
                         <br />
-                        <div class="text-center">
+                        <div className="text-center">
                             <Button onClick={this.handleSubmit} variant="primary" size="md" className="buttPass">
                                 Submit
                             </Button>
