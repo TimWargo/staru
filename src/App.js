@@ -10,6 +10,7 @@ import Footer from './Components/Footer/Footer';
 import LoginForm from './Components/LoginForm/LoginForm';
 import AccountPage from './Components/AccountPage/AccountPage';
 import SearchPage from './Components/SearchPage/SearchPage';
+import VerifyPage from './Components/VerifyPage/verifyPage';
 
 class App extends Component {
   constructor(props) {
@@ -41,6 +42,7 @@ class App extends Component {
           <Route path="/account" element={<AccountPage />} />
           <Route path="/forgot" element={<ForgotPasswordPage />} />
           <Route path="/reset" element={<ResetPasswordPage />} />
+          <Route path="/verify" element={<VerifyPage/>} />
         </Routes>
         <Footer />
       </BrowserRouter>
@@ -49,3 +51,4 @@ class App extends Component {
 }
 
 export default App;
+

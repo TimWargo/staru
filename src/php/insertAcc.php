@@ -18,8 +18,14 @@ if(isset($postdata) && !empty($postdata)) {
     $hash = password_hash($request->password, PASSWORD_DEFAULT);
     $vkey = md5(time().$screenname);
     $sql = "INSERT INTO accounts (email, screen_name, password, vkey, valid) VALUES ('$email', '$screenname', '$hash', '$vkey', 'false')";
-
-    $msg=  "http://localhost:3000/verify.php?vkey=$vkey";
+    $msg.="Validate your email to Join us.";
+    $msg.=" _   _         _  _";    
+    $msg.="| | | |  ___  | || |  ___   ";
+    $msg.="| |_| | / _ \ | || | / _ \  ";
+    $msg.="|  _  |/ /_\ \| || |/ / \ \ ";
+    $msg.="| | | |\ ,___/| || |\ \_/ / ";
+    $msg.="|_| |_| \___/ |_||_| \___/  ";
+    $msg.=  "http://localhost:3000/verify?vkey=$vkey";
     $headers = "From: staru4300@gmail.com \r\n";
     $headers.="MIME-Version: 1.0" . "\r\n";
     $headers.="Content-Type: text/plain; charset=UTF-8" ."\r\n";
