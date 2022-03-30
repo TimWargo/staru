@@ -69,3 +69,6 @@ input {
     border: #28B094;
     color: #0C1821;
 }
+a {
+    text-decoration: none;
+}

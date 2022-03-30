@@ -8,12 +8,11 @@ class SignupForm extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      email: '',
-      password: '',
       screenName: '',
-    };
-    this.onSubmit = this.onSubmit.bind(this);
-    this.verifyInput = this.verifyInput.bind(this);
+      email: '',
+      password: ''
+    }
+    this.handleInputChange = this.handleInputChange.bind(this);
     this.openLogin = this.openLogin.bind(this);
   }
 
@@ -33,24 +32,30 @@ class SignupForm extends Component {
   }
 
   verifyInput() {
-    var pattern = new RegExp(/^(("[\w-\s]+")|([\w-]+(?:\.[\w-]+)*)|("[\w-\s]+")([\w-]+(?:\.[\w-]+)*))(@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$)|(@\[?((25[0-5]\.|2[0-4][0-9]\.|1[0-9]{2}\.|[0-9]{1,2}\.))((25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\.){2}(25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\]?$)/i);
-    if (!pattern.test(this.state.email)) {
-    return false
-  }
-  else if (this.state.screenName.length < 5) {
-return false
-  }
-  else if (this.state.password.length < 8 &&this.state.password.length > 16) {
-    return false
-  }
-  else {
-    return true
-  }
-  }
+    let nameError = "";
+    let emailError = "";
+    let passwordError = "";
+    if (!this.state.screenName) {
+      nameError = "Name field is required";
+    }
+    const reg = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+    if (!this.state.email || reg.test(this.state.email) === false) {
+      emailError = "Email Field is Invalid ";
+    }
+    if (!this.state.password) {
+      passwordError = "Password field is required";
+    }
+    if (emailError || nameError || passwordError) {
+      this.setState({ nameError, emailError, passwordError });
+      return false;
+    }
+    return true;
+} // validateInput
 
   onSubmit(e) {
-    e.preventDefault();
     if (this.verifyInput()) {
+      this.props.onSubmit([this.state]);
+      e.preventDefault();
       const user = {
         email: this.state.email,
         password: this.state.password,
@@ -66,14 +71,17 @@ return false
           if (error.responsestatus === 409) {
             alert("Unknown Error. Try Again.");
           } else {
-            alert("An account with this email already exists.");
+            alert("An account with this email already exists or you are not connected to the database.");
             //it appears the error for an email already being in the database is an error with a response status other than 409..
           }
         });
-    } else {
+    }
+    /*
+     else {
       // Initial Signup Error. Going to replace. 
       alert("Please use a screen name that is greater than 5 characters long, a password that is greater than 8 characters long, and a valid email address.")
     }
+    */
   }
 
 
@@ -85,26 +93,25 @@ return false
           </Modal.Header>
           <Modal.Body>
           <form onSubmit={this.onSubmit}>
-            <h3>StarU</h3>     
+            <h3>StarU</h3>  
             <div className="form-group">
                 <label for="exampleInputScreenName1">Screen Name</label>
                 <input
                   type="text"
                   name="screenName"
                   className="form-control"
-                  id="exampleInputScreenName1"
                   placeholder="Screen Name"
                   value={this.state.screenName}
                   onChange={this.handleInputChange}
-                />
-              </div>    
+                />                 
+              </div> 
+              
               <div className="form-group">
                 <label for="exampleInputEmail1">Email Address</label>
                 <input
                   type="text"
                   name="email"
                   className="form-control"
-                  id="formGroupExampleInput"
                   placeholder="Email Address"
                   value={this.state.email}
                   onChange={this.handleInputChange}                
@@ -114,9 +121,8 @@ return false
                 <label for="exampleInputPassword1">Password</label>
                 <input
                   type="password"
-                  name="password"
                   className="form-control"
-                  id="exampleInputPassword1"
+                  name="password"
                   placeholder="Password"
                   value={this.state.password}
                   onChange={this.handleInputChange}
@@ -128,7 +134,7 @@ return false
               </Button>
               <br></br>
               <p className="have-account text-right">
-                  Already have an account? <a href="#" onClick = {this.openLogin}>Log In</a>
+                  Already have an account? <a href="/#" onClick = {this.openLogin}>Log In</a>
                 </p>
               </div>   
             </form>
