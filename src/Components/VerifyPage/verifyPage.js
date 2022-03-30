@@ -1,5 +1,6 @@
 import axios from "axios";
 import React, { Component } from "react";
+import { Button } from "react-bootstrap";
 
 class VerifyPage extends Component {
     constructor(props) {
@@ -36,7 +37,10 @@ class VerifyPage extends Component {
         //submit new password to DB
         console.log(user);
         axios.post('http://localhost/staru/src/php/verify.php', user)
-            .then(res => console.log(res.data))
+            .then(res => {
+                console.log(res.data);
+                window.location.href = window.location.href.substring(0, window.location.href.indexOf('/') + 1);
+            })
             .catch(error => {
                 console.log(error.response);
             });
@@ -48,9 +52,15 @@ class VerifyPage extends Component {
                 <h1>Activate Account</h1>
                 
                 <div class="innerBody">
+                    <p class="pBody"> Click below to activate your account. </p>
+
                     <form onSubmit={this.handleSubmit}>
-                        
-                        <button type="submit">Activate</button>
+
+                    <div class="text-center">  
+                        <Button onClick={this.handleSubmit} variant="primary" size="md" className="buttPass">
+                            Activate
+                        </Button>
+                    </div>
 
                     </form>
                 </div>
