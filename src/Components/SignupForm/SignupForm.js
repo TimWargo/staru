@@ -18,7 +18,23 @@ class SignupForm extends Component {
   }
 
   onOpenModal = () => { this.props.onSignupShowChange(true); }
-  onCloseModal = () => { this.props.onSignupShowChange(false) };
+  onCloseModal = () => {
+    this.setState({
+      screenName: '',
+      email: '',
+      password: '',
+      nameError: "",
+      emailError: "",
+      passwordError: "",
+      isValid: true,
+      nameFormatError: "",
+      emailFormatError: "",
+      pwFormatError: "",
+      emailTakenError: "",
+      nameTakenError: ""
+    });
+    this.props.onSignupShowChange(false)
+  };
       
 
 

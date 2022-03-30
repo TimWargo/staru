@@ -19,7 +19,18 @@ class LoginForm extends Component {
   }
 
   onOpenModal = () => { this.props.onLoginShowChange(true); }
-  onCloseModal = () => { this.props.onLoginShowChange(false); }
+  onCloseModal = () => {
+    this.setState({
+      email: '',
+      password: '',
+      remember_me: true,
+      isValid: true,
+      emailError: "",
+      passwordError: "",
+      credentialsError: "",
+    });
+    this.props.onLoginShowChange(false);
+  }
 
   openSignup = () => {
     this.onCloseModal();
