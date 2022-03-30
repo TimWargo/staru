@@ -59,7 +59,7 @@ class ForgotPasswordPage extends Component {
                 <h1> Forgot Password? </h1>
 
                 <div class="innerBody">
-                    <p> Enter your email below and we will send you a link to reset your password. </p>
+                    <p class="pBody"> Enter your email below and we will send you a link to reset your password. </p>
 
                     <div>
                         <form onSubmit={this.handleSubmit}>

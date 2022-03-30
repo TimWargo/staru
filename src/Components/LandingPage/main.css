@@ -10,6 +10,8 @@
 
 .innerBody {
     border: solid #0C1821 2px;
+    background-color: #282c34;
+    color: #CCC9DC;
     padding: 50px;
     margin-left: auto;
     margin-right: auto;
@@ -53,6 +55,10 @@ button:hover {
     background-color: #28B094 !important;
     border: #28B094 !important;
     color: #0C1821 !important;
+}
+
+.pBody {
+    font-size: 20px;
 }
 
 
