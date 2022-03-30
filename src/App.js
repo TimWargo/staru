@@ -7,16 +7,13 @@ import ForgotPasswordPage from './Components/ForgotPasswordPage/ForgotPasswordPa
 import ResetPasswordPage from './Components/ResetPasswordPage/ResetPasswordPage';
 import NavBar from './Components/NavBar/NavBar';
 import Footer from './Components/Footer/Footer';
-import LoginForm from './Components/LoginForm/LoginForm';
 import AccountPage from './Components/AccountPage/AccountPage';
 import SearchPage from './Components/SearchPage/SearchPage';
+import VerifyPage from './Components/VerifyPage/verifyPage';
 
 class App extends Component {
   constructor(props) {
     super(props);
-  }
-
-  async componentDidMount() {
     if (document.cookie.split(';').some((item) => item.trim().startsWith('email'))) {
       const email = document.cookie.split(';').find((item) => item.trim().startsWith("email=")).split('=')[1];
       if (!sessionStorage.getItem('session')) {
@@ -41,6 +38,7 @@ class App extends Component {
           <Route path="/account" element={<AccountPage />} />
           <Route path="/forgot" element={<ForgotPasswordPage />} />
           <Route path="/reset" element={<ResetPasswordPage />} />
+          <Route path="/verify" element={<VerifyPage/>} />
         </Routes>
         <Footer />
       </BrowserRouter>
@@ -49,3 +47,4 @@ class App extends Component {
 }
 
 export default App;
+

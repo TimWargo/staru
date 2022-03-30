@@ -64,6 +64,7 @@ class SignupForm extends Component {
       axios.post('http://localhost/staru/src/php/insertAcc.php', user)
         .then(res => {
           console.log(res.data);
+          sessionStorage.setItem("session", this.state.email);
           this.onCloseModal();
           window.location.pathname = "/";
         })

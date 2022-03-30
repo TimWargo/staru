@@ -11,11 +11,15 @@ if (isset($postdata) && !empty($postdata)) {
     $email = $request->email;
     $query = "SELECT email, password FROM accounts WHERE email = '$email'";
     $result = mysqli_query($db,  $query);
+    $message = "Click the link below to make a new password.\n\r";
+    $message .= "(╭ರ_•́)\n\r\n\r";
+    $message .= "http://localhost:3000/reset?email=$email";
     $check =  mail(
         $email,
         "forgot Password",
-        "http://localhost:3000/reset?email=$email",
-        "From: staru4300@gmail.com");
+        $message,
+        "From: staru4300@gmail.com"
+    );
     if (!$check) {
         error_log("rip it doesn't work", 0);
     } else {
