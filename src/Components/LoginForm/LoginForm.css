@@ -105,6 +105,37 @@ label {
   user-select: none;
 }
 
+span {
+  color: red;
+  margin-bottom: 15px;
+  margin-top: -5px;
+}
+
+input.invalid {
+  border-color: red;
+}
+
+#emailError {
+  display: none;
+  font-size: 0.8em;
+}
+
+#emailError.visible {
+  display: block;
+}
+
+#passwordError {
+  display: none;
+  font-size: 0.8em;
+}
+
+#passwordError.visible {
+  display: block;
+}
+
+.bad-creds {
+  margin-top: 7px;
+}
 
 
 

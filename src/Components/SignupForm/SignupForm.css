@@ -61,7 +61,11 @@ input {
 
 .d-grid {
     margin-top: 30px;
-    margin-bottom:-5px;
+    margin-bottom: -5px;
+}
+
+.bad-email {
+margin-top: 7px;
 }
 
 .buttModal {
@@ -72,3 +76,40 @@ input {
 a {
     text-decoration: none;
 }
+
+span {
+    color: red;
+    margin-bottom: 15px;
+    margin-top: -5px;
+  }
+  
+  input.invalid {
+    border-color: red;
+  }
+
+  #nameError {
+    display: none;
+    font-size: 0.8em;
+  }
+
+  #nameError.visible {
+    display: block;
+  }
+  
+  #emailError {
+    display: none;
+    font-size: 0.8em;
+  }
+  
+  #emailError.visible {
+    display: block;
+  }
+  
+  #passwordError {
+    display: none;
+    font-size: 0.8em;
+  }
+  
+  #passwordError.visible {
+    display: block;
+  }

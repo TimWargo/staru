@@ -14,7 +14,7 @@ class LoginForm extends Component {
       remember_me: true,
     }
     this.onSubmit = this.onSubmit.bind(this);
-    this.verifyInput = this.verifyInput.bind(this);
+    this.handleInputChange = this.handleInputChange.bind(this);
     this.openSignup = this.openSignup.bind(this);
   }
 
@@ -33,6 +33,7 @@ class LoginForm extends Component {
     });
   }
 
+  
   handleCheckChange = (e) => {
     const isChecked = e.target.checked;
     this.setState({
@@ -51,22 +52,43 @@ class LoginForm extends Component {
     }
   }
 
-  verifyInput() {
-    var rexpression= new RegExp('^[a-zA-Z0-9._:$!%-]+@[a-zA-Z0-9.-]+.[a-zA-Z]$');
-    if(!rexpression.test(this.state.email)){
-      return false
-    }
-    else if(this.state.password.length < 8 && this.state.password.length > 16){
-      return false;
-    }
-    else{
-      return true;
-    }
+  validate() {
+    let isValid = true;
+    let emailError = "";
+    let passwordError = "";
+
+   if (!this.state.email) {
+      emailError = "Email field is required.";
+  } else {
+    emailError = "";
+    this.setState({ emailError });
   }
 
+  if (!this.state.password) {
+   passwordError = "Password field is required."; 
+  } else {
+    passwordError = "";
+    this.setState({ passwordError });
+  }
+
+  if (emailError) {
+      this.setState({ emailError });
+      isValid = false;
+  }
+
+  if (passwordError) {
+    this.setState({ passwordError });
+    isValid = false;
+  }
+
+  return isValid;
+}
+
   onSubmit(e) {
+    let credentialsError = "";
+    this.setState ({ credentialsError });
     e.preventDefault();
-    if (this.verifyInput()) {
+    if (this.validate()) {
       const user = {
         email: this.state.email,
         password: this.state.password,
@@ -80,18 +102,16 @@ class LoginForm extends Component {
           window.location.pathname = "/";
         })
         .catch(error => {
-          alert("Incorrect Username or Password.\n Please try again.");
+          credentialsError = "Invalid Login Credentials. Try again.";
+          this.setState ({ credentialsError });
+          /* We need to find the error code returned if a user is not 
+          properly connected to the database in order to display 
+          that error to a user as well. Or they will just think the
+          login feature is broken.
+          */
         });
-    } else {
-
-    alert("E-Mail comes in the form of xxxxx@xxxx.xxx \n PASSWORDS are atleast 8 characters long");
-      /* 
-         May not need this for login. 
-         Could just display a custom created dialog box or 
-         alert for bad input and open like shown above.
-    */
-    }
-  }
+    } 
+  } // onSubmit
 
   render() {
     return (
@@ -102,7 +122,7 @@ class LoginForm extends Component {
           <Modal.Body>
             <form onSubmit={this.onSubmit}>
             <h3>StarU</h3>         
-              <div className="form-group">
+            <div className="form-group">
                 <label for="exampleInputEmail1">Email Address</label>
                 <input
                   type="text"
@@ -113,8 +133,9 @@ class LoginForm extends Component {
                   value={this.state.email}
                   onChange={this.handleInputChange}                
                 />
+                 <span className="text-danger">{this.state.emailError}</span>
               </div>
-              <div className="form-group">
+            <div className="form-group">
                 <label for="exampleInputPassword1">Password</label>
                 <input
                   type="password"
@@ -125,6 +146,7 @@ class LoginForm extends Component {
                   value={this.state.password}
                   onChange={this.handleInputChange}
                 />
+                <span className="text-danger">{this.state.passwordError}</span>
               </div>
               <div className="remember-me-wrapper">
                 <input
@@ -138,7 +160,10 @@ class LoginForm extends Component {
               <div className="d-grid gap-2">
                 <Button onClick= {this.onSubmit} variant="primary" size="lg" className="buttModal">
                 Log In
-                </Button>
+                </Button>  
+                <div className="bad-creds">
+                <span className="text-danger">{this.state.credentialsError}</span>
+                </div>                          
                 <p className="forgot-password text-right">
                   Forgot your <a href="/forgot">password?</a>
                 </p>   
@@ -146,6 +171,7 @@ class LoginForm extends Component {
                   Don't have an account? <a href="#" onClick = {this.openSignup}>Sign up</a>
                 </p> 
               </div>
+              
               <br></br>   
             </form>
           </Modal.Body>
