@@ -17,6 +17,9 @@ class Footer extends Component {
                 <li>
                     <Link class="link" to="/reset">Reset Password (delete later) </Link> {/* Delete this later, should only be accesible via email*/ }
                 </li>
+                <li>
+                    <Link class="link" to="/verify">Verify Account (delete later) </Link> {/* Delete this later, should only be accesible via email*/ }
+                </li>
             </div>
         );
     }
