@@ -48,16 +48,16 @@ CREATE TABLE accounts (
 
 ## Update the .ini Files
 Under '\xampp\sendmail\sendmail.ini', change the following items:
-```smtp_server=smtp.gmail.com```.
-```smtp_port=465```.
-```smtp_ssl=ssl```.
-```auth_username=staru4300@gmail.com```.
+```smtp_server=smtp.gmail.com```,
+```smtp_port=465```,
+```smtp_ssl=ssl```,
+```auth_username=staru4300@gmail.com```,
 ```auth_password=staru1023```.
 
 Under '\xampp\php\php.ini', change the following items under [mail function]:
-```; SMTP=localhost```.
-```; smtp_port=25```.
-```sendmail_from = staru4300@gmail.com```.
+```; SMTP=localhost```,
+```; smtp_port=25```,
+```sendmail_from = staru4300@gmail.com```,
 ```sendmail_path = "(your_path)\xampp\sendmail\sendmail.exe -t"```.
 
 ## Starting StarU
