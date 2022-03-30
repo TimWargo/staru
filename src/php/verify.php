@@ -18,7 +18,7 @@ if (isset($user) && !empty($user)) { // problem with if statement
         $Update = "UPDATE accounts SET valid = '1' WHERE vkey='$vkey'";
         $result1 = mysqli_query($db, $Update);
         if ($result1) {
-            mail("staru4300@gmail.com", "email is now valid", "welcome", "From: staru4300@gmail.com");
+            mail("staru4300@gmail.com", "email is now valid", "welcome \r\n¯\(◉◡◔)/¯", "From: staru4300@gmail.com");
         }
     } else {
         echo "this account is already valid";

@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import {Button} from "react-bootstrap";
+import { Button } from "react-bootstrap";
 import './ForgotPasswordPage.css';
 import axios from "axios";
 
@@ -27,13 +27,25 @@ class ForgotPasswordPage extends Component {
     //validate input
     validate() {
         let emailError = "";
+        let emailFormatError = "";
 
+        const pattern = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/
         if (!this.state.email) {
-            emailError = "Email field cannot be empty ";
+            emailError = "Email Address field is required.";
+        } else {
+            emailError = "";
+            this.setState({ emailError });
         }
 
-        if (emailError) {
-            this.setState({ emailError });
+        if ((!pattern.test(this.state.email)) && (this.state.email)) {
+            emailFormatError = "Email must be in the format xxxxx@xxxxx.xxx"
+        } else {
+            emailFormatError = "";
+            this.setState({ emailFormatError });
+        }
+
+        if (emailError || emailFormatError) {
+            this.setState({ emailError, emailFormatError });
             return false;
         }
         return true;
@@ -48,7 +60,14 @@ class ForgotPasswordPage extends Component {
 
         //verify input
         if (this.validate()) {
-            axios.post('http://localhost/staru/src/php/sendmail.php', user);
+            axios.post('http://localhost/staru/src/php/sendmail.php', user)
+                .then(res => {
+                    window.location.href = window.location.href.substring(0, window.location.href.indexOf('/') + 1);
+                })
+                .catch(error => {
+                    console.log(error.response);
+                });
+
         }
     }
 
@@ -74,8 +93,9 @@ class ForgotPasswordPage extends Component {
                                         onChange={this.handleInputChange}
                                     />
                                     <span className="text-danger">{this.state.emailError}</span>
+                                    <span className="text-danger">{this.state.emailFormatError}</span>
                                 </div>
-                                <Button onClick= {this.handleSubmit} variant="primary" size="md" className="buttPass">
+                                <Button onClick={this.handleSubmit} variant="primary" size="md" className="buttPass">
                                     Submit
                                 </Button>
                             </div>
