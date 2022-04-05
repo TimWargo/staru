@@ -74,9 +74,6 @@ class ForgotPasswordPage extends Component {
     render() {
         return (
             <div className="body">
-
-                <h1> Forgot Password? </h1>
-
                 <div className="innerBody">
                     <p className="pBody"> Enter your email below and we will send you a link to reset your password. </p>
 
