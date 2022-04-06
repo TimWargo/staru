@@ -8,9 +8,6 @@ class Footer extends Component {
                 <li>
                     <Link className="link" to="/about">About Us</Link>
                 </li>
-                <li>
-                    <Link className="link" to="/contact">Contact Us</Link>
-                </li>
             </div>
         );
     }
