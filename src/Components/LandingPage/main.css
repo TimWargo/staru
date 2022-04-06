@@ -2,8 +2,8 @@
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
-    height: 80%;
-    background-color: #CCC9DC;
+    height: 85%;
+    background-color: #E0E0E0;
     color: #0C1821;
     padding: 20px;
 }
@@ -11,7 +11,7 @@
 .innerBody {
     border: solid #0C1821 2px;
     background-color: #282c34;
-    color: #CCC9DC;
+    color: #E0E0E0;
     padding: 50px;
     margin-left: auto;
     margin-right: auto;
@@ -19,7 +19,7 @@
 }
 
 .footer {
-    background-color: #CCC9DC;
+    background-color: #E0E0E0;
     border-top: solid #0C1821 3px;
     border-bottom: solid #0C1821 3px;
     padding: 20px;

@@ -51,13 +51,13 @@ body, html, .App, #root, .auth-wrapper {
   text-align: center;
   font-size: 16px;
   padding-top: 5px;
-  color: #CCC9DC;
+  color: #E0E0E0;
   margin-top: 15px;
   margin-bottom:-5px;
 }
 .have-account {
   text-align:center;
-  color: #CCC9DC;
+  color: #E0E0E0;
 }
 
 .have-account a {

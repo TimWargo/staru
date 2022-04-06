@@ -1,6 +1,6 @@
 .modal-header {
     background-color: #282c34;
-    color: #CCC9DC;
+    color: #E0E0E0;
     /*
     border-left: solid #8B1E3F 3px;
     border-right: solid #8B1E3F 3px;
@@ -10,7 +10,7 @@
     
 .modal-body {
     background-color: #282c34;
-    color: #CCC9DC;
+    color: #E0E0E0;
     /*
     border-left: solid #8B1E3F 3px;
     border-right: solid #8B1E3F 3px;
@@ -20,7 +20,7 @@
     
 .modal-footer {
     background-color: #282c34;
-    color: #CCC9DC;
+    color: #E0E0E0;
     height: 60px;
     display:flex;
 }
