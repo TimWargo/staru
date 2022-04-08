@@ -2,6 +2,7 @@ import axios from "axios";
 import React, { Component } from "react";
 import { Button } from "react-bootstrap";
 import './ResetPasswordPage.css';
+import { withRouter } from '../withRouter';
 
 class ResetPasswordPage extends Component {
     constructor(props) {
@@ -111,7 +112,7 @@ class ResetPasswordPage extends Component {
             console.log(user);
             axios.post('http://localhost/staru/src/php/resetPass.php', user)
                 .then(res => {
-                    window.location.href = window.location.href.substring(0, window.location.href.indexOf('/') + 1);
+                    this.props.navigate('/');
                 })
                 .catch(error => {
                     console.log(error.response);
@@ -180,4 +181,4 @@ class ResetPasswordPage extends Component {
     }
 }
 
-export default ResetPasswordPage;
+export default withRouter(ResetPasswordPage);

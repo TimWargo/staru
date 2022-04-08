@@ -25,8 +25,8 @@ class App extends Component {
   render() {
     return (
       <>
-      <NavBar />
       <BrowserRouter basename='/'>
+        <NavBar />
         <Routes>
           {/* Default Routes */}
           <Route path="/" exact element={<LandingPage />} />

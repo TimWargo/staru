@@ -3,6 +3,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { Button, Modal } from "react-bootstrap";
 import './LoginForm.css';
 import axios from 'axios';
+import { withRouter } from '../withRouter';
 
 class LoginForm extends Component {
   constructor(props) {
@@ -108,7 +109,7 @@ class LoginForm extends Component {
           this.handleRememberme();
           sessionStorage.setItem("session", this.state.email);
           this.onCloseModal();
-          window.location.pathname = "/";
+          this.props.navigate('/');
         })
         .catch(error => {
           credentialsError = "Invalid Login Credentials. Try again.";
@@ -191,4 +192,4 @@ class LoginForm extends Component {
 
 }
 
-export default LoginForm;
+export default withRouter(LoginForm);
