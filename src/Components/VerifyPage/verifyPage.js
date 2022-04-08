@@ -1,6 +1,7 @@
 import axios from "axios";
 import React, { Component } from "react";
 import { Button } from "react-bootstrap";
+import { withRouter } from '../withRouter';
 
 class VerifyPage extends Component {
     constructor(props) {
@@ -34,7 +35,7 @@ class VerifyPage extends Component {
         //submit new password to DB
         axios.post('http://localhost/staru/src/php/verify.php', user)
             .then(res => {
-                window.location.href = window.location.href.substring(0, window.location.href.indexOf('/') + 1);
+                this.props.navigate('/');
             })
             .catch(error => {
                 console.log(error.response);
@@ -63,4 +64,4 @@ class VerifyPage extends Component {
         )
     }
 }
-export default VerifyPage;
+export default withRouter(VerifyPage);

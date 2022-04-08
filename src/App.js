@@ -1,7 +1,7 @@
 import './App.css';
 import React, { Component } from 'react'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
-import AboutContactUsPage from './Components/AboutContactUsPage/AboutContactUsPage';
+import AboutUsPage from './Components/AboutUsPage/AboutUsPage';
 import LandingPage from './Components/LandingPage/LandingPage';
 import ForgotPasswordPage from './Components/ForgotPasswordPage/ForgotPasswordPage';
 import ResetPasswordPage from './Components/ResetPasswordPage/ResetPasswordPage';
@@ -25,13 +25,12 @@ class App extends Component {
   render() {
     return (
       <>
-      <NavBar />
       <BrowserRouter basename='/'>
+        <NavBar />
         <Routes>
           {/* Default Routes */}
           <Route path="/" exact element={<LandingPage />} />
-          <Route path="/about" element={<AboutContactUsPage />} />
-          <Route path="/contact" element={<AboutContactUsPage />} />
+          <Route path="/about" element={<AboutUsPage />} />
           <Route path="/search" element={<SearchPage />} />
 
           {/* Protected Routes */}

@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { Button } from "react-bootstrap";
 import './ForgotPasswordPage.css';
 import axios from "axios";
-
+import { withRouter } from '../withRouter';
 
 class ForgotPasswordPage extends Component {
     constructor(props) {
@@ -62,7 +62,7 @@ class ForgotPasswordPage extends Component {
         if (this.validate()) {
             axios.post('http://localhost/staru/src/php/sendmail.php', user)
                 .then(res => {
-                    window.location.href = window.location.href.substring(0, window.location.href.indexOf('/') + 1);
+                    this.props.navigate('/');
                 })
                 .catch(error => {
                     console.log(error.response);
@@ -120,4 +120,4 @@ class ForgotPasswordPage extends Component {
     }
 }
 
-export default ForgotPasswordPage;
+export default withRouter(ForgotPasswordPage);
