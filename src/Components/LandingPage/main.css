@@ -2,7 +2,7 @@
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
-    height: 85%;
+    height: 86%;
     background-color: #E0E0E0;
     color: #0C1821;
     padding: 20px;
@@ -22,7 +22,8 @@
     background-color: #E0E0E0;
     border-top: solid #0C1821 3px;
     border-bottom: solid #0C1821 3px;
-    padding: 20px;
+    padding: 15px;
+    text-align: center;
 }
 
 .navBar {
@@ -41,6 +42,7 @@
 
 h1 {
     padding-bottom: 20px;
+    color: #0C1821;
 }
 
 input {
@@ -59,6 +61,10 @@ button:hover {
 
 .pBody {
     font-size: 20px;
+}
+
+.pFooter {
+    color: #0C1821;
 }
 
 

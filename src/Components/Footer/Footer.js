@@ -5,9 +5,7 @@ class Footer extends Component {
     render() { 
         return (
             <div className="footer">
-                <li>
-                    <Link className="link" to="/about">About Us</Link>
-                </li>
+                <p className="pFooter"> &copy; 2020 StarU. All rights reserved. </p>
             </div>
         );
     }
