@@ -45,6 +45,12 @@ h1 {
     color: #0C1821;
 }
 
+h2 {
+    text-align: center;
+    color: #0C1821;
+    font-size: 28px !important;
+}
+
 input {
     background-color: white;
 }
@@ -67,4 +73,23 @@ button:hover {
     color: #0C1821;
 }
 
+.card {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    margin: 8px;
+}
 
+.aboutContainer {
+    padding: 0 16px;
+}
+  
+.aboutContainer::after, .row::after {
+    content: "";
+    clear: both;
+    display: table;
+}
+
+.aboutTitle {
+    color: grey;
+    text-align: center;
+}
+  
