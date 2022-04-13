@@ -1,0 +1,54 @@
+body h1 {
+text-align: center;
+}
+
+.searchBar{
+    text-align: center;
+    margin-top: 30px;
+}
+
+.searchBar input {
+    width: 450px;
+    height: 44px;
+    font-family: Montserrat, sans-serif;
+    font-size: 20px;
+    border-top-left-radius: 10px !important;
+    border-bottom-left-radius: 10px !important;
+    border-top-right-radius: 10px !important;
+    border-bottom-right-radius: 10px !important;
+}
+
+
+.searchBar Button {
+    width: 100px;
+    border-top-left-radius: 10px !important;
+    border-bottom-left-radius: 10px !important;
+    border-top-right-radius: 10px !important;
+    border-bottom-right-radius: 10px !important;
+    border: none;
+    margin-left: 15px;
+    margin-bottom: 2px;
+}
+
+h2 {
+    font-size: 8px;
+    text-align: left;
+    margin-top: 15px;
+    margin-left: 200px;
+}
+
+.console-filter {
+    text-align: center;
+    margin-right: 50px;
+    margin-top: 20px;
+}
+
+.console-filter Button {
+    background-color: grey;
+    border-top-left-radius: 10px !important;
+    border-bottom-left-radius: 10px !important;
+    border-top-right-radius: 10px !important;
+    border-bottom-right-radius: 10px !important;
+    margin-left: 10px;
+    margin-right: 10px;
+}
