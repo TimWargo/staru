@@ -19,9 +19,10 @@
 }
 
 .footer {
-    background-color: #E0E0E0;
-    border-top: solid #0C1821 3px;
-    border-bottom: solid #0C1821 3px;
+    color: #E0E0E0;
+    background-color: #0C1821;
+    /* border-top: solid #0C1821 3px;
+    border-bottom: solid #0C1821 3px; */
     padding: 15px;
     text-align: center;
 }
@@ -46,6 +47,8 @@ h1 {
 }
 
 h2 {
+    padding-top: 10px;
+    padding-bottom: 5px;
     text-align: center;
     color: #0C1821;
     font-size: 28px !important;
@@ -70,7 +73,7 @@ button:hover {
 }
 
 .pFooter {
-    color: #0C1821;
+    color: #E0E0E0;
 }
 
 .card {
@@ -89,7 +92,11 @@ button:hover {
 }
 
 .aboutTitle {
-    color: grey;
+    color: #666666;
     text-align: center;
 }
+
+.cardText {
+    color: #666666;
+} 
   
