@@ -10,6 +10,7 @@ import Footer from './Components/Footer/Footer';
 import AccountPage from './Components/AccountPage/AccountPage';
 import SearchPage from './Components/SearchPage/SearchPage';
 import VerifyPage from './Components/VerifyPage/verifyPage';
+import ViewGamePage from './Components/ViewGamePage/ViewGamePage';
 
 class App extends Component {
   constructor(props) {
@@ -32,6 +33,7 @@ class App extends Component {
           <Route path="/" exact element={<LandingPage />} />
           <Route path="/about" element={<AboutUsPage />} />
           <Route path="/search" element={<SearchPage />} />
+          <Route path="/games" element={<ViewGamePage />} />
 
           {/* Protected Routes */}
           <Route path="/account" element={<AccountPage />} />

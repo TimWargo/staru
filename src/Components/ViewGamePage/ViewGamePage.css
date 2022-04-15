@@ -1,0 +1,40 @@
+.container-main {
+    margin: 0px 15%;
+}
+
+.title {
+    margin-bottom: 0px;
+    padding-bottom: 0px;
+    font-size: 65px;
+}
+
+.year {
+    padding-left: 10px;
+    text-align: left;
+    margin-bottom: 2px;
+    margin-top: -5px;
+    font-size: 20px;
+}
+
+.rating_star {
+    font-size: 60px;
+    transform: scale(2,2);
+    margin: 0px;
+    width: 60px;
+    margin-left: 25px;
+    margin-bottom: 15px;
+}
+
+.reviews {
+    margin: 10px;
+    background-color: lightgray;
+}
+
+.popularity {
+    position: absolute;
+    width: auto;
+    z-index: 2;
+    font-size: 28px;
+    margin-left: 39px;
+    margin-top: 35px;
+}
