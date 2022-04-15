@@ -5,7 +5,12 @@
 .title {
     margin-bottom: 0px;
     padding-bottom: 0px;
-    font-size: 65px;
+    font-size: 60px;
+}
+
+.platform {
+    height: fit-content;
+    padding-top: 1%;
 }
 
 .year {

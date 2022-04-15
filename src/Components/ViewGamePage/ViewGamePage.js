@@ -37,7 +37,7 @@ class ViewGamePage extends Component {
         this.setState({
             game: {
                 id: 1,
-                title: 'Title Title',
+                title: 'New Super Mario Bros.',
                 year: 2022,
                 price: 100.99,
                 popularity: 9.9,
@@ -99,7 +99,11 @@ class ViewGamePage extends Component {
                             <div className='popularity'>{this.state.game.popularity}</div>
                         </div>
                         <div className='flex-grow-1' style={{paddingLeft: 40 + 'px'}}>
-                            <h1 className='title'>{this.state.game.title}</h1>
+                            <div className='d-flex'>
+                                <h1 className='title'>{this.state.game.title}</h1>
+                                <h2 className='platform'>({this.state.game.platform})</h2>
+                            </div>
+
                             <h3 className='year'>{this.state.game.year}</h3>
                         </div>
                     </div>
@@ -114,7 +118,9 @@ class ViewGamePage extends Component {
                             <p>{this.state.game.description}</p>
                         </div>
                     </div>
-                    <div className='my-5' />
+                    <div className='row'>
+                        <div className='price'>Cost: ${this.state.game.price}</div>
+                    </div>
                     <div className='reviews'>
                         <h2>Reviews</h2>
                         {this.state.reviews.map(review => {
