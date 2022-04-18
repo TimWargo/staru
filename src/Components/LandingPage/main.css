@@ -81,11 +81,13 @@ button:hover {
 .card {
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
     margin: 8px;
+    border: 2px solid #0C1821 !important;
 }
 
 .aboutContainer {
     padding: 0 16px;
     height: 200px;
+    /* border-top: 2px solid #0C1821 !important; */
 }
   
 .aboutContainer::after, .row::after {
@@ -115,7 +117,7 @@ button:hover {
     font-weight: bold;
 }
 
-.scroll > .row{
+.scroll > .row {
     display: flex;
     flex-wrap: nowrap;
     overflow-x: auto;
@@ -124,6 +126,10 @@ button:hover {
 .gamePic {
     width: 325px;
     height: 200px;
+}
+
+.gamePic:hover {
+    box-shadow: 0px 6px 10px 0px rgba(0, 0, 0, 1);
 }
 
 .aboutPic {

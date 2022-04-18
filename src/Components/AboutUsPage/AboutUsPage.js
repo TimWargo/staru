@@ -31,7 +31,7 @@ class AboutUsPage extends Component {
                                 <div className="aboutContainer">
                                     <h2>Abhishek Murugappan</h2>
                                     <p className="aboutTitle">Backend Bodybuilder</p>
-                                    <p className="cardText">Some text that describes me lorem ipsum ipsum lorem.</p>
+                                    <p className="cardText">"Actually I wouldn't mind ms paint."</p>
                                 </div>
                             </div>
                         </div>
