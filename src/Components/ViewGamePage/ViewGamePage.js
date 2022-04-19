@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import './ViewGamePage.css';
-import Amogus from './amogus.jpg';
 import { ListGroup } from 'react-bootstrap';
 import Review from './Review';
+import { MdStar } from 'react-icons/md';
 
 class ViewGamePage extends Component {
     constructor(props) {
@@ -64,13 +64,13 @@ class ViewGamePage extends Component {
                     id: 1,
                     title: 'This game was pretty good',
                     description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque ullamcorper odio odio, in maximus magna sollicitudin non. Nunc hendrerit, sem at tempus pulvinar, dui ante aliquam ligula, nec consectetur nisl ante eget dui. Duis ut felis urna. Nulla nibh mauris, ornare in enim non, tristique egestas nunc. Nulla pellentesque ac nunc eget ultrices. Proin sodales a ligula vitae imperdiet. Aliquam iaculis lobortis libero, nec ornare velit lobortis vitae. In gravida elementum mi, at lobortis dolor semper et. Donec vel sem at nisi facilisis congue sed mattis sem. Praesent quis pharetra erat, et finibus diam. Duis posuere libero tortor, vehicula placerat tortor fringilla et. Cras dapibus tincidunt ex in volutpat. Donec id justo diam. Suspendisse imperdiet, augue eget vestibulum varius, nunc leo feugiat mauris, nec posuere purus libero nec sapien.',
-                    rating: 7.5,
+                    rating: 2,
                 },
                 {
                     id: 2,
                     title: 'This game was pretty good',
                     description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque ullamcorper odio odio, in maximus magna sollicitudin non. Nunc hendrerit, sem at tempus pulvinar, dui ante aliquam ligula, nec consectetur nisl ante eget dui. Duis ut felis urna. Nulla nibh mauris, ornare in enim non, tristique egestas nunc. Nulla pellentesque ac nunc eget ultrices. Proin sodales a ligula vitae imperdiet. Aliquam iaculis lobortis libero, nec ornare velit lobortis vitae. In gravida elementum mi, at lobortis dolor semper et. Donec vel sem at nisi facilisis congue sed mattis sem. Praesent quis pharetra erat, et finibus diam. Duis posuere libero tortor, vehicula placerat tortor fringilla et. Cras dapibus tincidunt ex in volutpat. Donec id justo diam. Suspendisse imperdiet, augue eget vestibulum varius, nunc leo feugiat mauris, nec posuere purus libero nec sapien.',
-                    rating: 7.5,
+                    rating: 4,
                 }
             ]
         });
@@ -83,7 +83,7 @@ class ViewGamePage extends Component {
     renderGenres() {
         if (this.state.genres) {
             return this.state.genres.map(genre => {
-                return <div className='m-2 p-3 border rounded-pill border-1' key={genre.id}>{genre.name}</div>
+                return <div className='m-2 p-2 border rounded-pill border-1' style={{fontSize: 1.2 + 'vmax'}} key={genre.id}>{genre.name}</div>
             });
         }
     }
@@ -93,9 +93,10 @@ class ViewGamePage extends Component {
             <>
                 <div className='my-3' />
                 <div className='container-main'>
-                    <div className="d-flex">
-                        <div className='row'>
-                            <span className='rating_star'>&#9733;</span>
+                    <div className="d-inline-flex">
+                        <div className='star-container'>
+                            <MdStar className='rating-star' />
+                            <MdStar className='rating-star-border' />
                             <div className='popularity'>{this.state.game.popularity}</div>
                         </div>
                         <div className='flex-grow-1' style={{paddingLeft: 40 + 'px'}}>
@@ -107,19 +108,18 @@ class ViewGamePage extends Component {
                             <h3 className='year'>{this.state.game.year}</h3>
                         </div>
                     </div>
-                    <div className='d-flex'>
-                        <div className='flex-grow-1'>
-                            <img src={this.state.game.pic} alt={this.state.game.title} />
-                        </div>
-                        <div className='mx-4'>
+                    <div className='d-flex align-items-start'>
+                        <img src={this.state.game.pic} alt={this.state.game.title} className='image'/>
+                        <div className='mx-2'>
                             <ListGroup horizontal>
                                 {this.renderGenres()}
                             </ListGroup>
-                            <p>{this.state.game.description}</p>
+                            <p className='description'>{this.state.game.description}</p>
                         </div>
                     </div>
-                    <div className='row'>
-                        <div className='price'>Cost: ${this.state.game.price}</div>
+                    <div className='d-flex mt-1'>
+                        <div className='col price'>Cost: ${this.state.game.price}</div>
+                        <div className='col'>Also On:</div>
                     </div>
                     <div className='reviews'>
                         <h2>Reviews</h2>
@@ -139,15 +139,3 @@ class ViewGamePage extends Component {
 }
  
 export default ViewGamePage;
-
-const StarRating = () => {
-    return (
-        <div className='star-rating'>
-            {[...Array(5)].map((star) => {
-                return (
-                    <span className='star'>&#9733;</span>
-                );
-            })}
-        </div>
-    )
-}
