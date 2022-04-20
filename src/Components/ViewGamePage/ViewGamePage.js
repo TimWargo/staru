@@ -111,7 +111,7 @@ class ViewGamePage extends Component {
     renderGenres() {
         if (this.state.genres) {
             return this.state.genres.map(genre => {
-                return <div className='m-2 p-2 border rounded-pill border-1' style={{fontSize: 1.2 + 'vmax'}} key={genre.id}>{genre.name}</div>
+                return <div className='m-2 p-2 border border-dark rounded-pill border-1' style={{fontSize: 1.2 + 'vmax', backgroundColor: 'yellow'}} key={genre.id}>{genre.name}</div>
             });
         }
     }
@@ -160,12 +160,11 @@ class ViewGamePage extends Component {
                                 {this.renderGenres()}
                             </ListGroup>
                             <p className='description'>{this.state.game.description}</p>
+                            <div className='price'>Cost on {this.state.game.platform}: ${this.state.game.price}</div>
+                            <div style={{fontSize: '1.3vmax'}}>Also On: Playstation, Nintendo Switch, PC</div>
                         </div>
                     </div>
-                    <div className='mt-2'>
-                        <div className='price'>Cost on {this.state.game.platform}: ${this.state.game.price}</div>
-                        <div style={{fontSize: '1.3vmax'}}>Also On: Playstation, Nintendo Switch, PC</div>
-                    </div>
+                    <div className='my-4' />
                     <div className='d-flex'>
                         <div className='reviews'>
                             <div className='d-flex p-2 align-items-center' style={{backgroundColor: '#0C1821'}}>

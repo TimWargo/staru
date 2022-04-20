@@ -66,7 +66,7 @@
 }
 
 .price {
-    font-size: 1.3vmax;
+    font-size: 1.2vmax;
 }
 
 .rtitle {
@@ -109,4 +109,8 @@
 .ogame {
     font-size: 1vmax;
     color: #28B094;
+}
+
+.ogame:hover {
+    color: #8B1E3F;
 }
