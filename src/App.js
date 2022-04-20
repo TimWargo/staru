@@ -8,6 +8,7 @@ import ResetPasswordPage from './Components/ResetPasswordPage/ResetPasswordPage'
 import NavBar from './Components/NavBar/NavBar';
 import Footer from './Components/Footer/Footer';
 import AccountPage from './Components/AccountPage/AccountPage';
+import EditAccountPage from './Components/EditAccountPage/EditAccountPage';
 import SearchPage from './Components/SearchPage/SearchPage';
 import VerifyPage from './Components/VerifyPage/verifyPage';
 
@@ -39,6 +40,7 @@ class App extends Component {
           <Route path="/forgot" element={<ForgotPasswordPage />} />
           <Route path="/reset" element={<ResetPasswordPage />} />
           <Route path="/verify" element={<VerifyPage/>} />
+          <Route path="/editaccount" element={<EditAccountPage />} />
         </Routes>
         <Footer />
       </BrowserRouter>
