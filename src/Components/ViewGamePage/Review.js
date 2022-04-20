@@ -16,7 +16,7 @@ class Review extends Component {
     }
 
     countLines = () => {
-        
+
     }
 
     renderStars = () => {
@@ -30,8 +30,9 @@ class Review extends Component {
                                 <MdStar style={{fontSize: '1vmax', color: 'black'}} />
                             </div>
                         )
+                    } else {
+                        return <MdStarOutline style={{fontSize: '1vmax'}} />
                     }
-                    return (i < this.props.rating) ? <MdStar style={{fontSize: '1vmax', color: 'yellow'}}/> : <MdStarOutline style={{fontSize: '1vmax'}}/>;
                 })}
             </div>
         )
@@ -41,19 +42,19 @@ class Review extends Component {
         if (!this.state.isExpanded) {
             return <div style={{height: this.state.height}}>{this.props.description}</div>
         } else {
-            return <Card.Text>{this.props.description}</Card.Text>
+            return <Card.Text style={{fontSize: '0.8vmax'}}>{this.props.description}</Card.Text>
         }
     }
 
     render() {
         return (
             <Container className='my-0 p-3' key={this.props.id}>
-                <Card className={'p-3'} style={{width: '40vmax'}}>
-                    <Card.Title style={{fontSize: '1.5vmax'}}>{this.props.title}</Card.Title>
+                <Card className={'p-3'} style={{width: '30vmax'}}>
+                    <Card.Title style={{fontSize: '1.2vmax'}}>{this.props.title}</Card.Title>
                     <Row style={{justifyContent: 'center', alignItems: 'center'}}>
                         <Col className="col-auto">{this.renderStars()}</Col>
-                        <Col className='flex-grow-1' style={{fontSize: '1vmax'}}>Account Name</Col>
-                        <Col className='col-auto'  style={{fontSize: '1vmax'}}>#___ ago</Col>
+                        <Col className='flex-grow-1' style={{fontSize: '0.9vmax'}}>Account Name</Col>
+                        <Col className='col-auto'  style={{fontSize: '0.9vmax'}}>#___ ago</Col>
                     </Row>
                     <div className='mb-3' />
                     {this.renderDescription()}
