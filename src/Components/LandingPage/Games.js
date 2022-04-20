@@ -1,4 +1,7 @@
-import Sunset from '../Images/Sunset.jpg' //change this to pic of game
+import PC from '../Images/PC.jpg' //change this to pic of game
+import Xbox from '../Images/Xbox.jpg' //change this to pic of game
+import Playstation from '../Images/Playstation.jpg' //change this to pic of game
+import Switch from '../Images/Switch.jpg' //change this to pic of game
 
 /* All the game pics will need to be added here */
 
@@ -6,34 +9,42 @@ import Sunset from '../Images/Sunset.jpg' //change this to pic of game
 const PcGames=[
     {
       name:"Game1",
-      gameImg:Sunset
+      gameImg:PC
     },
     {
       name:"Game2",
-      gameImg:Sunset
+      gameImg:PC
     },
     {
       name:"Game3",
-      gameImg:Sunset
+      gameImg:PC
     },{
       name:"Game4",
-      gameImg:Sunset
+      gameImg:PC
     },
     {
       name:"Game5",
-      gameImg:Sunset
+      gameImg:PC
     },
     {
       name:"Game6",
-      gameImg:Sunset
+      gameImg:PC
     },
     {
       name:"Game7",
-      gameImg:Sunset
+      gameImg:PC
     },
     {
       name:"Game8",
-      gameImg:Sunset
+      gameImg:PC
+    },
+    {
+      name:"Game9",
+      gameImg:PC
+    },
+    {
+      name:"Game10",
+      gameImg:PC
     },
   ]
 
@@ -41,30 +52,43 @@ const PcGames=[
   const XboxGames=[
     {
       name:"Game1",
-      gameImg:Sunset
+      gameImg:Xbox
     },
     {
       name:"Game2",
-      gameImg:Sunset
+      gameImg:Xbox
     },
     {
       name:"Game3",
-      gameImg:Sunset
-    },{
+      gameImg:Xbox
+    },
+    {
       name:"Game4",
-      gameImg:Sunset
+      gameImg:Xbox
     },
     {
       name:"Game5",
-      gameImg:Sunset
+      gameImg:Xbox
     },
     {
       name:"Game6",
-      gameImg:Sunset
+      gameImg:Xbox
     },
     {
       name:"Game7",
-      gameImg:Sunset
+      gameImg:Xbox
+    },
+    {
+      name:"Game8",
+      gameImg:Xbox
+    },
+    {
+      name:"Game9",
+      gameImg:Xbox
+    },
+    {
+      name:"Game10",
+      gameImg:Xbox
     },
   ]
 
@@ -72,26 +96,43 @@ const PcGames=[
   const PlaystationGames=[
     {
       name:"Game1",
-      gameImg:Sunset
+      gameImg:Playstation
     },
     {
       name:"Game2",
-      gameImg:Sunset
+      gameImg:Playstation
     },
     {
       name:"Game3",
-      gameImg:Sunset
-    },{
+      gameImg:Playstation
+    },
+    {
       name:"Game4",
-      gameImg:Sunset
+      gameImg:Playstation
     },
     {
       name:"Game5",
-      gameImg:Sunset
+      gameImg:Playstation
     },
     {
       name:"Game6",
-      gameImg:Sunset
+      gameImg:Playstation
+    },
+    {
+      name:"Game7",
+      gameImg:Playstation
+    },
+    {
+      name:"Game8",
+      gameImg:Playstation
+    },
+    {
+      name:"Game9",
+      gameImg:Playstation
+    },
+    {
+      name:"Game10",
+      gameImg:Playstation
     },
   ]
 
@@ -99,22 +140,42 @@ const PcGames=[
   const NintendoGames=[
     {
       name:"Game1",
-      gameImg:Sunset
+      gameImg:Switch
     },
     {
       name:"Game2",
-      gameImg:Sunset
+      gameImg:Switch
     },
     {
       name:"Game3",
-      gameImg:Sunset
+      gameImg:Switch
     },{
       name:"Game4",
-      gameImg:Sunset
+      gameImg:Switch
     },
     {
       name:"Game5",
-      gameImg:Sunset
+      gameImg:Switch
+    },
+    {
+      name:"Game6",
+      gameImg:Switch
+    },
+    {
+      name:"Game7",
+      gameImg:Switch
+    },
+    {
+      name:"Game8",
+      gameImg:Switch
+    },
+    {
+      name:"Game9",
+      gameImg:Switch
+    },
+    {
+      name:"Game10",
+      gameImg:Switch
     },
   ]
 

@@ -2,13 +2,13 @@ import React, { Component } from "react";
 import JackPic from '../Images/Jack.jpg'
 import AbhiPic from '../Images/Abhi.jpg'
 import BrentPic from '../Images/Brent.jpg'
-import TimPic from '../Images/Stick_Man.jpg' //change this to pic of Tim
+import TimPic from '../Images/Tim.jpg'
 
 class AboutUsPage extends Component {
     render() {
         return (
             <div className="body">
-                <h1>About Us</h1>
+                <h1>About The Team</h1>
                 <div className="aboutUs">
                     <div className="row">
 
@@ -43,7 +43,7 @@ class AboutUsPage extends Component {
                                 <div className="aboutContainer">
                                     <h2>Brent Voyles</h2>
                                     <p className="aboutTitle">Frontend FlavorTown</p>
-                                    <p className="cardText">Some text that describes me lorem ipsum ipsum lorem.</p>
+                                    <p className="cardText">[INPUT TEXT HERE]</p>
                                 </div>
                             </div>
                         </div>
@@ -55,7 +55,7 @@ class AboutUsPage extends Component {
                                 <div className="aboutContainer">
                                     <h2>Tim Wargo</h2>
                                     <p className="aboutTitle">Database Guru</p>
-                                    <p className="cardText">Some text that describes me lorem ipsum ipsum lorem.</p>
+                                    <p className="cardText">[INPUT TEXT HERE]</p>
                                 </div>
                             </div>
                         </div>
