@@ -1,6 +1,12 @@
 import React, { Component } from "react";
 import './SearchPage.css';
-import { Button} from "react-bootstrap";
+import { Button } from "react-bootstrap";
+import { Link } from "react";
+import HaloInfinite from '../Images/HaloInfinite.jpg'
+import Witcher from '../Images/Witcher.jpg'
+import EldenRing from '../Images/EldenRing.jpg'
+import GodOfWar from '../Images/GodOfWar.jpg'
+
 
 class SearchPage extends Component {
     constructor(props) {
@@ -15,49 +21,70 @@ class SearchPage extends Component {
             <div className="body">
                 <div className="searchBar">
                     <input type='text' className='input' placeholder='Search by Title' />
-                    <Button onClick= {this.onSubmit} variant="primary" size="lg" className="buttModal">
+                    <Button onClick= {this.onSubmit} variant="primary" size="lg" className="custom">
                     Search
                     </Button> 
                 </div>
                 <div className= "console-filter">
-                    <Button onClick= {this.onSubmit} variant="primary" size="lg" className="buttModal">
+                    <Button onClick= {this.onSubmit} variant="primary" size="lg" className="custom">
                     Xbox
                     </Button>
-                    <Button onClick= {this.onSubmit} variant="primary" size="lg" className="buttModal">
+                    <Button onClick= {this.onSubmit} variant="primary" size="lg" className="custom">
                     Playstation
                     </Button>
-                    <Button onClick= {this.onSubmit} variant="primary" size="lg" className="buttModal">
+                    <Button onClick= {this.onSubmit} variant="primary" size="lg" className="custom">
                     Nintendo
                     </Button>
-                    <Button onClick= {this.onSubmit} variant="primary" size="lg" className="buttModal">
+                    <Button onClick= {this.onSubmit} variant="primary" size="lg" className="custom">
                     PC
                     </Button>
                 </div>
                 <div className= "console-filter">
-                <Button onClick= {this.onSubmit} variant="primary" size="lg" className="buttModal">
-                    Role-Playing
+                <Button onClick= {this.onSubmit} variant="primary" size="lg" className="custom">
+                    Role-Play
                     </Button>
-                    <Button onClick= {this.onSubmit} variant="primary" size="lg" className="buttModal">
+                    <Button onClick= {this.onSubmit} variant="primary" size="lg" className="custom">
                     MMO
                     </Button>
-                    <Button onClick= {this.onSubmit} variant="primary" size="lg" className="buttModal">
+                    <Button onClick= {this.onSubmit} variant="primary" size="lg" className="custom">
                     Shooter
                     </Button>
-                    <Button onClick= {this.onSubmit} variant="primary" size="lg" className="buttModal">
+                    <Button onClick= {this.onSubmit} variant="primary" size="lg" className="custom">
                     Adventure
                     </Button>
-                </div>
-                <div className= "console-filter">
-                <Button onClick= {this.onSubmit} variant="primary" size="lg" className="buttModal">
-                    Rated E
-                    </Button>
-                    <Button onClick= {this.onSubmit} variant="primary" size="lg" className="buttModal">
-                    Rated PG-13
-                    </Button>
-                    <Button onClick= {this.onSubmit} variant="primary" size="lg" className="buttModal">
-                    Rated M
-                    </Button>
-                </div>              
+                    </div>
+                    <div className="grid-container">
+                    <div class="row gx-4">
+    <div class="col">
+      <div class="p-3"><img src={HaloInfinite} alt="Example1" width="250" height="340" margin-right="10"></img></div>
+      <a href="#" class="link-primary">See Reviews</a>
+      <br>
+    </br>
+      <a href="#" className="link-review">Write a Review</a>
+    </div>
+    <div class="col">
+      <div class="p-3"><img src={GodOfWar} alt="Example1" width="250" height="340" margin-right="10"></img></div>
+      <a href="#" class="link-primary">See Reviews</a>
+      <br>
+    </br>
+      <a href="#" class="link-primary">Write a Review</a>
+    </div>
+    <div class="col">
+      <div class="p-3"><img src={Witcher} alt="Example1" width="250" height="340" margin-right="10"></img></div>
+      <a href="#" class="link-primary">See Reviews</a>
+      <br>
+    </br>
+      <a href="#" class="link-primary">Write a Review</a>
+    </div>
+    <div class="col">
+    <div class="p-3"><img src={EldenRing} alt="Example1" width="250" height="340" margin-right="10"></img></div>
+    <a href="#" class="link-primary">See Reviews</a>
+    <br>
+    </br>
+    <a href="#" class="link-primary">Write a Review</a>
+    </div>
+  </div>
+</div>
             </div>
         );
     }

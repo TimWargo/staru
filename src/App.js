@@ -10,6 +10,7 @@ import Footer from './Components/Footer/Footer';
 import AccountPage from './Components/AccountPage/AccountPage';
 import SearchPage from './Components/SearchPage/SearchPage';
 import VerifyPage from './Components/VerifyPage/verifyPage';
+import CreateReviewPage from './Components/CreateReviewPage/CreateReviewPage'; 
 
 class App extends Component {
   constructor(props) {
@@ -32,7 +33,7 @@ class App extends Component {
           <Route path="/" exact element={<LandingPage />} />
           <Route path="/about" element={<AboutUsPage />} />
           <Route path="/search" element={<SearchPage />} />
-
+          <Route path="/create" element={<CreateReviewPage />} />
           {/* Protected Routes */}
           <Route path="/account" element={<AccountPage />} />
           <Route path="/forgot" element={<ForgotPasswordPage />} />

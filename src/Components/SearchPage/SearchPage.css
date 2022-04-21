@@ -1,33 +1,61 @@
-body h1 {
-text-align: center;
+.body .searchBar {
+text-align: left;
 }
 
+.body .console-filter {
+    text-align: left;
+}
+
+.body .grid-container {
+    text-align: left;
+    margin-left: 80px;
+}
+
+
 .searchBar{
-    text-align: center;
+    margin-left: 30px;
+    text-align: left;
     margin-top: 30px;
+    margin-bottom: 10px;
 }
 
 .searchBar input {
-    width: 450px;
-    height: 44px;
+    width: 550px;
+    height: 50px;
     font-family: Montserrat, sans-serif;
     font-size: 20px;
+    margin-right: 20px;
     border-top-left-radius: 10px !important;
     border-bottom-left-radius: 10px !important;
     border-top-right-radius: 10px !important;
     border-bottom-right-radius: 10px !important;
+    background-color: #282c34;
+    color: #28B094;
+    border-color: black;
+}
+
+::placeholder {
+    color: grey;
 }
 
 
 .searchBar Button {
-    width: 100px;
+    width: 250px !important;
+    height: 50px !important;
     border-top-left-radius: 10px !important;
     border-bottom-left-radius: 10px !important;
     border-top-right-radius: 10px !important;
     border-bottom-right-radius: 10px !important;
-    border: none;
     margin-left: 15px;
     margin-bottom: 2px;
+    background-color: #282c34;;
+    border-color: black;
+    color: #28B094;
+}
+
+.searchBar Button:hover {
+    background: #28B094;
+    border-color: black;
 }
 
 h2 {
@@ -38,17 +66,50 @@ h2 {
 }
 
 .console-filter {
-    text-align: center;
-    margin-right: 50px;
+    text-align: left;
     margin-top: 20px;
 }
 
 .console-filter Button {
-    background-color: grey;
+    height: 45px !important;
+    color:  #28B094;
     border-top-left-radius: 10px !important;
     border-bottom-left-radius: 10px !important;
     border-top-right-radius: 10px !important;
     border-bottom-right-radius: 10px !important;
-    margin-left: 10px;
-    margin-right: 10px;
+    margin-left: 30px;
+    margin-right: 30px;
+    background-color: #282c34;
+    border-color: black;
+}
+
+.console-filter Button:hover {
+    background-color: #28B094;
+    border-color: black;
+    color: #0C1821;
+} 
+
+.custom {
+    width: 128px !important;
+}
+
+.grid-container {
+    margin-left: -10px;
+    margin-top: 30px;
+}
+.grid-container .row {
+    margin-top: 25px;
+}
+
+.grid-container a {
+    color: #8b1e3f;
+    font-style: bold;
+}
+
+.grid-container a:hover {
+    color:#28B094;
+}
+
+.col-lg-2 image{
+margin-right: 25px;
 }

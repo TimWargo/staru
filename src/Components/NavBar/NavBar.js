@@ -59,7 +59,8 @@ class NavBar extends Component {
                     <Navbar.Collapse id="responsive-navbar-nav">
                     <Nav className="ms-auto">
                         <Nav.Link href="/search">Search</Nav.Link>
-                        <Nav.Link href="/about">About</Nav.Link>                           
+                        <Nav.Link href="/create">Review</Nav.Link>
+                        <Nav.Link href="/about">About</Nav.Link>                          
                         {this.renderAuth()}            
                     </Nav>
                     </Navbar.Collapse>

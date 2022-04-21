@@ -1,0 +1,56 @@
+.body {
+    text-align: center;
+}
+.body h1 {
+    text-align: center;
+}
+.mysubmit {
+    margin-top: 20px;
+}
+.mysubmit Button {
+        background-color: #282c34;
+        border-top-left-radius: 10px !important;
+        border-bottom-left-radius: 10px !important;
+        border-top-right-radius: 10px !important;
+        border-bottom-right-radius: 10px !important;
+        border-color: black;
+        color: #28B094;
+        width: 150px !important;
+        margin-right: 7px;
+}
+.mysubmit Button:hover {
+    background: #28B094;
+    border-color: black;
+} 
+.cover-art {
+    margin-bottom: 15px;
+}
+
+.star-group {
+    margin-bottom: 35px;
+}
+
+input[type="radio"] {
+    display: none;
+}
+
+.star {
+    cursor: pointer;
+    transition: color 200ms;
+}
+
+
+.form-group2 {
+    display: inline-block; 
+}
+
+.section-format {
+    margin-top: -25px;
+    margin-left: 615px;
+}
+
+.form-group2 label {
+    margin-right: 600px;
+    color: #0C1821
+}
+
