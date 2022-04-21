@@ -3,7 +3,7 @@
     flex-direction: column;
     justify-content: flex-start;
     height: 86%;
-    background-color: #605D5E;
+    background-color: #E0E0E0;
     color: #847C7E;
     padding: 20px;
 }
@@ -19,7 +19,7 @@
 }
 
 .footer {
-    background-color: #605D5E;
+    background-color: #E0E0E0;
     border-top: solid #0C1821 3px;
     border-bottom: solid #0C1821 3px;
     padding: 15px;
