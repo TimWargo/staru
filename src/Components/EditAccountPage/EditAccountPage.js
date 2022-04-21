@@ -2,7 +2,7 @@ import axios from "axios";
 import React, { Component } from "react";
 import { Button } from "react-bootstrap";
 import { Container, Nav, Navbar } from "react-bootstrap";
-
+import './EditAccountPage.css';
 class EditAccountPage extends Component {
     constructor(props) {
         super(props);
@@ -82,11 +82,13 @@ class EditAccountPage extends Component {
     render() {
         return (
             <div className="body">
-                <h1>Edit Account</h1>
+              
                 
                 <div className="innerBody">
                     <form onSubmit={this.handleSubmit}>
                         <div>
+                            <h4>Edit Account</h4>
+                            <br />
                             <label>
                                 Screen Name
                                 <br />

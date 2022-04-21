@@ -2,7 +2,7 @@
 import axios from 'axios';
 import React, { Component } from 'react'
 import { Container, Nav, Navbar } from "react-bootstrap";
-
+import './AccountPage.css';
 class AccountPage extends Component {
     state={
         account:[]
@@ -24,9 +24,10 @@ class AccountPage extends Component {
         return (
             
             <div className="body">
-                <h1> Account Page </h1>
+               
                 <div className="innerBody">
-                    
+                    <h4>Account Page</h4>
+                    <br/>
                     {this.state.account.map((account, index)=> (
                         <div key = {index}>
                             Hello {account.screen_name}, 
