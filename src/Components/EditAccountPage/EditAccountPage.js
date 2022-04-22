@@ -89,7 +89,17 @@ class EditAccountPage extends Component {
                         <div>
                             <h4>Edit Account</h4>
                             <br />
+                            
                             <label>
+                                <table>
+                            <tr>
+                            <td>    
+                                Picture
+                                <br />
+                                <img src="https://picsum.photos/seed/picsum/150/150"></img>
+                                <br/>
+                            </td>
+                            <td>
                                 Screen Name
                                 <br />
                                 
@@ -108,9 +118,11 @@ class EditAccountPage extends Component {
                                 ))}
                                 <br />                           
                                 <p>Email cannot be changed </p>
-                                
-    
+                                </td>
+                            </tr>
+                            </table>
                             </label>
+
                             <br />
                             <span className="text-danger">{this.state.screen_nameError}</span>
 

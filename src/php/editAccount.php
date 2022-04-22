@@ -12,9 +12,11 @@ if (isset($user) && !empty($user)) {
 
         $query = "UPDATE accounts SET screen_name = '$screen_name' WHERE email = '$email'";
     if($query){
-        $check=mail($email,"Your screen Name has been changed", "your Screen Name has been changed", "From: staru4300@gmail.com" );
         if (mysqli_query($db, $query)) {
+            $check=mail($email,"Your screen Name has been changed", "your Screen Name has been changed", "From: staru4300@gmail.com" );
             http_response_code(201);
+            
+
         } else {
            http_response_code(422);
         }
