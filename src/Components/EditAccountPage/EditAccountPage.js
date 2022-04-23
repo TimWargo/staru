@@ -91,15 +91,7 @@ class EditAccountPage extends Component {
                             <br />
                             
                             <label>
-                                <table>
-                            <tr>
-                            <td>    
-                                Picture
-                                <br />
-                                <img src="https://picsum.photos/seed/picsum/150/150"></img>
-                                <br/>
-                            </td>
-                            <td>
+
                                 Screen Name
                                 <br />
                                 
@@ -117,10 +109,8 @@ class EditAccountPage extends Component {
                                     </div>
                                 ))}
                                 <br />                           
-                                <p>Email cannot be changed </p>
-                                </td>
-                            </tr>
-                            </table>
+
+
                             </label>
 
                             <br />

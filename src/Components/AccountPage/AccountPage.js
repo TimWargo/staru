@@ -30,12 +30,7 @@ class AccountPage extends Component {
                     <h4>Account Page</h4>
                     
                     <br/>
-                    <table class="center">
-                        <tr>
-                            <td>    
-                                <img src="https://picsum.photos/seed/picsum/150/150"></img>
-                            </td>
-                            <td>
+
                                 {this.state.account.map((account, index)=> (
                                     <div key = {index}>
                                         Hello {account.screen_name}, 
@@ -54,9 +49,7 @@ class AccountPage extends Component {
                                         <br/>
                                     </div>
                                 ))}
-                            </td>
-                        </tr>
-                    </table>
+
                     
                     <Nav.Link href="/editaccount">Edit Account</Nav.Link>
                 </div>
