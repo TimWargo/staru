@@ -1,8 +1,8 @@
 import React, { Component } from "react";
-import JackPic from '../Images/Jack.jpg'
-import AbhiPic from '../Images/Abhi.jpg'
-import BrentPic from '../Images/Brent.jpg'
-import TimPic from '../Images/Tim.jpg'
+import JackPic from '../../resources/Images/Jack.jpg'
+import AbhiPic from '../../resources/Images/Abhi.jpg'
+import BrentPic from '../../resources/Images/Brent.jpg'
+import TimPic from '../../resources/Images/Tim.jpg'
 
 class AboutUsPage extends Component {
     render() {

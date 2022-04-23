@@ -11,7 +11,6 @@ import AccountPage from './Components/AccountPage/AccountPage';
 import SearchPage from './Components/SearchPage/SearchPage';
 import VerifyPage from './Components/VerifyPage/verifyPage';
 import ViewGamePage from './Components/ViewGamePage/ViewGamePage';
-import ViewGamePage2 from './Components/ViewGamePage/ViewGamePage2';
 
 class App extends Component {
   constructor(props) {

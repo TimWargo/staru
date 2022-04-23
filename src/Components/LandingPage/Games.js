@@ -1,7 +1,7 @@
-import PC from '../Images/PC.jpg' //change this to pic of game
-import Xbox from '../Images/Xbox.jpg' //change this to pic of game
-import Playstation from '../Images/Playstation.jpg' //change this to pic of game
-import Switch from '../Images/Switch.jpg' //change this to pic of game
+import PC from '../../resources/Images/PC.jpg' //change this to pic of game
+import Xbox from '../../resources/Images/Xbox.jpg' //change this to pic of game
+import Playstation from '../../resources/Images/Playstation.jpg' //change this to pic of game
+import Switch from '../../resources/Images/Switch.jpg' //change this to pic of game
 
 /* All the game pics will need to be added here */
 
