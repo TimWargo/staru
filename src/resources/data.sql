@@ -12,6 +12,10 @@ CREATE TABLE games (
     title VARCHAR(255) NOT NULL,
     year int NOT NULL,
     price DECIMAL(5,2) NOT NULL,
+    popularity DECIMAL(2,1) DEFAULT 0.0,
+    platform VARCHAR(255) NOT NULL,
+    pic VARCHAR(255) NOT NULL,
+    description LONGTEXT
 );
 
 CREATE TABLE genres (
@@ -21,7 +25,7 @@ CREATE TABLE genres (
 
 CREATE TABLE game_genres (
     game_id INT NOT NULL REFERENCES games(id),
-    genre_id INT NOT NULL, REFERENCES genres(id),
+    genre_id INT NOT NULL REFERENCES genres(id),
     PRIMARY KEY (game_id, genre_id)
 );
 
