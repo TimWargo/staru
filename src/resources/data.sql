@@ -103,7 +103,7 @@ INSERT INTO reviews (account_id,game_id,title,description, rating) VALUES
  (3,5,"Accurate Representation","As a big fan of the Norse mythology and the history of vikings, I was completely blown away by how accurate they kept the game. While they did modify some of the myths and stories (which I was not a fan of), I still loved the general accuracy that they kept. They definitely did their research.",5.0),
  (2,5,"Blown Away","Having played other games by them, God of War was still one of the best games that they have created. I love how much effort that they put into the game",4.0);
 
-INSERT INTO games (account_id,game_id,title,description,rating) VALUES
+INSERT INTO reviews (account_id,game_id,title,description,rating) VALUES
  (1,6,"Incredible","This game is incredible. While this game is not for everyone, I completely love their storyline, graphics, and gameplay.",5.0),
  (2,6,"Pretty Good Game","This game is hands-down the best game I have played all year. While you will die. a lot. it really forces you to learn from your mistakes. I love it",5.0),
  (3,6,"Meh","Hades is a pretty decent game. While the graphics are sub-par, they make up for it a little in the combat",3.0),
