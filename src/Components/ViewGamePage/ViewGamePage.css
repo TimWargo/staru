@@ -1,0 +1,116 @@
+.container-main {
+    margin: 0px 15%;
+}
+
+.title {
+    margin-bottom: 0px;
+    padding-bottom: 0px;
+    font-size: 60px;
+    font-size: 4vmax;
+}
+
+.platform {
+    height: fit-content;
+    padding-top: 1%;
+    font-size: 30px;
+    font-size: 2vmax;
+}
+
+.year {
+    padding-left: 10px;
+    text-align: left;
+    margin-bottom: 2px;
+    margin-top: -5px;
+    font-size: 30px;
+    font-size: 1.7vmax;
+}
+
+.rating-star {
+    position: absolute;
+    z-index: 2;
+    font-size: 7vmax;
+    color: yellow;
+}
+
+.rating-star-border {
+    font-size: 7.5vmax;
+    color: black;
+}
+
+.image {
+    width: 30vmax;
+    object-fit: contain;
+}
+
+.reviews {
+    margin: 10px;
+    background-color: lightgray;
+    width: 60%;
+}
+
+.star-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.popularity {
+    position: absolute;
+    z-index: 2;
+    font-size: 28px;
+    font-size: 2vmax;
+}
+
+.description {
+    font-size: 1.2vmax;
+}
+
+.price {
+    font-size: 1.2vmax;
+}
+
+.rtitle {
+    font-size: 2vmax;
+    padding-left: 1%;
+    color: #E0E0E0;
+}
+
+.other {
+    margin: 10px;
+    background-color: #E0E0E0;
+    height: fit-content;
+}
+
+.reviewButt {
+    width: fit-content;
+    padding: 3px 6px;
+    height: fit-content;
+}
+
+.otitle {
+    font-size: 1.5vmax;
+    padding: .25vmax 0px;
+    color: #E0E0E0;
+}
+
+.ostar {
+    font-size: 2vmax;
+}
+
+.ostar-border {
+    font-size: 2.5vmax;
+}
+
+.opop {
+    font-size: 0.5vmax;
+    font-weight: bold;
+}
+
+.ogame {
+    font-size: 1vmax;
+    color: #28B094;
+}
+
+.ogame:hover {
+    color: #8B1E3F;
+}

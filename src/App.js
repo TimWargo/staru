@@ -10,7 +10,11 @@ import Footer from './Components/Footer/Footer';
 import AccountPage from './Components/AccountPage/AccountPage';
 import SearchPage from './Components/SearchPage/SearchPage';
 import VerifyPage from './Components/VerifyPage/verifyPage';
+<<<<<<< HEAD
 import CreateReviewPage from './Components/CreateReviewPage/CreateReviewPage'; 
+=======
+import ViewGamePage from './Components/ViewGamePage/ViewGamePage';
+>>>>>>> 3ca037eafc29cdc88bae4ad244e933c7f86c9418
 
 class App extends Component {
   constructor(props) {
@@ -33,7 +37,12 @@ class App extends Component {
           <Route path="/" exact element={<LandingPage />} />
           <Route path="/about" element={<AboutUsPage />} />
           <Route path="/search" element={<SearchPage />} />
+<<<<<<< HEAD
           <Route path="/create" element={<CreateReviewPage />} />
+=======
+          <Route path="/games" element={<ViewGamePage />} />
+
+>>>>>>> 3ca037eafc29cdc88bae4ad244e933c7f86c9418
           {/* Protected Routes */}
           <Route path="/account" element={<AccountPage />} />
           <Route path="/forgot" element={<ForgotPasswordPage />} />

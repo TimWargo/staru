@@ -4,6 +4,7 @@ import { Button, Modal } from "react-bootstrap";
 import './LoginForm.css';
 import axios from 'axios';
 import { withRouter } from '../withRouter';
+import StaruLogo from '../Images/StaruLogo.jpg';
 
 class LoginForm extends Component {
   constructor(props) {
@@ -131,7 +132,7 @@ class LoginForm extends Component {
           </Modal.Header>
           <Modal.Body>
             <form onSubmit={this.onSubmit}>
-            <h3>StarU</h3>         
+            <h3>Log in</h3> 
             <div className="form-group">
                 <label htmlFor="exampleInputEmail1">Email Address</label>
                 <input
