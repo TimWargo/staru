@@ -67,3 +67,8 @@ INSERT INTO game_genres(game_id,genre_id) VALUES
  (8,1), (8,6),
  (9,1), (9,6),
  (10,1), (10,6);
+
+ INSERT INTO reviews (account_id,game_id,title,description,rating) VALUES
+ (1,1,"Awesome","This game is an amazing game. I love the storyline of the game, the artwork, all of it. I have over 30 hours on this game, and it's the only game that I now play.",5.0),
+ (2,1,"Great","The Witcher 3 is like having your cake and eating it. I honestly love this game.",4.0),
+ (3,1,"Lags sometimes","The Witcher 3 is a pretty good game. The graphics are great, but the storyline is a little weird. Also, the game sometime lags on me or glitches out. I have tried uninstalling and reinstalling the game, but it doesn't work out.",3.0);
