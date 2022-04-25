@@ -8,6 +8,9 @@ import StarRating from '../CreateReviewPage/StarRating.js';
 class CreateReviewPage extends Component {
     constructor(props) {
         super(props);
+        if (!sessionStorage.getItem("session")) {
+            window.location.pathname = "/";
+        }
         this.state = {
 
         }
