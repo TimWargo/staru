@@ -3,6 +3,7 @@ import './ViewGamePage.css';
 import { ListGroup, Button } from 'react-bootstrap';
 import Review from './Review';
 import { MdStar } from 'react-icons/md';
+import { withRouter } from '../withRouter';
 
 class ViewGamePage extends Component {
     constructor(props) {
@@ -40,6 +41,17 @@ class ViewGamePage extends Component {
 
     initContent() {
         // call api here
+        const { platform, name } = this.props.match.params;
+        const title = name.replace(/_/g," ");
+        let game = {
+            platform: platform,
+            title: title,
+        };
+
+
+
+
+
         this.setState({
             game: {
                 id: 1,
@@ -194,4 +206,4 @@ class ViewGamePage extends Component {
     }
 }
  
-export default ViewGamePage;
+export default withRouter(ViewGamePage);

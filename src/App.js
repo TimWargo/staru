@@ -33,10 +33,10 @@ class App extends Component {
           <Route path="/" exact element={<LandingPage />} />
           <Route path="/about" element={<AboutUsPage />} />
           <Route path="/search" element={<SearchPage />} />
-          <Route path="/games" element={<ViewGamePage />} />
+          <Route path="/games/:platform/:name" element={<ViewGamePage />} />
 
           {/* Protected Routes */}
-          <Route path="/account" element={<AccountPage />} />
+          <Route path="/account/:id" element={<AccountPage />} />
           <Route path="/forgot" element={<ForgotPasswordPage />} />
           <Route path="/reset" element={<ResetPasswordPage />} />
           <Route path="/verify" element={<VerifyPage/>} />
