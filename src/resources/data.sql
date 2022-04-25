@@ -35,7 +35,8 @@ CREATE TABLE reviews (
     game_id INT NOT NULL REFERENCES games(id),
     title VARCHAR(255),
     description LONGTEXT,
-    rating DECIMAL(2,1)
+    rating DECIMAL(2,1),
+    date TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
 INSERT INTO accounts (email, screen_name, password) VALUES
