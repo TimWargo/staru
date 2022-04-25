@@ -37,7 +37,7 @@ class App extends Component {
           <Route path="/games/:platform/:name" element={<ViewGamePage />} />
 
           {/* Protected Routes */}
-          <Route path="/account/:id" element={<AccountPage />} />
+          <Route path="/account" element={<AccountPage />} />
           <Route path="/forgot" element={<ForgotPasswordPage />} />
           <Route path="/reset" element={<ResetPasswordPage />} />
           <Route path="/verify" element={<VerifyPage/>} />

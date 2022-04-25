@@ -3,10 +3,18 @@ import axios from 'axios';
 import React, { Component } from 'react'
 import { Container, Nav, Navbar } from "react-bootstrap";
 import './AccountPage.css';
+
 class AccountPage extends Component {
-    state={
-        account:[]
+    constructor(props) {
+        super(props);
+        if (!sessionStorage.getItem("session")) {
+            window.location.pathname = "/";
+        }
+        this.state = {
+            account:[]
+        }
     }
+
     componentDidMount(){
         console.log(sessionStorage.session);
         const url ='http://localhost/staru/src/php/Accountinfo.php?email='+sessionStorage.session;
