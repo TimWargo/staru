@@ -12,6 +12,7 @@ import EditAccountPage from './Components/EditAccountPage/EditAccountPage';
 import SearchPage from './Components/SearchPage/SearchPage';
 import VerifyPage from './Components/VerifyPage/verifyPage';
 import ViewGamePage from './Components/ViewGamePage/ViewGamePage';
+import CreateReviewPage from './Components/CreateReviewPage/CreateReviewPage'; 
 
 class App extends Component {
   constructor(props) {
@@ -37,6 +38,7 @@ class App extends Component {
           <Route path="/games/:platform/:name" element={<ViewGamePage />} />
 
           {/* Protected Routes */}
+          <Route path="/create" element={<CreateReviewPage />} />
           <Route path="/account" element={<AccountPage />} />
           <Route path="/forgot" element={<ForgotPasswordPage />} />
           <Route path="/reset" element={<ResetPasswordPage />} />
