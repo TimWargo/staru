@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import './main.css';
 import { PcGames, XboxGames, PlaystationGames, NintendoGames } from './Games'
 import Cols from './Cols'
-import Banner from '../../resources/Images/Banner.jpg' //change this to pic of actual banner when we have one
+import Banner from '../../resources/Images/StarU_Banner.png' //change this to pic of actual banner when we have one
 
 
 
