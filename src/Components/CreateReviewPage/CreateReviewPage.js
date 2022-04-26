@@ -46,9 +46,9 @@ class CreateReviewPage extends Component {
 </section>
 </div>
 <div className= "mysubmit">
-<Button onClick= {this.onSubmit} variant="primary" size="lg" className="custom">
+<Button onClick= {this.onSubmit} variant="primary" size="lg" className="discard">
                     Discard
-                    </Button>               
+                    </Button>                     
 <Button onClick= {this.onSubmit} variant="primary" size="lg" className="custom">
                     Submit
                     </Button> 

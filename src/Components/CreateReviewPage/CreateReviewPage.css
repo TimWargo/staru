@@ -7,21 +7,35 @@
 .mysubmit {
     margin-top: 20px;
 }
-.mysubmit Button {
-        background-color: #282c34;
+.mysubmit .custom {
+        background-color: #28B094;
         border-top-left-radius: 10px !important;
         border-bottom-left-radius: 10px !important;
         border-top-right-radius: 10px !important;
         border-bottom-right-radius: 10px !important;
         border-color: black;
-        color: #28B094;
+        color: white;
         width: 150px !important;
         margin-right: 7px;
 }
 .mysubmit Button:hover {
-    background: #28B094;
+    background: #0C1821;
     border-color: black;
 } 
+
+.mysubmit .discard {
+    background-color: #8b1E3F;
+    border-top-left-radius: 10px !important;
+    border-bottom-left-radius: 10px !important;
+    border-top-right-radius: 10px !important;
+    border-bottom-right-radius: 10px !important;
+    border-color: black;
+    color: white;
+    width: 150px !important;
+    margin-right: 7px;
+}
+
+
 .cover-art {
     margin-bottom: 15px;
 }
@@ -51,6 +65,6 @@ input[type="radio"] {
 
 .form-group2 label {
     margin-right: 600px;
-    color: #0C1821
+    color: #0C1821;
 }
 

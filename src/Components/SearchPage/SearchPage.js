@@ -57,31 +57,15 @@ class SearchPage extends Component {
                     <div class="row gx-4">
     <div class="col">
       <div class="p-3"><img src={HaloInfinite} alt="Example1" width="250" height="340" margin-right="10"></img></div>
-      <a href="#" class="link-primary">See Reviews</a>
-      <br>
-    </br>
-      <a href="#" className="link-review">Write a Review</a>
     </div>
     <div class="col">
       <div class="p-3"><img src={GodOfWar} alt="Example1" width="250" height="340" margin-right="10"></img></div>
-      <a href="#" class="link-primary">See Reviews</a>
-      <br>
-    </br>
-      <a href="#" class="link-primary">Write a Review</a>
     </div>
     <div class="col">
       <div class="p-3"><img src={Witcher} alt="Example1" width="250" height="340" margin-right="10"></img></div>
-      <a href="#" class="link-primary">See Reviews</a>
-      <br>
-    </br>
-      <a href="#" class="link-primary">Write a Review</a>
     </div>
     <div class="col">
     <div class="p-3"><img src={EldenRing} alt="Example1" width="250" height="340" margin-right="10"></img></div>
-    <a href="#" class="link-primary">See Reviews</a>
-    <br>
-    </br>
-    <a href="#" class="link-primary">Write a Review</a>
     </div>
   </div>
 </div>
