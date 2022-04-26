@@ -45,7 +45,6 @@ class VerifyPage extends Component {
     render() {
         return (
             <div className="body">
-                <h1>Activate Account</h1>
                 
                 <div className="innerBody">
                     <p className="pBody"> Click below to activate your account. </p>
@@ -60,6 +59,7 @@ class VerifyPage extends Component {
 
                     </form>
                 </div>
+                
             </div>
         )
     }

@@ -8,10 +8,11 @@ import ResetPasswordPage from './Components/ResetPasswordPage/ResetPasswordPage'
 import NavBar from './Components/NavBar/NavBar';
 import Footer from './Components/Footer/Footer';
 import AccountPage from './Components/AccountPage/AccountPage';
+import EditAccountPage from './Components/EditAccountPage/EditAccountPage';
 import SearchPage from './Components/SearchPage/SearchPage';
 import VerifyPage from './Components/VerifyPage/verifyPage';
-import CreateReviewPage from './Components/CreateReviewPage/CreateReviewPage'; 
 import ViewGamePage from './Components/ViewGamePage/ViewGamePage';
+import CreateReviewPage from './Components/CreateReviewPage/CreateReviewPage'; 
 
 
 class App extends Component {
@@ -35,13 +36,20 @@ class App extends Component {
           <Route path="/" exact element={<LandingPage />} />
           <Route path="/about" element={<AboutUsPage />} />
           <Route path="/search" element={<SearchPage />} />
+<<<<<<< HEAD
           <Route path="/create" element={<CreateReviewPage />} />
           <Route path="/games" element={<ViewGamePage />} />
+=======
+          <Route path="/games/:platform/:name" element={<ViewGamePage />} />
+
+>>>>>>> d80241f029712643f5b1475f13d46c51b4598ddd
           {/* Protected Routes */}
+          <Route path="/games/create/:id" element={<CreateReviewPage />} />
           <Route path="/account" element={<AccountPage />} />
           <Route path="/forgot" element={<ForgotPasswordPage />} />
           <Route path="/reset" element={<ResetPasswordPage />} />
           <Route path="/verify" element={<VerifyPage/>} />
+          <Route path="/editaccount" element={<EditAccountPage />} />
         </Routes>
         <Footer />
       </BrowserRouter>
