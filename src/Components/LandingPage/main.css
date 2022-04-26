@@ -31,9 +31,8 @@
     text-align: center;
 }
 
-.navBar {
-    background-color: #0C1821;
-    border-bottom: solid #0C1821 3px;
+.navbar {
+    background-color: #0C1821;    
 }
 
 .link {
