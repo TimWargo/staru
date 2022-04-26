@@ -4,6 +4,7 @@ import { ListGroup, Button } from 'react-bootstrap';
 import Review from './Review';
 import { MdStar } from 'react-icons/md';
 import { withRouter } from '../withRouter';
+import axios from 'axios';
 
 class ViewGamePage extends Component {
     constructor(props) {
@@ -47,10 +48,12 @@ class ViewGamePage extends Component {
             platform: platform,
             title: title,
         };
-
-
-
-
+        axios.get('http://localhost/staru/src/php/viewGame.php', game)
+            .then(res => {
+                console.log(res.data);
+            }).catch(error => {
+                console.log("error")
+            });
 
         this.setState({
             game: {

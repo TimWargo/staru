@@ -12,7 +12,7 @@ if (isset($user) && !empty($user)) {
     $query = "SELECT * FROM games WHERE platform = '$platform' AND title = '$title'";
     $result = mysqli_query($db,$query);
     if ($result->num_rows === 1) {
-        http_response_code(201);
+        return $result;
     } else {
         http_response_code(401);
     }
