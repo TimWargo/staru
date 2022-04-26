@@ -50,7 +50,7 @@ class ViewGamePage extends Component {
         };
         axios.get('http://localhost/staru/src/php/viewGame.php', game)
             .then(res => {
-                console.log(res.data);
+                console.log(res);
             }).catch(error => {
                 console.log("error")
             });

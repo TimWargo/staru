@@ -9,7 +9,7 @@ if (isset($user) && !empty($user)) {
     $platform = $request->platform;
     $title = $request->title;
 
-    $query = "SELECT * FROM games WHERE platform = '$platform' AND title = '$title'";
+    $query = "SELECT * FROM games WHERE lower(platform) = '$platform' AND lower(title) = '$title'";
     $result = mysqli_query($db,$query);
     if ($result->num_rows === 1) {
         return $result;
