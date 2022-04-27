@@ -8,6 +8,9 @@ import EldenRing from '../Images/EldenRing.jpg'
 import GodOfWar from '../Images/GodOfWar.jpg'
 
 
+
+
+
 class SearchPage extends Component {
     constructor(props) {
         super(props);
@@ -55,17 +58,33 @@ class SearchPage extends Component {
                     </div>
                     <div className="grid-container">
                     <div class="row gx-4">
-    <div class="col">
-      <div class="p-3"><img src={HaloInfinite} alt="Example1" width="250" height="340" margin-right="10"></img></div>
+    <div className="col">
+      <div className="p-3">
+          <div className="game-card">
+        <a href="/games/:platform/:name"> <img src={HaloInfinite} alt="Example1" width="250" height="340" margin-right="10"></img></a>
+        </div>
+        </div>
     </div>
     <div class="col">
-      <div class="p-3"><img src={GodOfWar} alt="Example1" width="250" height="340" margin-right="10"></img></div>
+      <div class="p-3">
+      <div className="game-card">
+      <a href="/games/:platform/:name"> <img src={GodOfWar} alt="Example1" width="250" height="340" margin-right="10"></img></a>
+      </div>
+      </div>
     </div>
     <div class="col">
-      <div class="p-3"><img src={Witcher} alt="Example1" width="250" height="340" margin-right="10"></img></div>
+      <div class="p-3">
+      <div className="game-card">
+      <a href="/games/:platform/:name"> <img src={Witcher} alt="Example1" width="250" height="340" margin-right="10"></img></a>
+      </div>
+          </div>
     </div>
     <div class="col">
-    <div class="p-3"><img src={EldenRing} alt="Example1" width="250" height="340" margin-right="10"></img></div>
+    <div class="p-3">
+    <div className="game-card">
+    <a href="/games/:platform/:name"> <img src={EldenRing} alt="Example1" width="250" height="340" margin-right="10"></img></a>
+    </div>
+        </div>
     </div>
   </div>
 </div>

@@ -12,6 +12,9 @@ class CreateReviewPage extends Component {
             window.location.pathname = "/";
         }
         this.state = {
+            title: '',
+            subject: '',
+
 
         }
     }
@@ -33,17 +36,32 @@ class CreateReviewPage extends Component {
 <form className="form-group2 row">
     <div className="form-group">
         <label for="Title">Title </label>
-        <input type="text" class="form-control" name="Title" placeholder="Game Title">
+        <input
+         type="text" 
+         className="form-control" 
+         name="Title" 
+         value= {this.state.title}
+         placeholder="Game Title">
             </input>
     </div>
     <div className="form-group2">
     <label for="Subject">Subject </label>
-        <input type="text" class="form-control" id="Subject" placeholder="Initial Comments">
+        <input
+         type="text"
+          className="form-control"
+          name="Subject"
+           value={this.state.subject}
+           placeholder="Initial Comments">
         </input>
     </div>
     <div className="form-group2">
     <label for="txt-area">Review </label>
-        <textarea rows="6" name="txt-area" class="form-control" placeholder="Your feedback helps others decide which games to play."></textarea>
+        <textarea rows="6" 
+        name="Review" 
+        class="form-control" 
+        value={this.state.review}
+        placeholder="Your feedback helps others decide which games to play."> 
+        </textarea>
     </div>
 </form>
 </section>

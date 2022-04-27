@@ -113,3 +113,18 @@ h2 {
 .col-lg-2 image{
 margin-right: 25px;
 }
+
+.game-card {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    margin: 8px;
+    border: 2px solid #0C1821 !important;
+    width: 253px;
+    height: 400px;
+    background-color: #0C1821;
+}
+
+.game-card-Text {
+    color: #666666;
+    text-align: center;
+    margin-top: 30px;
+} 
