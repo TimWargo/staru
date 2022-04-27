@@ -37,27 +37,39 @@ class AccountPage extends Component {
 
                     <h4>Account Page</h4>
                     
-                    <br/>
-
-                                {this.state.account.map((account, index)=> (
-                                    <div key = {index}>
-                                        Hello {account.screen_name}, 
-                                        <br/>
-                                        <br/>
-                                    </div>
-                                ))}
                     
+                    <table className="center">
+                        <tbody>
+                        <tr>    
+                            <td>
+                                Screen Name:
+                            </td>
+                            
+                            <td>
+                            {this.state.account.map((account, index)=> ())}
                                 {this.state.account.map((account, index)=> (
                                     <div key = {index}>
-                                        This is account's email is:
-                                        <br/>
-                                        {account.email}.
-                                        <br/>
-                                        <br/>
-                                        <br/>
+                                        {account.screen_name}, 
+                                    
                                     </div>
                                 ))}
-
+                            </td>
+                        </tr>
+                    <tr>    
+                            <td>
+                            This account's email:
+                            </td>
+                            <td>
+                                {this.state.account.map((account, index)=> (
+                                    <div key = {index}>
+                                        {account.email}.
+                                    
+                                    </div>
+                                ))}
+                                </td>
+                                </tr>
+                                </tbody>
+                        </table>
                     
                     <Nav.Link href="/editaccount">Edit Account</Nav.Link>
                 </div>
