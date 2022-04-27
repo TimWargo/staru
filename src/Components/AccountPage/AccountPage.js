@@ -46,7 +46,7 @@ class AccountPage extends Component {
                             </td>
                             
                             <td>
-                            {this.state.account.map((account, index)=> ())}
+                           
                                 {this.state.account.map((account, index)=> (
                                     <div key = {index}>
                                         {account.screen_name}, 
