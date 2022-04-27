@@ -21,14 +21,15 @@ class LandingPage extends Component {
             this.setState({
                 games:data
             })
-            console.log(this.state.games)
+            console.log(this.state.games[2])
            
         })
     }
 
 
     renderCols() {
-            return this.state.games.map(games => {
+
+             this.state.games.map(games => {
                 return (
                     <div className="col">
                         <Link to="/about">
@@ -41,10 +42,25 @@ class LandingPage extends Component {
     
 
     render() {
+     
+
+
         return (
 
             <div>
+            <div>
+            {this.state.games.slice(0,2).map((games, index)=> (
+                                    <div key = {index}>
+                                         return <img src={(games.pic)} className="img-responsive" />
+                                         <br/>
+                                        Hello {games.title}, 
+                                        <br/>
+                                        {games.price},
+                                        
+                                    </div>
+                                ))}
 
+            </div>
 
                 {/* Website landing page banner */}
                 <div className="landingBanner">
