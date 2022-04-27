@@ -1,23 +1,56 @@
 import React, { Component } from "react";
+import axios from 'axios';
 import './main.css';
-import { PcGames, XboxGames, PlaystationGames, NintendoGames } from './Games'
-import Cols from './Cols'
-import Banner from '../../resources/Images/StarU_Banner.png' //change this to pic of actual banner when we have one
-
-
+import Banner from '../../resources/Images/StarU_Banner.png' 
+import { Link } from "react-router-dom";
 
 
 class LandingPage extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            games: []
+        }
+        console.log(this.state.games)
+    }
+
+    componentDidMount() {
+        const url ='http://localhost/staru/src/php/landingPage.php';
+        axios.get(url).then(response=>response.data)
+        .then((data)=> {
+            this.setState({
+                games:data
+            })
+            console.log(this.state.games)
+           
+        })
+    }
+
+
+    renderCols() {
+            return this.state.games.map(games => {
+                return (
+                    <div className="col">
+                        <Link to="/about">
+                            <img src={games.pic} className="gamePic" alt={games.title} />
+                        </Link>
+                    </div>
+                );
+            });
+    }
+    
+
     render() {
         return (
 
             <div>
 
-                {/* This is temporary and will be changed when we have a proper banner */}
+
                 {/* Website landing page banner */}
                 <div className="landingBanner">
                     <img src={Banner} className="bannerImg" alt="Landing page banner"></img>
                 </div>
+
 
                 <div className="body">
                     <div className="landingContent">
@@ -26,11 +59,7 @@ class LandingPage extends Component {
                         <p className="pLanding">Top PC Games</p>
                         <div className="scroll">
                             <div className="row">
-                                {PcGames.map((e) => {
-                                    return (
-                                        <Cols name={e.name} gameImg={e.gameImg} />
-                                    );
-                                })}
+                                {/* INSERT COLS OF GAME PICS HERE */}
                             </div>
                         </div>
 
@@ -38,11 +67,7 @@ class LandingPage extends Component {
                         <p className="pLanding">Top Xbox Games</p>
                         <div className="scroll">
                             <div className="row">
-                                {XboxGames.map((e) => {
-                                    return (
-                                        <Cols name={e.name} gameImg={e.gameImg} />
-                                    );
-                                })}
+                                {/* INSERT COLS OF GAME PICS HERE */}
                             </div>
                         </div>
 
@@ -50,11 +75,7 @@ class LandingPage extends Component {
                         <p className="pLanding">Top Playstation Games</p>
                         <div className="scroll">
                             <div className="row">
-                                {PlaystationGames.map((e) => {
-                                    return (
-                                        <Cols name={e.name} gameImg={e.gameImg} />
-                                    );
-                                })}
+                                {/* INSERT COLS OF GAME PICS HERE */}  
                             </div>
                         </div>
 
@@ -62,11 +83,7 @@ class LandingPage extends Component {
                         <p className="pLanding">Top Nintendo Games</p>
                         <div className="scroll">
                             <div className="row">
-                                {NintendoGames.map((e) => {
-                                    return (
-                                        <Cols name={e.name} gameImg={e.gameImg} />
-                                    );
-                                })}
+                                {/* INSERT COLS OF GAME PICS HERE */}                               
                             </div>
                         </div>
                     </div>
