@@ -3,16 +3,14 @@ header("Access-Control-Allow-Origin: http://localhost:3000");
 header("Access-Control-Allow-Methods: GET, POST, OPTIONS");
 header("Access-Control-Allow-Headers: Content-type, Authorization");
 
-$user = file_get_contents("php://input");
-if (isset($user) && !empty($user)) {
-    $request = json_decode($user);
-    $platform = $request->platform;
-    $title = $request->title;
-
-    $query = "SELECT * FROM games WHERE platform = '$platform' AND title = '$title'";
+$platform = $_GET["platform"];
+$title = $_GET["title"];
+if (isset($platform) && isset($title) && !empty($title) && !empty($platform)) {
+    $title = str_replace("_"," ",$title);
+    $query = "SELECT * FROM games WHERE lower(platform) = '$platform' AND lower(title) = '$title'";
     $result = mysqli_query($db,$query);
     if ($result->num_rows === 1) {
-        return $result;
+        echo json_encode($result->fetch_row());
     } else {
         http_response_code(401);
     }

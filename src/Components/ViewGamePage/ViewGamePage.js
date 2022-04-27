@@ -43,14 +43,21 @@ class ViewGamePage extends Component {
     initContent() {
         // call api here
         const { platform, name } = this.props.match.params;
-        const title = name.replace(/_/g," ");
-        let game = {
-            platform: platform,
-            title: title,
-        };
-        axios.get('http://localhost/staru/src/php/viewGame.php', game)
+        axios.get('http://localhost/staru/src/php/viewGame.php?platform='+platform+'&title='+name)
             .then(res => {
-                console.log(res.data);
+                const data = res.data;
+                this.setState({
+                    game: {
+                        id: Number(data[0]),
+                        title: data[1],
+                        year: Number(data[2]),
+                        price: Number(data[3]),
+                        popularity: Number(data[4]),
+                        platform: data[5],
+                        pic: data[6],
+                        description: data[7]
+                    }
+                })
             }).catch(error => {
                 console.log("error")
             });
