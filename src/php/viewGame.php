@@ -7,6 +7,7 @@ $platform = $_GET["platform"];
 $title = $_GET["title"];
 if (isset($platform) && isset($title) && !empty($title) && !empty($platform)) {
     $title = str_replace("_"," ",$title);
+    $title = str_replace("'","''",$title);
     $query = "SELECT * FROM games WHERE lower(platform) = '$platform' AND lower(title) = '$title'";
     $result = mysqli_query($db,$query);
     if ($result->num_rows === 1) {

@@ -26,24 +26,26 @@ class ViewGamePage extends Component {
             }],
             reviews: [{
                 id: null,
+                screen_name: '',
                 title: '',
                 description: '',
                 rating: null,
+                date: null,
             }],
             otherGames: [{
                 id: null,
                 title: '',
-                rating: null,
+                popularity: null,
+                platform: '',
             }]
         }
         this.renderGenres = this.renderGenres.bind(this);
         this.renderOtherGames = this.renderOtherGames.bind(this);
     }
 
-    initContent() {
-        // call api here
+    async initContent() {
         const { platform, name } = this.props.match.params;
-        axios.get('http://localhost/staru/src/php/viewGame.php?platform='+platform+'&title='+name)
+        await axios.get('http://localhost/staru/src/php/viewGame.php?platform='+platform+'&title='+name)
             .then(res => {
                 const data = res.data;
                 this.setState({
@@ -61,70 +63,62 @@ class ViewGamePage extends Component {
             }).catch(error => {
                 console.log("error")
             });
-
-        this.setState({
-            game: {
-                id: 1,
-                title: 'New Super Mario Bros.',
-                year: 2022,
-                price: 100.99,
-                popularity: 4.9,
-                platform: 'Xbox',
-                pic: '/Images/deathloop.jpg', // route to picture
-                description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque ullamcorper odio odio, in maximus magna sollicitudin non. Nunc hendrerit, sem at tempus pulvinar, dui ante aliquam ligula, nec consectetur nisl ante eget dui. Duis ut felis urna. Nulla nibh mauris, ornare in enim non, tristique egestas nunc. Nulla pellentesque ac nunc eget ultrices. Proin sodales a ligula vitae imperdiet. Aliquam iaculis lobortis libero, nec ornare velit lobortis vitae. In gravida elementum mi, at lobortis dolor semper et. Donec vel sem at nisi facilisis congue sed mattis sem. Praesent quis pharetra erat, et finibus diam. Duis posuere libero tortor, vehicula placerat tortor fringilla et. Cras dapibus tincidunt ex in volutpat. Donec id justo diam. Suspendisse imperdiet, augue eget vestibulum varius, nunc leo feugiat mauris, nec posuere purus libero nec sapien.',
-            },
-            genres: [
-                {
-                    id: 1,
-                    name: 'Action',
-                },
-                {
-                    id: 2,
-                    name: 'Horror',
-                },
-                {
-                    id: 3,
-                    name: 'Drama',
-                }
-            ],
-            reviews: [
-                {
-                    id: 1,
-                    title: 'This game was pretty good',
-                    description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque ullamcorper odio odio, in maximus magna sollicitudin non. Nunc hendrerit, sem at tempus pulvinar, dui ante aliquam ligula, nec consectetur nisl ante eget dui. Duis ut felis urna. Nulla nibh mauris, ornare in enim non, tristique egestas nunc. Nulla pellentesque ac nunc eget ultrices. Proin sodales a ligula vitae imperdiet. Aliquam iaculis lobortis libero, nec ornare velit lobortis vitae. In gravida elementum mi, at lobortis dolor semper et. Donec vel sem at nisi facilisis congue sed mattis sem. Praesent quis pharetra erat, et finibus diam. Duis posuere libero tortor, vehicula placerat tortor fringilla et. Cras dapibus tincidunt ex in volutpat. Donec id justo diam. Suspendisse imperdiet, augue eget vestibulum varius, nunc leo feugiat mauris, nec posuere purus libero nec sapien.',
-                    rating: 2,
-                },
-                {
-                    id: 2,
-                    title: 'This game was pretty good',
-                    description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque ullamcorper odio odio, in maximus magna sollicitudin non. Nunc hendrerit, sem at tempus pulvinar, dui ante aliquam ligula, nec consectetur nisl ante eget dui. Duis ut felis urna. Nulla nibh mauris, ornare in enim non, tristique egestas nunc. Nulla pellentesque ac nunc eget ultrices. Proin sodales a ligula vitae imperdiet. Aliquam iaculis lobortis libero, nec ornare velit lobortis vitae. In gravida elementum mi, at lobortis dolor semper et. Donec vel sem at nisi facilisis congue sed mattis sem. Praesent quis pharetra erat, et finibus diam. Duis posuere libero tortor, vehicula placerat tortor fringilla et. Cras dapibus tincidunt ex in volutpat. Donec id justo diam. Suspendisse imperdiet, augue eget vestibulum varius, nunc leo feugiat mauris, nec posuere purus libero nec sapien.',
-                    rating: 4,
-                }
-            ],
-            otherGames: [
-                {
-                    id: 1,
-                    title: 'Nintendo',
-                    rating: 4.5,
-                },
-                {
-                    id: 2,
-                    title: 'Nintendo',
-                    rating: 4.5,
-                },
-                {
-                    id: 3,
-                    title: 'Nintendo',
-                    rating: 4.5,
-                },
-                {
-                    id: 4,
-                    title: 'Nintendo',
-                    rating: 4.5,
-                },
-            ]
-        });
+        axios.get('http://localhost/staru/src/php/viewGameGenre.php?id='+this.state.game.id)
+            .then(res => {
+                const genres = [];
+                res.data.map(row=> {
+                    const genre = {
+                        id: row[0],
+                        name: row[1]
+                    };
+                    genres.push(genre);
+                });
+                this.setState({
+                    genres: genres,
+                })
+            }).catch(error => {
+                console.log(error.message);
+            });
+        axios.get('http://localhost/staru/src/php/viewGameReview.php?id='+this.state.game.id)
+            .then(res => {
+                const reviews = [];
+                res.data.map(row => {
+                    const review = {
+                        id: row[0],
+                        screen_name: row[1],
+                        title: row[2],
+                        description: row[3],
+                        rating: row[4],
+                        date: row[5]
+                    };
+                    reviews.push(review);
+                });
+                this.setState({
+                    reviews: reviews,
+                });
+            }).catch(error => {
+                console.log(error.message);
+            });
+        axios.get('http://localhost/staru/src/php/viewOtherGame.php?id='+this.state.game.id)
+            .then(res => {
+                const otherGames = [];
+                res.data.map(row => {
+                    const otherGame = {
+                        id: row[0],
+                        title: row[1],
+                        platform: row[2],
+                        popularity: row[3]
+                    };
+                    otherGames.push(otherGame);
+                });
+                this.setState({
+                    otherGames: otherGames,
+                });
+            }).catch(error => {
+                console.log(error.message);
+            })
     }
+
 
     async componentDidMount() {
         this.initContent();
