@@ -165,9 +165,9 @@ class ViewGamePage extends Component {
                     <div className='star-container'>
                         <MdStar className='rating-star ostar' />
                         <MdStar className='rating-star-border ostar-border' />
-                        <div className='popularity opop'>{game.rating}</div>
+                        <div className='popularity opop'>{game.popularity}</div>
                     </div>
-                    <a href='' className='flex-grow-1 px-2 ogame'>{game.title}</a>
+                    <a href={'/games/'+game.platform.toLowerCase().replace(' ','_')+'/'+game.title.toLowerCase().replaceAll(' ','_')} className='flex-grow-1 px-2 ogame'>{game.title}</a>
                 </div>
                 )
             })
@@ -180,7 +180,7 @@ class ViewGamePage extends Component {
                 <ListGroup horizontal>
                     <div style={{fontSize: '1.3vmax'}}>Also On:</div>
                     {this.state.otherPlatforms.map(otherPlatform => {
-                        return <a href={'/games/'+otherPlatform.platform.toLowerCase().replace(' ','_')+'/'+this.state.game.title.toLowerCase().replace(' ','_')} key={otherPlatform.id} style={{fontSize: '1.3vmax', marginLeft: '5px'}}>{otherPlatform.platform}</a>
+                        return <a href={'/games/'+otherPlatform.platform.toLowerCase().replace(' ','_')+'/'+this.state.game.title.toLowerCase().replaceAll(' ','_')} key={otherPlatform.id} style={{fontSize: '1.3vmax', marginLeft: '5px'}}>{otherPlatform.platform}</a>
                     })}
                 </ListGroup>
             )
@@ -229,8 +229,10 @@ class ViewGamePage extends Component {
                                 return <Review
                                     id={review.id}
                                     title={review.title}
+                                    screen_name={review.screen_name}
                                     rating={review.rating}
                                     description={review.description}
+                                    date={review.date}
                                 />
                             })}
                         </div>

@@ -53,7 +53,7 @@ class Review extends Component {
                     <Card.Title style={{fontSize: '1.2vmax'}}>{this.props.title}</Card.Title>
                     <Row style={{justifyContent: 'center', alignItems: 'center'}}>
                         <Col className="col-auto">{this.renderStars()}</Col>
-                        <Col className='flex-grow-1' style={{fontSize: '0.9vmax'}}>Account Name</Col>
+                        <Col className='flex-grow-1' style={{fontSize: '0.9vmax'}}>{this.props.screen_name}</Col>
                         <Col className='col-auto'  style={{fontSize: '0.9vmax'}}>#___ ago</Col>
                     </Row>
                     <div className='mb-3' />
