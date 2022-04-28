@@ -4,6 +4,7 @@ import { ListGroup, Button } from 'react-bootstrap';
 import Review from './Review';
 import { MdStar } from 'react-icons/md';
 import { withRouter } from '../withRouter';
+import axios from 'axios';
 
 class ViewGamePage extends Component {
     constructor(props) {
@@ -25,96 +26,124 @@ class ViewGamePage extends Component {
             }],
             reviews: [{
                 id: null,
+                screen_name: '',
                 title: '',
                 description: '',
                 rating: null,
+                date: null,
             }],
             otherGames: [{
                 id: null,
                 title: '',
-                rating: null,
+                popularity: null,
+                platform: '',
+            }],
+            otherPlatforms: [{
+                id: null,
+                platform: '',
             }]
         }
         this.renderGenres = this.renderGenres.bind(this);
         this.renderOtherGames = this.renderOtherGames.bind(this);
+        this.renderOtherPlatforms = this.renderOtherPlatforms.bind(this);
     }
 
-    initContent() {
-        // call api here
+    async initContent() {
         const { platform, name } = this.props.match.params;
-        const title = name.replace(/_/g," ");
-        let game = {
-            platform: platform,
-            title: title,
-        };
-
-
-
-
-
-        this.setState({
-            game: {
-                id: 1,
-                title: 'New Super Mario Bros.',
-                year: 2022,
-                price: 100.99,
-                popularity: 4.9,
-                platform: 'Xbox',
-                pic: '/Images/deathloop.jpg', // route to picture
-                description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque ullamcorper odio odio, in maximus magna sollicitudin non. Nunc hendrerit, sem at tempus pulvinar, dui ante aliquam ligula, nec consectetur nisl ante eget dui. Duis ut felis urna. Nulla nibh mauris, ornare in enim non, tristique egestas nunc. Nulla pellentesque ac nunc eget ultrices. Proin sodales a ligula vitae imperdiet. Aliquam iaculis lobortis libero, nec ornare velit lobortis vitae. In gravida elementum mi, at lobortis dolor semper et. Donec vel sem at nisi facilisis congue sed mattis sem. Praesent quis pharetra erat, et finibus diam. Duis posuere libero tortor, vehicula placerat tortor fringilla et. Cras dapibus tincidunt ex in volutpat. Donec id justo diam. Suspendisse imperdiet, augue eget vestibulum varius, nunc leo feugiat mauris, nec posuere purus libero nec sapien.',
-            },
-            genres: [
-                {
-                    id: 1,
-                    name: 'Action',
-                },
-                {
-                    id: 2,
-                    name: 'Horror',
-                },
-                {
-                    id: 3,
-                    name: 'Drama',
+        await axios.get('http://localhost/staru/src/php/viewGame.php?platform='+platform+'&title='+name)
+            .then(res => {
+                const data = res.data;
+                this.setState({
+                    game: {
+                        id: Number(data[0]),
+                        title: data[1],
+                        year: Number(data[2]),
+                        price: Number(data[3]),
+                        popularity: Number(data[4]),
+                        platform: data[5],
+                        pic: data[6],
+                        description: data[7]
+                    }
+                })
+            }).catch(error => {
+                console.log("error")
+            });
+        axios.get('http://localhost/staru/src/php/viewGameGenre.php?id='+this.state.game.id)
+            .then(res => {
+                const genres = [];
+                res.data.map(row=> {
+                    const genre = {
+                        id: Number(row[0]),
+                        name: row[1]
+                    };
+                    genres.push(genre);
+                });
+                this.setState({
+                    genres: genres,
+                })
+            }).catch(error => {
+                console.log(error.message);
+            });
+        axios.get('http://localhost/staru/src/php/viewGameReview.php?id='+this.state.game.id)
+            .then(res => {
+                const reviews = [];
+                res.data.map(row => {
+                    const review = {
+                        id: Number(row[0]),
+                        screen_name: row[1],
+                        title: row[2],
+                        description: row[3],
+                        rating: Number(row[4]),
+                        date: Date(row[5])
+                    };
+                    reviews.push(review);
+                });
+                this.setState({
+                    reviews: reviews,
+                });
+            }).catch(error => {
+                console.log(error.message);
+            });
+        axios.get('http://localhost/staru/src/php/viewOtherGame.php?id='+this.state.game.id)
+            .then(res => {
+                const otherGames = [];
+                res.data.map(row => {
+                    const otherGame = {
+                        id: Number(row[0]),
+                        title: row[1],
+                        platform: row[2],
+                        popularity: Number(row[3])
+                    };
+                    otherGames.push(otherGame);
+                });
+                this.setState({
+                    otherGames: otherGames,
+                });
+            }).catch(error => {
+                console.log(error.message);
+            });
+        axios.get('http://localhost/staru/src/php/viewOtherPlatform.php?title='+this.state.game.title+'&platform='+this.state.game.platform)
+            .then(res => {
+                const otherPlatforms = [];
+                res.data.map(row => {
+                    const otherPlatform = {
+                        id: Number(row[0]),
+                        platform: row[1]
+                    };
+                    otherPlatforms.push(otherPlatform);
+                });
+                if (otherPlatforms.length == 0) {
+                    this.setState({
+                        otherPlatforms: null
+                    })
+                } else {
+                    this.setState({
+                        otherPlatforms: otherPlatforms,
+                    });
                 }
-            ],
-            reviews: [
-                {
-                    id: 1,
-                    title: 'This game was pretty good',
-                    description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque ullamcorper odio odio, in maximus magna sollicitudin non. Nunc hendrerit, sem at tempus pulvinar, dui ante aliquam ligula, nec consectetur nisl ante eget dui. Duis ut felis urna. Nulla nibh mauris, ornare in enim non, tristique egestas nunc. Nulla pellentesque ac nunc eget ultrices. Proin sodales a ligula vitae imperdiet. Aliquam iaculis lobortis libero, nec ornare velit lobortis vitae. In gravida elementum mi, at lobortis dolor semper et. Donec vel sem at nisi facilisis congue sed mattis sem. Praesent quis pharetra erat, et finibus diam. Duis posuere libero tortor, vehicula placerat tortor fringilla et. Cras dapibus tincidunt ex in volutpat. Donec id justo diam. Suspendisse imperdiet, augue eget vestibulum varius, nunc leo feugiat mauris, nec posuere purus libero nec sapien.',
-                    rating: 2,
-                },
-                {
-                    id: 2,
-                    title: 'This game was pretty good',
-                    description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque ullamcorper odio odio, in maximus magna sollicitudin non. Nunc hendrerit, sem at tempus pulvinar, dui ante aliquam ligula, nec consectetur nisl ante eget dui. Duis ut felis urna. Nulla nibh mauris, ornare in enim non, tristique egestas nunc. Nulla pellentesque ac nunc eget ultrices. Proin sodales a ligula vitae imperdiet. Aliquam iaculis lobortis libero, nec ornare velit lobortis vitae. In gravida elementum mi, at lobortis dolor semper et. Donec vel sem at nisi facilisis congue sed mattis sem. Praesent quis pharetra erat, et finibus diam. Duis posuere libero tortor, vehicula placerat tortor fringilla et. Cras dapibus tincidunt ex in volutpat. Donec id justo diam. Suspendisse imperdiet, augue eget vestibulum varius, nunc leo feugiat mauris, nec posuere purus libero nec sapien.',
-                    rating: 4,
-                }
-            ],
-            otherGames: [
-                {
-                    id: 1,
-                    title: 'Nintendo',
-                    rating: 4.5,
-                },
-                {
-                    id: 2,
-                    title: 'Nintendo',
-                    rating: 4.5,
-                },
-                {
-                    id: 3,
-                    title: 'Nintendo',
-                    rating: 4.5,
-                },
-                {
-                    id: 4,
-                    title: 'Nintendo',
-                    rating: 4.5,
-                },
-            ]
-        });
+            });
     }
+
 
     async componentDidMount() {
         this.initContent();
@@ -142,6 +171,19 @@ class ViewGamePage extends Component {
                 </div>
                 )
             })
+        }
+    }
+
+    renderOtherPlatforms() {
+        if (this.state.otherPlatforms) {
+            return (
+                <ListGroup horizontal>
+                    <div style={{fontSize: '1.3vmax'}}>Also On:</div>
+                    {this.state.otherPlatforms.map(otherPlatform => {
+                        return <a href={'/games/'+otherPlatform.platform.toLowerCase().replace(' ','_')+'/'+this.state.game.title.toLowerCase().replace(' ','_')} key={otherPlatform.id} style={{fontSize: '1.3vmax', marginLeft: '5px'}}>{otherPlatform.platform}</a>
+                    })}
+                </ListGroup>
+            )
         }
     }
 
@@ -173,7 +215,7 @@ class ViewGamePage extends Component {
                             </ListGroup>
                             <p className='description'>{this.state.game.description}</p>
                             <div className='price'>Cost on {this.state.game.platform}: ${this.state.game.price}</div>
-                            <div style={{fontSize: '1.3vmax'}}>Also On: Playstation, Nintendo Switch, PC</div>
+                            {this.renderOtherPlatforms()}
                         </div>
                     </div>
                     <div className='my-4' />
