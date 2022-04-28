@@ -66,7 +66,7 @@ class LandingPage extends Component {
                                 
                             {this.state.games.slice(0, 10).map((games) => (
                                 <div className="col">
-                                    <Link to={"/" + games.platform + "/" + games.title}>
+                                    <Link to={"/" + games.platform.toLowerCase().replace(" ","_") + "/" + games.title.replaceAll(" ", "_")}>
                                         <img src={games.pic} className="gamePic" alt={games.title} />
                                     </Link>
                                 </div>
@@ -82,7 +82,7 @@ class LandingPage extends Component {
                                 {/* INSERT COLS OF GAME PICS HERE */}
                                 {this.state.games.slice(20, 30).map((games) => (
                                 <div className="col">
-                                    <Link to={"/" + games.platform + "/" + games.title}>
+                                    <Link to={"/" + games.platform.toLowerCase().replace(" ","_") + "/" + games.title.replaceAll(" ", "_")}>
                                         <img src={games.pic} className="gamePic" alt={games.title} />
                                     </Link>
                                 </div>
@@ -97,7 +97,7 @@ class LandingPage extends Component {
                                 {/* INSERT COLS OF GAME PICS HERE */}
                                 {this.state.games.slice(10, 20).map((games) => (
                                 <div className="col">
-                                    <Link to={"/" + games.platform + "/" + games.title}>
+                                    <Link to={"/" + games.platform.toLowerCase().replace(" ","_") + "/" + games.title.replaceAll(" ", "_")}>
                                         <img src={games.pic} className="gamePic" alt={games.title} />
                                     </Link>
                                 </div>
@@ -112,7 +112,7 @@ class LandingPage extends Component {
                                 {/* INSERT COLS OF GAME PICS HERE */}
                                 {this.state.games.slice(30, 40).map((games) => (
                                 <div className="col">
-                                    <Link to={"/" + games.platform + "/" + games.title}>
+                                    <Link to={"/" + games.platform.toLowerCase().replace(" ","_") + "/" + games.title.replaceAll(" ", "_")}>
                                         <img src={games.pic} className="gamePic" alt={games.title} />
                                     </Link>
                                 </div>
