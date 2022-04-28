@@ -71,7 +71,7 @@ class ViewGamePage extends Component {
         axios.get('http://localhost/staru/src/php/viewGameGenre.php?id='+this.state.game.id)
             .then(res => {
                 const genres = [];
-                res.data.map(row=> {
+                res.data.forEach(row=> {
                     const genre = {
                         id: Number(row[0]),
                         name: row[1]
@@ -87,7 +87,7 @@ class ViewGamePage extends Component {
         axios.get('http://localhost/staru/src/php/viewGameReview.php?id='+this.state.game.id)
             .then(res => {
                 const reviews = [];
-                res.data.map(row => {
+                res.data.forEach(row => {
                     const review = {
                         id: Number(row[0]),
                         screen_name: row[1],
@@ -107,7 +107,7 @@ class ViewGamePage extends Component {
         axios.get('http://localhost/staru/src/php/viewOtherGame.php?id='+this.state.game.id)
             .then(res => {
                 const otherGames = [];
-                res.data.map(row => {
+                res.data.forEach(row => {
                     const otherGame = {
                         id: Number(row[0]),
                         title: row[1],
@@ -124,23 +124,25 @@ class ViewGamePage extends Component {
             });
         axios.get('http://localhost/staru/src/php/viewOtherPlatform.php?title='+this.state.game.title+'&platform='+this.state.game.platform)
             .then(res => {
-                const otherPlatforms = [];
-                res.data.map(row => {
-                    const otherPlatform = {
-                        id: Number(row[0]),
-                        platform: row[1]
-                    };
-                    otherPlatforms.push(otherPlatform);
-                });
-                if (otherPlatforms.length == 0) {
+                if (res.data === '') {
                     this.setState({
                         otherPlatforms: null
-                    })
+                    });
                 } else {
+                    const otherPlatforms = [];
+                    res.data.forEach(row => {
+                        const otherPlatform = {
+                            id: Number(row[0]),
+                            platform: row[1]
+                        };
+                        otherPlatforms.push(otherPlatform);
+                    });
                     this.setState({
                         otherPlatforms: otherPlatforms,
                     });
                 }
+            }).catch(error => {
+                console.log(error.message);
             });
     }
 
@@ -214,7 +216,7 @@ class ViewGamePage extends Component {
                                 {this.renderGenres()}
                             </ListGroup>
                             <p className='description'>{this.state.game.description}</p>
-                            <div className='price'>Cost on {this.state.game.platform}: ${this.state.game.price}</div>
+                            <div className='price'>Cost on {this.state.game.platform}: {(this.state.game.price === 0) ? "Free" : "$"+this.state.game.price}</div>
                             {this.renderOtherPlatforms()}
                         </div>
                     </div>
