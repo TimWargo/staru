@@ -37,10 +37,15 @@ class ViewGamePage extends Component {
                 title: '',
                 popularity: null,
                 platform: '',
+            }],
+            otherPlatforms: [{
+                id: null,
+                platform: '',
             }]
         }
         this.renderGenres = this.renderGenres.bind(this);
         this.renderOtherGames = this.renderOtherGames.bind(this);
+        this.renderOtherPlatforms = this.renderOtherPlatforms.bind(this);
     }
 
     async initContent() {
@@ -68,7 +73,7 @@ class ViewGamePage extends Component {
                 const genres = [];
                 res.data.map(row=> {
                     const genre = {
-                        id: row[0],
+                        id: Number(row[0]),
                         name: row[1]
                     };
                     genres.push(genre);
@@ -84,12 +89,12 @@ class ViewGamePage extends Component {
                 const reviews = [];
                 res.data.map(row => {
                     const review = {
-                        id: row[0],
+                        id: Number(row[0]),
                         screen_name: row[1],
                         title: row[2],
                         description: row[3],
-                        rating: row[4],
-                        date: row[5]
+                        rating: Number(row[4]),
+                        date: Date(row[5])
                     };
                     reviews.push(review);
                 });
@@ -104,10 +109,10 @@ class ViewGamePage extends Component {
                 const otherGames = [];
                 res.data.map(row => {
                     const otherGame = {
-                        id: row[0],
+                        id: Number(row[0]),
                         title: row[1],
                         platform: row[2],
-                        popularity: row[3]
+                        popularity: Number(row[3])
                     };
                     otherGames.push(otherGame);
                 });
@@ -116,7 +121,27 @@ class ViewGamePage extends Component {
                 });
             }).catch(error => {
                 console.log(error.message);
-            })
+            });
+        axios.get('http://localhost/staru/src/php/viewOtherPlatform.php?title='+this.state.game.title+'&platform='+this.state.game.platform)
+            .then(res => {
+                const otherPlatforms = [];
+                res.data.map(row => {
+                    const otherPlatform = {
+                        id: Number(row[0]),
+                        platform: row[1]
+                    };
+                    otherPlatforms.push(otherPlatform);
+                });
+                if (otherPlatforms.length == 0) {
+                    this.setState({
+                        otherPlatforms: null
+                    })
+                } else {
+                    this.setState({
+                        otherPlatforms: otherPlatforms,
+                    });
+                }
+            });
     }
 
 
@@ -149,6 +174,19 @@ class ViewGamePage extends Component {
         }
     }
 
+    renderOtherPlatforms() {
+        if (this.state.otherPlatforms) {
+            return (
+                <ListGroup horizontal>
+                    <div style={{fontSize: '1.3vmax'}}>Also On:</div>
+                    {this.state.otherPlatforms.map(otherPlatform => {
+                        return <a href={'/games/'+otherPlatform.platform.toLowerCase().replace(' ','_')+'/'+this.state.game.title.toLowerCase().replace(' ','_')} key={otherPlatform.id} style={{fontSize: '1.3vmax', marginLeft: '5px'}}>{otherPlatform.platform}</a>
+                    })}
+                </ListGroup>
+            )
+        }
+    }
+
     render() {
         return (
             <>
@@ -177,7 +215,7 @@ class ViewGamePage extends Component {
                             </ListGroup>
                             <p className='description'>{this.state.game.description}</p>
                             <div className='price'>Cost on {this.state.game.platform}: ${this.state.game.price}</div>
-                            <div style={{fontSize: '1.3vmax'}}>Also On: Playstation, Nintendo Switch, PC</div>
+                            {this.renderOtherPlatforms()}
                         </div>
                     </div>
                     <div className='my-4' />
