@@ -30,4 +30,3 @@ if($method == 'GET'){
     }if(!$id) echo ']';
 }
 
-$db->close();
