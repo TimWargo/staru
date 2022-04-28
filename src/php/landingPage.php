@@ -7,33 +7,13 @@ $id = null;
 //$user = file_get_contents("php://input");
   //  $request = json_decode($user);
 
-    $queryPC = "SELECT * FROM games where platform = 'PC'";
-    /*$queryXbox = "SELECT pic FROM games where platform = 'Xbox'";
-    $queryPlaystation = "SELECT pic FROM games where platform = 'PlayStation'";
-    $queryNintendo = "SELECT pic FROM games where platform = 'Nintendo Switch'";
-*/
-    $resultPC = mysqli_query($db,$queryPC);
-  /*  $resultXbox = mysqli_query($db,$queryXbox);
-    $resultPlaystation = mysqli_query($db,$queryPlaystation);
-    $resultNintendo = mysqli_query($db,$queryNintendo);
-*/
+    $query = "SELECT * FROM games";
+    
+    $result = mysqli_query($db,$query);
+  
     if(!$id) echo '[';
-    for($i=0; $i<mysqli_num_rows($resultPC); $i++){
-        echo($i>0?',':'').json_encode(mysqli_fetch_object($resultPC));
+    for($i=0; $i<mysqli_num_rows($result); $i++){
+        echo($i>0?',':'').json_encode(mysqli_fetch_object($result));
     }
     if(!$id) echo ']';
-    /*echo "-----------------------------------------------------------------------------------------------------------";
-    for($i=0; $i<mysqli_num_rows($resultXbox); $i++){
-        echo($i>0?',':'').json_encode(mysqli_fetch_object($resultXbox));
-    }
-    echo "-----------------------------------------------------------------------------------------------------------";
-    for($i=0; $i<mysqli_num_rows($resultPlaystation); $i++){
-        echo($i>0?',':'').json_encode(mysqli_fetch_object($resultPlaystation));
-    }
-    echo "-----------------------------------------------------------------------------------------------------------";
-    for($i=0; $i<mysqli_num_rows($resultNintendo); $i++){
-        echo($i>0?',':'').json_encode(mysqli_fetch_object($resultNintendo));
-    }*/
-
-
 ?>
