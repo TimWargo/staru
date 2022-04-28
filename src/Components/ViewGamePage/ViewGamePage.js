@@ -46,6 +46,7 @@ class ViewGamePage extends Component {
         this.renderGenres = this.renderGenres.bind(this);
         this.renderOtherGames = this.renderOtherGames.bind(this);
         this.renderOtherPlatforms = this.renderOtherPlatforms.bind(this);
+        this.handleClick = this.handleClick.bind(this);
     }
 
     async initContent() {
@@ -151,6 +152,10 @@ class ViewGamePage extends Component {
         this.initContent();
     }
 
+    handleClick() {
+        this.props.navigate('/games/create/'+this.state.game.id);
+    }
+
     renderGenres() {
         if (this.state.genres) {
             return this.state.genres.map(genre => {
@@ -225,7 +230,7 @@ class ViewGamePage extends Component {
                         <div className='reviews'>
                             <div className='d-flex p-2 align-items-center' style={{backgroundColor: '#0C1821'}}>
                                 <h2 className='flex-grow-1 rtitle'>View Reviews</h2>
-                                <Button variant='primary' className='buttModal reviewButt'>Leave a review!</Button>
+                                <Button variant='primary' className='buttModal reviewButt' onClick={() => this.handleClick()}>Leave a review!</Button>
                             </div>
                             {this.state.reviews.map(review => {
                                 return <Review
