@@ -36,13 +36,7 @@ class App extends Component {
           <Route path="/" exact element={<LandingPage />} />
           <Route path="/about" element={<AboutUsPage />} />
           <Route path="/search" element={<SearchPage />} />
-<<<<<<< HEAD
-          <Route path="/create" element={<CreateReviewPage />} />
-          <Route path="/games" element={<ViewGamePage />} />
-=======
           <Route path="/games/:platform/:name" element={<ViewGamePage />} />
-
->>>>>>> d80241f029712643f5b1475f13d46c51b4598ddd
           {/* Protected Routes */}
           <Route path="/games/create/:id" element={<CreateReviewPage />} />
           <Route path="/account" element={<AccountPage />} />
