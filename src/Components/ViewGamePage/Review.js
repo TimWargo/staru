@@ -1,22 +1,23 @@
 import React, { Component } from 'react';
 import { Card, Col, Container, Row } from 'react-bootstrap';
 import { MdStar, MdStarOutline } from 'react-icons/md';
-import { BsChevronUp } from 'react-icons/bs';
+import { BsChevronUp, BsChevronDown } from 'react-icons/bs';
 
 class Review extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            showButton: false,
-            isExpanded: true,
+            isExpanded: false,
             height: '3.3em',
         }
         this.renderStars = this.renderStars.bind(this);
         this.renderDescription = this.renderDescription.bind(this);
     }
 
-    countLines = () => {
-
+    handleClick = () => {
+        this.setState({
+            isExpanded: !this.state.isExpanded,
+        })
     }
 
     renderStars = () => {
@@ -40,9 +41,23 @@ class Review extends Component {
 
     renderDescription = () => {
         if (!this.state.isExpanded) {
-            return <div style={{height: this.state.height}}>{this.props.description}</div>
+            return (
+                <>
+                    <div style={{height: this.state.height, overflow: 'hidden', fontSize: '0.8vmax'}} id='content'>{this.props.description}</div>
+                    <div className='align-self-end mx-2'>
+                        <BsChevronDown onClick={() => this.handleClick()}/>
+                    </div>
+                </>
+            )
         } else {
-            return <Card.Text style={{fontSize: '0.8vmax'}}>{this.props.description}</Card.Text>
+            return (
+                <>
+                    <Card.Text style={{fontSize: '0.8vmax'}} id='content'>{this.props.description}</Card.Text>
+                    <div className='align-self-end mx-2'>
+                        <BsChevronUp onClick={() => this.handleClick()}/>
+                    </div>
+                </>
+            )
         }
     }
 
@@ -58,9 +73,6 @@ class Review extends Component {
                     </Row>
                     <div className='mb-3' />
                     {this.renderDescription()}
-                    <div className='align-self-end'>
-                        <BsChevronUp />
-                    </div>
                 </Card>
             </Container>
         )
