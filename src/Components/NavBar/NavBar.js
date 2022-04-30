@@ -6,13 +6,19 @@ import LoginButton from "../LoginButton/LoginButton";
 class NavBar extends Component {
     constructor(props) {
         super(props);
-        const isLoggedIn = (sessionStorage.getItem('session')) ? true : false;
         this.state = {
-            isLoggedIn: isLoggedIn,
+            isLoggedIn: false,
         }
         this.onLoginChange = this.onLoginChange.bind(this);
         this.renderAuth = this.renderAuth.bind(this);
         this.logout = this.logout.bind(this);
+    }
+
+    componentDidMount() {
+        const isLoggedIn = (sessionStorage.getItem('session')) ? true : false;
+        this.setState({
+            isLoggedIn: isLoggedIn,
+        })
     }
 
     onLoginChange(e) {
