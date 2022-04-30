@@ -26,17 +26,17 @@ class SearchPage extends Component {
     handleSubmit = e => {
         e.preventDefault();
 console.log(this.state.input)
-const url = 'http://localhost/staru/src/php/SearchPage.php?title=+input';
+const url = 'http://localhost/staru/src/php/SearchPage.php?title='+this.state.input;
 axios.get(url).then(response => response.data)
     .then((data) => {
         this.setState({
             games: data
         })
-        console.log(this.state.games[2])
+        console.log(this.state.games)
     })
     }
 
-    componentDidMount() {
+    /*componentDidMount() {
         const url = 'http://localhost/staru/src/php/SearchPage.php';
         axios.get(url).then(response => response.data)
             .then((data) => {
@@ -45,7 +45,7 @@ axios.get(url).then(response => response.data)
                 })
                 console.log(this.state.games[2])
             })
-    }
+    }*/
 
     renderCols() {
         this.state.games.map(games => {
@@ -104,10 +104,13 @@ axios.get(url).then(response => response.data)
                     <p className="pSearch">Most Reviewed Games</p>
                         <div className="search-scroll">
                             <div className="row">                               
-                            {this.state.games.slice(1,3).map((games) => (
+                            {this.state.games.map((games) => (
                                 <div className="col">
                                     <Link to={"/" + games.platform + "/" + games.title}>
                                         <img src={games.pic} className="gamePic" alt={games.title} />
+                                        <div>
+                                        {games.platform}
+                                        </div>
                                     </Link>
                                 </div>
                             ))}
