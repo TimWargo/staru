@@ -101,10 +101,25 @@ axios.get(url).then(response => response.data)
                     </Button>
                     </div>
                     <div className="grid-container">
-                    {/*<p className="pSearch">Most Reviewed Games</p>*/}
+                    <p className="pSearch"><u>Highest Rated Games</u></p>
                         <div className="search-scroll">
                             <div className="row">                               
-                            {this.state.games.slice(0,8).map((games) => (
+                            {this.state.games.slice(0,4).map((games) => (
+                                <div className="col">
+                                    <Link to={"/" + games.platform + "/" + games.title}>
+                                        <img src={games.pic} className="gamePic" alt={games.title} />
+                                        <div>
+                                        {games.platform}
+                                        </div>
+                                    </Link>
+                                </div>
+                            ))}
+
+                            </div>
+                        </div>
+                        <div className="search-scroll">
+                            <div className="row">                               
+                            {this.state.games.slice(5,9).map((games) => (
                                 <div className="col">
                                     <Link to={"/" + games.platform + "/" + games.title}>
                                         <img src={games.pic} className="gamePic" alt={games.title} />

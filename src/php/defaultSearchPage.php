@@ -6,7 +6,7 @@ header("Access-Control-Allow-Headers: Content-type, Authorization");
 $id = null;
 $title= null;
 $platform = null;
-    $query = "SELECT AVG(rating), games.title FROM reviews,games WHERE games.id = reviews.game_id GROUP BY game_id ORDER BY AVG(rating) DESC;";
+    $query = "SELECT AVG(rating), games.platform,games.pic, games.title FROM reviews,games WHERE games.id = reviews.game_id GROUP BY game_id ORDER BY AVG(rating) DESC;";
   
     $result = mysqli_query($db,$query);
   

@@ -124,8 +124,8 @@ h2 {
 }
 
 .grid-container {
-    margin-left: -10px;
-    margin-top: 80px;
+    text-align:left;
+    margin-top: 65px;
 }
 .grid-container .row {
     margin-top: 25px;
@@ -138,6 +138,9 @@ h2 {
 
 .grid-container a:hover {
     color:#28B094;
+}
+.grid-container .pSearch {
+    margin-left: -50px;
 }
 
 .col-lg-2 image{
@@ -162,7 +165,7 @@ margin-right: 25px;
 }
 
 .search-scroll {
-    margin-top : 25px;
+    margin-top : 20px;
 }
 
 .search-scroll > .row {
