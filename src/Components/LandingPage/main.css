@@ -71,6 +71,7 @@ button:hover {
     background-color: #28B094 !important;
     border: #28B094 !important;
     color: #0C1821 !important;
+    float: left;
 }
 
 .pBody {
