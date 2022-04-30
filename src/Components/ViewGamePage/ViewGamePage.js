@@ -51,7 +51,8 @@ class ViewGamePage extends Component {
 
     async initContent() {
         const { platform, name } = this.props.match.params;
-        await axios.get('http://localhost/staru/src/php/viewGame.php?platform='+platform+'&title='+name)
+        let title = name.replaceAll("+","%2B");
+        await axios.get('http://localhost/staru/src/php/viewGame.php?platform='+platform+'&title='+title)
             .then(res => {
                 const data = res.data;
                 this.setState({
@@ -67,7 +68,7 @@ class ViewGamePage extends Component {
                     }
                 })
             }).catch(error => {
-                console.log("error")
+                console.log(error.message)
             });
         axios.get('http://localhost/staru/src/php/viewGameGenre.php?id='+this.state.game.id)
             .then(res => {
@@ -95,7 +96,7 @@ class ViewGamePage extends Component {
                         title: row[2],
                         description: row[3],
                         rating: Number(row[4]),
-                        date: Date(row[5])
+                        date: new Date(Date.parse(row[5]))
                     };
                     reviews.push(review);
                 });
@@ -105,7 +106,7 @@ class ViewGamePage extends Component {
             }).catch(error => {
                 console.log(error.message);
             });
-        axios.get('http://localhost/staru/src/php/viewOtherGame.php?id='+this.state.game.id)
+        axios.get('http://localhost/staru/src/php/viewOtherGame.php?id='+this.state.game.id+'&title='+this.state.game.title.replaceAll("+","%2B"))
             .then(res => {
                 const otherGames = [];
                 res.data.forEach(row => {
@@ -123,7 +124,7 @@ class ViewGamePage extends Component {
             }).catch(error => {
                 console.log(error.message);
             });
-        axios.get('http://localhost/staru/src/php/viewOtherPlatform.php?title='+this.state.game.title+'&platform='+this.state.game.platform)
+        axios.get('http://localhost/staru/src/php/viewOtherPlatform.php?title='+this.state.game.title.replaceAll("+","%2B")+'&platform='+this.state.game.platform)
             .then(res => {
                 if (res.data === '') {
                     this.setState({
@@ -187,7 +188,7 @@ class ViewGamePage extends Component {
                 <ListGroup horizontal>
                     <div style={{fontSize: '1.3vmax'}}>Also On:</div>
                     {this.state.otherPlatforms.map(otherPlatform => {
-                        return <a href={'/games/'+otherPlatform.platform.toLowerCase().replace(' ','_')+'/'+this.state.game.title.toLowerCase().replaceAll(' ','_')} key={otherPlatform.id} style={{fontSize: '1.3vmax', marginLeft: '5px'}}>{otherPlatform.platform}</a>
+                        return <a className='ogame' href={'/games/'+otherPlatform.platform.toLowerCase().replace(' ','_')+'/'+this.state.game.title.toLowerCase().replaceAll(' ','_')} key={otherPlatform.id} style={{fontSize: '1.3vmax', marginLeft: '5px'}}>{otherPlatform.platform}</a>
                     })}
                 </ListGroup>
             )
@@ -208,10 +209,12 @@ class ViewGamePage extends Component {
                         <div className='flex-grow-1' style={{paddingLeft: '2vmax'}}>
                             <div className='d-flex'>
                                 <h1 className='title'>{this.state.game.title}</h1>
-                                <h2 className='platform'>({this.state.game.platform})</h2>
                             </div>
-
-                            <h3 className='year'>{this.state.game.year}</h3>
+                            <div className='d-flex' style={{height: 'fit-content'}}>
+                                <h2 className='m-0 platform'>{this.state.game.platform}</h2>
+                                <h3 className='year mx-5 my-0'>{this.state.game.year}</h3>
+                                
+                            </div>
                         </div>
                     </div>
                     <div className='d-flex align-items-start'>
