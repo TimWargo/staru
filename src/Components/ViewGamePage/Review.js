@@ -2,16 +2,25 @@ import React, { Component } from 'react';
 import { Card, Col, Container, Row } from 'react-bootstrap';
 import { MdStar, MdStarOutline } from 'react-icons/md';
 import { BsChevronUp, BsChevronDown } from 'react-icons/bs';
+import { withRouter } from '../withRouter';
 
 class Review extends Component {
     constructor(props) {
         super(props);
-        this.state = {
-            isExpanded: false,
-            height: '3.3em',
-        }
+        // this.state = {
+        //     isExpanded: false,
+        //     height: '3.3em',
+        // }
+        this.dinput = React.createRef();
         this.renderStars = this.renderStars.bind(this);
         this.renderDescription = this.renderDescription.bind(this);
+    }
+
+    componentDidMount() {
+        console.log(this.dinput.current.clientHeight + ' ' + this.props.id)
+        if (this.dinput.current.clientHeight > 70) {
+            console.log(true)
+        }
     }
 
     handleClick = () => {
@@ -72,11 +81,12 @@ class Review extends Component {
                         <Col className='col-auto'  style={{fontSize: '0.9vmax'}}>#___ ago</Col>
                     </Row>
                     <div className='mb-3' />
-                    {this.renderDescription()}
+                    {/* {this.renderDescription()} */}
+                    <Card.Text style={{fontSize: '0.8vmax'}} ref={this.dinput}>{this.props.description}</Card.Text>
                 </Card>
             </Container>
         )
     }
 }
  
-export default Review;
+export default withRouter(Review);
