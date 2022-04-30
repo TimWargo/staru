@@ -1,35 +1,79 @@
 import React, { Component } from "react";
 import './SearchPage.css';
 import { Button } from "react-bootstrap";
-import { Link } from "react";
-import HaloInfinite from '../Images/HaloInfinite.jpg'
-import Witcher from '../Images/Witcher.jpg'
-import EldenRing from '../Images/EldenRing.jpg'
-import GodOfWar from '../Images/GodOfWar.jpg'
-
-
-
+import { Link } from "react-router-dom";
+import {useState} from 'react';
+import axios from 'axios';
 
 
 class SearchPage extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            keyword: '',
+            input: '',
+            showXbox: false,
+            games: []
         }
+        console.log(this.state.games)
+    }
+
+    handleAdd = e => {
+        this.setState({
+            input : e.target.value
+        })
+    }
+
+    handleSubmit = e => {
+        e.preventDefault();
+console.log(this.state.input)
+const url = 'http://localhost/staru/src/php/SearchPage.php?title=+input';
+axios.get(url).then(response => response.data)
+    .then((data) => {
+        this.setState({
+            games: data
+        })
+        console.log(this.state.games[2])
+    })
+    }
+
+    componentDidMount() {
+        const url = 'http://localhost/staru/src/php/SearchPage.php';
+        axios.get(url).then(response => response.data)
+            .then((data) => {
+                this.setState({
+                    games: data
+                })
+                console.log(this.state.games[2])
+            })
+    }
+
+    renderCols() {
+        this.state.games.map(games => {
+            return (
+                <div className="col">
+                    <Link to="/about">
+                        <img src={games.pic} className="gamePic" alt={games.title} />
+                    </Link>
+                </div>
+            );
+        });
     }
 
     render() { 
         return (
             <div className="body">
                 <div className="searchBar">
-                    <input type='text' className='input' placeholder='Search by Title' />
-                    <Button onClick= {this.onSubmit} variant="primary" size="lg" className="custom">
+                    <input 
+                    onChange={this.handleAdd}
+                    type='text' 
+                    className='search-title'
+                    placeholder='Search by Title' />
+                    <Button onClick= {this.handleSubmit} variant="primary" size="lg" className="custom">
                     Search
                     </Button> 
                 </div>
                 <div className= "console-filter">
-                    <Button onClick= {this.onSubmit} variant="primary" size="lg" className="custom">
+                    <Button onClick = {this.onSubmit } variant="primary" size="lg" className="custom">
                     Xbox
                     </Button>
                     <Button onClick= {this.onSubmit} variant="primary" size="lg" className="custom">
@@ -57,37 +101,20 @@ class SearchPage extends Component {
                     </Button>
                     </div>
                     <div className="grid-container">
-                    <div class="row gx-4">
-    <div className="col">
-      <div className="p-3">
-          <div className="game-card">
-        <a href="/games/:platform/:name"> <img src={HaloInfinite} alt="Example1" width="250" height="340" margin-right="10"></img></a>
-        </div>
-        </div>
-    </div>
-    <div class="col">
-      <div class="p-3">
-      <div className="game-card">
-      <a href="/games/:platform/:name"> <img src={GodOfWar} alt="Example1" width="250" height="340" margin-right="10"></img></a>
-      </div>
-      </div>
-    </div>
-    <div class="col">
-      <div class="p-3">
-      <div className="game-card">
-      <a href="/games/:platform/:name"> <img src={Witcher} alt="Example1" width="250" height="340" margin-right="10"></img></a>
-      </div>
-          </div>
-    </div>
-    <div class="col">
-    <div class="p-3">
-    <div className="game-card">
-    <a href="/games/:platform/:name"> <img src={EldenRing} alt="Example1" width="250" height="340" margin-right="10"></img></a>
-    </div>
-        </div>
-    </div>
-  </div>
-</div>
+                    <p className="pSearch">Most Reviewed Games</p>
+                        <div className="search-scroll">
+                            <div className="row">                               
+                            {this.state.games.slice(1,3).map((games) => (
+                                <div className="col">
+                                    <Link to={"/" + games.platform + "/" + games.title}>
+                                        <img src={games.pic} className="gamePic" alt={games.title} />
+                                    </Link>
+                                </div>
+                            ))}
+
+                            </div>
+                        </div>
+            </div>
             </div>
         );
     }

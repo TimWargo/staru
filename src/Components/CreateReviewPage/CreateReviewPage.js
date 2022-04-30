@@ -14,10 +14,30 @@ class CreateReviewPage extends Component {
         this.state = {
             title: '',
             subject: '',
-
-
+            review: ''
         }
     }
+
+    validate() {
+        let titleError = "";
+        let subjectError = "";
+        let reviewError = "";
+        let isValid = true;
+        return isValid;
+    }
+
+  
+    onSubmit(e) {
+        if (this.validate()) {
+          e.preventDefault();
+          const rev = {
+            title: this.state.title,
+            subject: this.state.subject,
+            review: this.state.review,
+          };
+        }
+      }
+
 
     render() { 
         return (           
