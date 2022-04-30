@@ -36,16 +36,16 @@ axios.get(url).then(response => response.data)
     })
     }
 
-    /*componentDidMount() {
-        const url = 'http://localhost/staru/src/php/SearchPage.php';
+    componentDidMount() {
+        const url = 'http://localhost/staru/src/php/defaultSearchPage.php';
         axios.get(url).then(response => response.data)
             .then((data) => {
                 this.setState({
                     games: data
                 })
-                console.log(this.state.games[2])
+                console.log(this.state.games)
             })
-    }*/
+    }
 
     renderCols() {
         this.state.games.map(games => {
@@ -101,10 +101,10 @@ axios.get(url).then(response => response.data)
                     </Button>
                     </div>
                     <div className="grid-container">
-                    <p className="pSearch">Most Reviewed Games</p>
+                    {/*<p className="pSearch">Most Reviewed Games</p>*/}
                         <div className="search-scroll">
                             <div className="row">                               
-                            {this.state.games.map((games) => (
+                            {this.state.games.slice(0,8).map((games) => (
                                 <div className="col">
                                     <Link to={"/" + games.platform + "/" + games.title}>
                                         <img src={games.pic} className="gamePic" alt={games.title} />
