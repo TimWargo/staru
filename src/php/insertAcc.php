@@ -18,19 +18,30 @@ if(isset($postdata) && !empty($postdata)) {
     $screenname = $request->screenName;
     $hash = password_hash($request->password, PASSWORD_DEFAULT);
     $vkey = md5(time().$screenname);
+    $headers  = "From:staru4300@gmail.com\r\n"; 
+    $headers .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n"; 
     $sql = "INSERT INTO accounts (email, screen_name, password, vkey, valid) VALUES ('$email', '$screenname', '$hash', '$vkey', 'false')";
-    $msg.="Validate your email to Join us.\r\n";
-    $msg.="(☞ﾟヮﾟ)☞      ";    
-    $msg.=  "http://localhost:3000/verify?vkey=$vkey";
-    $msg.="     (-■_■)";
-    $headers = "From: staru4300@gmail.com \r\n";
-    $headers.="MIME-Version: 1.0" . "\r\n";
-    $headers.="Content-Type: text/plain; charset=UTF-8" ."\r\n";
-     
+    $message  = "<html><body>";
+    $message .= "<p>Hello,</p>
+    <p>Validate your email to Join us.</p>
+    <p>Click the button below to validate email.</p>";
+    $message .= "<br>";
+    $message .= "</br>";
+    $message .= "</br>";
+    $message .= "<a href=http://localhost:3000/verify?vkey=$vkey><button style='color:white;background-color:red;text-align:center;padding: 10px;
+    border-radius: 25px;'> validate</button></a>";
+    $message .= "</br>";
+    $message .= "<p>If the button above doesn't work try the link below.</p>";
+    $message .= "<a href=http://localhost:3000/verify?vkey=$vkey> validate</a>";
+    $message .= "<p>best,</p>
+    <p>StarU team</p>";
+    
+
+   
     $check=mail(
         $email, 
         "confirm account",
-        $msg, 
+        $message, 
         $headers);
     if (!$check){
         error_log("rip it doesn't work", 0);
