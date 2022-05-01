@@ -4,16 +4,10 @@ header("Access-Control-Allow-Origin: http://localhost:3000");
 header("Access-Control-Allow-Methods: GET, POST, OPTIONS");
 header("Access-Control-Allow-Headers: Content-type, Authorization");
 $id = null;
-$title= $_GET['title'];
+$title= null;
 $platform = null;
 
-    if($title!=null){
-        $query = "SELECT * FROM games where title = '$title'";
-    }
-    if ($title==null){
-        $query = "SELECT AVG(rating), games.platform,games.pic, games.title FROM reviews,games WHERE games.id = reviews.game_id GROUP BY game_id ORDER BY AVG(rating) DESC;";
-    }  
-    
+    $query = "SELECT AVG(rating), games.platform,games.pic, games.title FROM reviews,games WHERE games.platform= 'PC' AND games.id = reviews.game_id GROUP BY game_id ORDER BY AVG(rating) DESC;";
     $result = mysqli_query($db,$query);
   
     if(!$id) echo '[';

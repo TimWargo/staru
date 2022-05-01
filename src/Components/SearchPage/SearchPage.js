@@ -11,7 +11,7 @@ class SearchPage extends Component {
         super(props);
         this.state = {
             input: '',
-            showXbox: false,
+            filter: '',
             games: []
         }
         console.log(this.state.games)
@@ -28,6 +28,66 @@ class SearchPage extends Component {
 console.log(this.state.input)
 const url = 'http://localhost/staru/src/php/SearchPage.php?title='+this.state.input;
 axios.get(url).then(response => response.data)
+    .then((data) => {
+        this.setState({
+            games: data
+        })
+        console.log(this.state.games)
+    })
+    }
+
+    xboxHandleFilter = e => {
+        this.setState({
+            filter : 'Xbox'
+        })
+        console.log(this.state.filter)
+        const url = 'http://localhost/staru/src/php/xboxFilterSearch.php';
+        axios.get(url).then(response => response.data)
+    .then((data) => {
+        this.setState({
+            games: data
+        })
+        console.log(this.state.games)
+    })
+    }
+
+    psHandleFilter = e => {
+        this.setState({
+            filter : 'Playstation'
+        })
+        console.log(this.state.filter)
+        const url = 'http://localhost/staru/src/php/psFilterSearch.php';
+        axios.get(url).then(response => response.data)
+    .then((data) => {
+        this.setState({
+            games: data
+        })
+        console.log(this.state.games)
+    })
+    }
+
+    nHandleFilter = e => {
+        this.setState({
+            filter : 'Nintendo Switch'
+        })
+        console.log(this.state.filter)
+        const url = 'http://localhost/staru/src/php/nFilterSearch.php';
+        axios.get(url).then(response => response.data)
+    .then((data) => {
+        this.setState({
+            games: data
+        })
+        console.log(this.state.games)
+    })
+    }
+
+    pcHandleFilter = e => {
+        this.setState({
+            filter : 'PC'
+        })
+        console.log(this.state.filter)
+        const url = 'http://localhost/staru/src/php/pcFilterSearch.php';
+        axios.get(url).then(response => response.data)
     .then((data) => {
         this.setState({
             games: data
@@ -73,33 +133,19 @@ axios.get(url).then(response => response.data)
                     </Button> 
                 </div>
                 <div className= "console-filter">
-                    <Button onClick = {this.onSubmit } variant="primary" size="lg" className="custom">
+                    <Button onClick = { this.xboxHandleFilter } variant="primary" size="lg" className="custom">
                     Xbox
                     </Button>
-                    <Button onClick= {this.onSubmit} variant="primary" size="lg" className="custom">
+                    <Button onClick= { this.psHandleFilter } variant="primary" size="lg" className="custom">
                     Playstation
                     </Button>
-                    <Button onClick= {this.onSubmit} variant="primary" size="lg" className="custom">
+                    <Button onClick= { this.nHandleFilter } variant="primary" size="lg" className="custom">
                     Nintendo
                     </Button>
-                    <Button onClick= {this.onSubmit} variant="primary" size="lg" className="custom">
+                    <Button onClick= { this.pcHandleFilter } variant="primary" size="lg" className="custom">
                     PC
                     </Button>
                 </div>
-                <div className= "console-filter">
-                <Button onClick= {this.onSubmit} variant="primary" size="lg" className="custom">
-                    Role-Play
-                    </Button>
-                    <Button onClick= {this.onSubmit} variant="primary" size="lg" className="custom">
-                    MMO
-                    </Button>
-                    <Button onClick= {this.onSubmit} variant="primary" size="lg" className="custom">
-                    Shooter
-                    </Button>
-                    <Button onClick= {this.onSubmit} variant="primary" size="lg" className="custom">
-                    Adventure
-                    </Button>
-                    </div>
                     <div className="grid-container">
                     <p className="pSearch"><u>Highest Rated Games</u></p>
                         <div className="search-scroll">
@@ -109,7 +155,7 @@ axios.get(url).then(response => response.data)
                                     <Link to={"/" + games.platform + "/" + games.title}>
                                         <img src={games.pic} className="gamePic" alt={games.title} />
                                         <div>
-                                        {games.platform}
+                                        {games.title}
                                         </div>
                                     </Link>
                                 </div>
@@ -124,12 +170,25 @@ axios.get(url).then(response => response.data)
                                     <Link to={"/" + games.platform + "/" + games.title}>
                                         <img src={games.pic} className="gamePic" alt={games.title} />
                                         <div>
-                                        {games.platform}
+                                        {games.title}
                                         </div>
                                     </Link>
                                 </div>
                             ))}
-
+                            </div>
+                        </div>
+                        <div className="search-scroll">
+                            <div className="row">                               
+                            {this.state.games.slice(10,14).map((games) => (
+                                <div className="col">
+                                    <Link to={"/" + games.platform + "/" + games.title}>
+                                        <img src={games.pic} className="gamePic" alt={games.title} />
+                                        <div>
+                                        {games.title}
+                                        </div>
+                                    </Link>
+                                </div>
+                            ))}
                             </div>
                         </div>
             </div>
