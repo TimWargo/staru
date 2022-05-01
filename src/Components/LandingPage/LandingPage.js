@@ -21,8 +21,6 @@ class LandingPage extends Component {
                 this.setState({
                     games: data
                 })
-                console.log(this.state.games[2])
-
             })
     }
 

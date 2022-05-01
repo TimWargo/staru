@@ -19,7 +19,7 @@ class AboutUsPage extends Component {
                                 <div className="aboutContainer">
                                     <h2>Jack Gross</h2>
                                     <p className="aboutTitle">Floating Wizzard</p>
-                                    <p className="cardText">"Sheeeeesh"</p>
+                                    <p className="cardText">Suwanee, GA</p>
                                 </div>
                             </div>
                         </div>
@@ -31,7 +31,7 @@ class AboutUsPage extends Component {
                                 <div className="aboutContainer">
                                     <h2>Abhishek Murugappan</h2>
                                     <p className="aboutTitle">Backend Bodybuilder</p>
-                                    <p className="cardText">"Actually I wouldn't mind ms paint."</p>
+                                    <p className="cardText">[INPUT HOMETOWN HERE]</p>
                                 </div>
                             </div>
                         </div>
@@ -43,7 +43,7 @@ class AboutUsPage extends Component {
                                 <div className="aboutContainer">
                                     <h2>Brent Voyles</h2>
                                     <p className="aboutTitle">Frontend FlavorTown</p>
-                                    <p className="cardText">[INPUT TEXT HERE]</p>
+                                    <p className="cardText">Duluth, GA</p>
                                 </div>
                             </div>
                         </div>
@@ -55,7 +55,7 @@ class AboutUsPage extends Component {
                                 <div className="aboutContainer">
                                     <h2>Tim Wargo</h2>
                                     <p className="aboutTitle">Database Guru</p>
-                                    <p className="cardText">[INPUT TEXT HERE]</p>
+                                    <p className="cardText">Lawrenceville, GA</p>
                                 </div>
                             </div>
                         </div>
