@@ -6,40 +6,43 @@
     margin-bottom: 0px;
     padding-bottom: 0px;
     font-size: 60px;
-    font-size: 4vmax;
+    font-size: 3.25vmax;
+    text-align: start;
+    width: fit-content;
 }
 
 .platform {
     height: fit-content;
-    padding-top: 1%;
+    min-width: max-content;
+    margin-left: 10px !important;
     font-size: 30px;
-    font-size: 2vmax;
+    font-size: 1.7vmax;
 }
 
 .year {
-    padding-left: 10px;
+    height: fit-content;
     text-align: left;
-    margin-bottom: 2px;
-    margin-top: -5px;
     font-size: 30px;
     font-size: 1.7vmax;
+    margin-bottom: 0px;
 }
 
 .rating-star {
     position: absolute;
     z-index: 2;
-    font-size: 7vmax;
+    font-size: 6vmax;
     color: yellow;
 }
 
 .rating-star-border {
-    font-size: 7.5vmax;
+    font-size: 6.5vmax;
     color: black;
 }
 
 .image {
-    width: 30vmax;
+    min-width: 500px;
     object-fit: contain;
+    margin-right: 5px;
 }
 
 .reviews {
@@ -52,13 +55,14 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    height: fit-content;
 }
 
 .popularity {
     position: absolute;
     z-index: 2;
     font-size: 28px;
-    font-size: 2vmax;
+    font-size: 1.7vmax;
 }
 
 .description {

@@ -111,6 +111,7 @@ class LoginForm extends Component {
           sessionStorage.setItem("session", this.state.email);
           this.onCloseModal();
           this.props.navigate('/');
+          this.props.navigate(0);
         })
         .catch(error => {
           credentialsError = "Invalid Login Credentials. Try again.";
