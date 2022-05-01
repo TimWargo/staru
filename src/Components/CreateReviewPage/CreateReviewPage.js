@@ -16,11 +16,9 @@ class CreateReviewPage extends Component {
             title: '',
             description: '',
             email: '',
-            gameId: '',
-            rating: ''
+            gameId: ''
         }
         this.onSubmit = this.onSubmit.bind(this);
-        this.handleInputChange = this.handleInputChange.bind(this);
     }
 
     onSubmit(e) {
@@ -33,7 +31,6 @@ class CreateReviewPage extends Component {
             gameId: pathArray[3]
           };
           console.log(postdata)
-          console.log(StarRating.rating)
           axios.post('http://localhost/staru/src/php/CreateReview.php', postdata)
       }
 
