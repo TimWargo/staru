@@ -117,17 +117,18 @@ class EditAccountPage extends Component {
                             <span className="text-danger">{this.state.screen_nameError}</span>
 
                         </div>
-                        <p>
-                           
-                        </p>
                         <div className="text-center">
-                            <Button onClick={this.handleSubmit} variant="primary" size="md" className="buttPass">
+                            <Button onClick={this.handleSubmit} variant="primary" size="md" className="buttAcc">
                                 Submit
                             </Button>
+                            <br/>
+                            <br/>
                         </div>
                     </form>
-                    <Nav.Link href="/account">Account</Nav.Link>
-                    <Nav.Link href="/forgot">Change Password</Nav.Link>
+                    <div>
+                    <Nav.Link href="/account" className="ogame">Account</Nav.Link>
+                    <Nav.Link href="/forgot" className="ogame">Change Password</Nav.Link>
+                    </div>
                 </div>
           
             </div>

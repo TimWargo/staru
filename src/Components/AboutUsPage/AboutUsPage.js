@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import JackPic from '../../resources/Images/Jack.jpg'
 import AbhiPic from '../../resources/Images/Abhi.jpg'
-import BrentPic from '../../resources/Images/Brent.jpg'
+import BrentPic from '../../resources/Images/BrentAlt.jpg'
 import TimPic from '../../resources/Images/Tim.jpg'
 
 class AboutUsPage extends Component {

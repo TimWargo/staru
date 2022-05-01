@@ -32,7 +32,7 @@
 }
 
 .navbar {
-    background-color: #0C1821;    
+    background-color: black;  
 }
 
 .link {
@@ -72,6 +72,13 @@ button:hover {
     border: #28B094 !important;
     color: #0C1821 !important;
     float: left;
+}
+
+.buttAcc {
+    background-color: #28B094 !important;
+    border: #28B094 !important;
+    color: #0C1821 !important;
+    float: center;
 }
 
 .pBody {

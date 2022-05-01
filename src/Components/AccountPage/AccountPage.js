@@ -59,7 +59,7 @@ class AccountPage extends Component {
                                 ))}
 
                     
-                    <Nav.Link href="/editaccount">Edit Account</Nav.Link>
+                    <Nav.Link href="/editaccount" className='ogame'>Edit Account</Nav.Link>
                 </div>
                 
              </div>
