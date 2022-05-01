@@ -11,11 +11,27 @@ class SearchPage extends Component {
         super(props);
         this.state = {
             input: '',
+            display: 'Highest Rated Games',
             filter: '',
             games: []
         }
         console.log(this.state.games)
     }
+
+    validate() {
+        let inputError = "";
+        let isValid = true;
+        if (!this.state.input) {
+            inputError = "Game name is required for a search..";
+            isValid = true;
+          }else {
+            inputError = "";
+            this.setState({ inputError });
+          }
+          return isValid;
+    }
+
+
 
     handleAdd = e => {
         this.setState({
@@ -24,28 +40,32 @@ class SearchPage extends Component {
     }
 
     handleSubmit = e => {
+        if (this.validate()) {
         e.preventDefault();
 console.log(this.state.input)
 const url = 'http://localhost/staru/src/php/SearchPage.php?title='+this.state.input;
 axios.get(url).then(response => response.data)
     .then((data) => {
         this.setState({
-            games: data
+            games: data,
+            display: 'Search Results',
         })
         console.log(this.state.games)
     })
+}
     }
 
     xboxHandleFilter = e => {
         this.setState({
-            filter : 'Xbox'
+            filter : 'Xbox',
         })
         console.log(this.state.filter)
         const url = 'http://localhost/staru/src/php/xboxFilterSearch.php';
         axios.get(url).then(response => response.data)
     .then((data) => {
         this.setState({
-            games: data
+            games: data,
+            display: 'Highest Rated Games on Xbox',
         })
         console.log(this.state.games)
     })
@@ -60,7 +80,8 @@ axios.get(url).then(response => response.data)
         axios.get(url).then(response => response.data)
     .then((data) => {
         this.setState({
-            games: data
+            games: data,
+            display: 'Highest Rated Games on PlayStation'
         })
         console.log(this.state.games)
     })
@@ -75,7 +96,8 @@ axios.get(url).then(response => response.data)
         axios.get(url).then(response => response.data)
     .then((data) => {
         this.setState({
-            games: data
+            games: data,
+            display: 'Highest Rated Games on Nintendo'
         })
         console.log(this.state.games)
     })
@@ -90,7 +112,8 @@ axios.get(url).then(response => response.data)
         axios.get(url).then(response => response.data)
     .then((data) => {
         this.setState({
-            games: data
+            games: data,
+            display: 'Highest Rated Games on PC'
         })
         console.log(this.state.games)
     })
@@ -128,6 +151,7 @@ axios.get(url).then(response => response.data)
                     type='text' 
                     className='search-title'
                     placeholder='Search by Title' />
+                    <span className="text-danger">{this.state.inputError}</span>
                     <Button onClick= {this.handleSubmit} variant="primary" size="lg" className="custom">
                     Search
                     </Button> 
@@ -147,17 +171,19 @@ axios.get(url).then(response => response.data)
                     </Button>
                 </div>
                     <div className="grid-container">
-                    <p className="pSearch"><u>Highest Rated Games</u></p>
+                    <p className="pSearch"><u>{this.state.display}</u></p>
                         <div className="search-scroll">
                             <div className="row">                               
                             {this.state.games.slice(0,4).map((games) => (
-                                <div className="col">
-                                    <Link to={"/" + games.platform + "/" + games.title}>
-                                        <img src={games.pic} className="gamePic" alt={games.title} />
-                                        <div>
+                                 <div className="col">
+                                 <Link to={"/games/" + games.platform.toLowerCase().replace(" ","_") + "/" + games.title.toLowerCase().replaceAll(" ", "_")}>
+                                     <img src={games.pic} className="gamePic" alt={games.title} />
+                                     <div>                                  
                                         {games.title}
+                                        <br></br>
+                                        {games.platform}
                                         </div>
-                                    </Link>
+                                 </Link>
                                 </div>
                             ))}
 
@@ -167,12 +193,14 @@ axios.get(url).then(response => response.data)
                             <div className="row">                               
                             {this.state.games.slice(5,9).map((games) => (
                                 <div className="col">
-                                    <Link to={"/" + games.platform + "/" + games.title}>
-                                        <img src={games.pic} className="gamePic" alt={games.title} />
-                                        <div>
-                                        {games.title}
+                                    <Link to={"/games/" + games.platform.toLowerCase().replace(" ","_") + "/" + games.title.toLowerCase().replaceAll(" ", "_")}>
+                                     <img src={games.pic} className="gamePic" alt={games.title} />
+                                     <div>
+                                     {games.title}
+                                        <br></br>
+                                        {games.platform}
                                         </div>
-                                    </Link>
+                                 </Link>
                                 </div>
                             ))}
                             </div>
@@ -181,12 +209,14 @@ axios.get(url).then(response => response.data)
                             <div className="row">                               
                             {this.state.games.slice(10,14).map((games) => (
                                 <div className="col">
-                                    <Link to={"/" + games.platform + "/" + games.title}>
-                                        <img src={games.pic} className="gamePic" alt={games.title} />
-                                        <div>
-                                        {games.title}
+                                    <Link to={"/games/" + games.platform.toLowerCase().replace(" ","_") + "/" + games.title.toLowerCase().replaceAll(" ", "_")}>
+                                     <img src={games.pic} className="gamePic" alt={games.title} />
+                                     <div>
+                                     {games.title}
+                                        <br></br>
+                                        {games.platform}
                                         </div>
-                                    </Link>
+                                 </Link>
                                 </div>
                             ))}
                             </div>
