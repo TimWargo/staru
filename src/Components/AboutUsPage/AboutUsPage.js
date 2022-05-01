@@ -31,7 +31,7 @@ class AboutUsPage extends Component {
                                 <div className="aboutContainer">
                                     <h2>Abhishek Murugappan</h2>
                                     <p className="aboutTitle">Backend Bodybuilder</p>
-                                    <p className="cardText">[INPUT HOMETOWN HERE]</p>
+                                    <p className="cardText">Marietta, GA</p>
                                 </div>
                             </div>
                         </div>
