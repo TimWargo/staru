@@ -29,7 +29,7 @@ text-align: left;
     border-bottom-left-radius: 10px !important;
     border-top-right-radius: 10px !important;
     border-bottom-right-radius: 10px !important;
-    background-color: #282c34;
+    background-color: #0C1821;
     color: #28B094;
     border-color: black;
 }
@@ -48,7 +48,7 @@ text-align: left;
     border-bottom-right-radius: 10px !important;
     margin-left: 15px;
     margin-bottom: 2px;
-    background-color: #282c34;;
+    background-color: #0C1821;
     border-color: black;
     color: #28B094;
 }
@@ -56,6 +56,21 @@ text-align: left;
 .searchBar Button:hover {
     background: #28B094;
     border-color: black;
+    box-shadow: none;
+}
+
+.searchBar Button:active {
+    outline: none;
+    box-shadow: none;
+}
+
+
+.searchBar Button:focus {
+    background-color: #0C1821;
+    border-color: black;
+    color: #28B094;
+    outline: none;
+    box-shadow: none;
 }
 
 h2 {
@@ -79,7 +94,7 @@ h2 {
     border-bottom-right-radius: 10px !important;
     margin-left: 30px;
     margin-right: 30px;
-    background-color: #282c34;
+    background-color: #0C1821;
     border-color: black;
 }
 
@@ -89,13 +104,28 @@ h2 {
     color: #0C1821;
 } 
 
+.console-filter Button:active {
+    background-color: grey;
+    border-color: black;
+    color: #0C1821;
+} 
+
+.console-filter Button:focus {
+    background-color: #28B094;
+    border-color:#0C1821;
+    outline: none;
+    color: #0C1821;
+    box-shadow: none;
+}
+
+
 .custom {
     width: 128px !important;
 }
 
 .grid-container {
-    margin-left: -10px;
-    margin-top: 30px;
+    text-align:left;
+    margin-top: 65px;
 }
 .grid-container .row {
     margin-top: 25px;
@@ -109,7 +139,43 @@ h2 {
 .grid-container a:hover {
     color:#28B094;
 }
+.grid-container .pSearch {
+    margin-left: -50px;
+}
 
 .col-lg-2 image{
 margin-right: 25px;
 }
+
+.game-card {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    margin: 8px;
+    border: 2px solid #0C1821 !important;
+    width: 253px;
+    height: 400px;
+    background-color: #0C1821;
+}
+
+.pSearch {
+    color: #0C1821;
+    font-weight: bold;
+    font-size: 35px;
+    margin-bottom: 25px;
+    margin-left: 25px;
+}
+
+.search-scroll {
+    margin-top : 20px;
+}
+
+.search-scroll > .row {
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+}
+
+.search-scroll > .row > .col {
+    padding: 10px;
+    
+}
+

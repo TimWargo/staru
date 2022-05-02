@@ -15,6 +15,7 @@ import ViewGamePage from './Components/ViewGamePage/ViewGamePage';
 import CreateReviewPage from './Components/CreateReviewPage/CreateReviewPage';
 import PageNotFound from './Components/PageNotFound/PageNotFound';
 
+
 class App extends Component {
   constructor(props) {
     super(props);
@@ -37,7 +38,6 @@ class App extends Component {
           <Route path="/about" element={<AboutUsPage />} />
           <Route path="/search" element={<SearchPage />} />
           <Route path="/games/:platform/:name" element={<ViewGamePage />} />
-
           {/* Protected Routes */}
           <Route path="/games/create/:id" element={<CreateReviewPage />} />
           <Route path="/account" element={<AccountPage />} />
