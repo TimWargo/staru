@@ -18,8 +18,17 @@ class CreateReviewPage extends Component {
             email: '',
             gameId: ''
         }
+
         this.onSubmit = this.onSubmit.bind(this);
+        this.handleInputChange = this.handleInputChange.bind(this);
     }
+
+    handleInputChange = (event) => {
+        const { value, name } = event.target;
+        this.setState({
+          [name]: value
+        });
+      }
 
     onSubmit(e) {
           e.preventDefault();
