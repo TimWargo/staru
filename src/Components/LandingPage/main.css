@@ -175,11 +175,22 @@ button:hover {
 
 a {
     text-decoration: none !important;
+    color: #28B094;
+}
+
+a:hover {
+    text-decoration: none !important;
+    color: #8B1E3F !important;
 }
 
 .searchPlatform {
     color: #8B1E3F;
     
+}
+
+.reviewInput {
+    justify-content: left;
+
 }
 
 /* Uncomment this shit if you want to hide the scrollbar */

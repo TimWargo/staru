@@ -157,7 +157,7 @@ class SearchPage extends Component {
                         value={this.state.input}
                         placeholder='Search by Title'
                     />
-                    <Button onClick={this.handleSubmit} variant="primary" size="lg" className="custom">
+                    <Button onClick={this.handleSubmit} variant="primary" size="lg" className="custom" type="submit">
                         Search
                     </Button>
                     <div>
