@@ -92,7 +92,7 @@ class ForgotPasswordPage extends Component {
                                     <span className="text-danger">{this.state.emailError}</span>
                                     <span className="text-danger">{this.state.emailFormatError}</span>
                                 </div>
-                                <Button onClick={this.handleSubmit} variant="primary" size="md" className="buttPass">
+                                <Button onClick={this.handleSubmit} variant="primary" size="md" className="buttPass" type="submit">
                                     Submit
                                 </Button>
                             </div>

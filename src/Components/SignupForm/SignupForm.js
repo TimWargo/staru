@@ -230,7 +230,7 @@ class SignupForm extends Component {
                 <span className="text-danger">{this.state.pwFormatError}</span>
               </div>
               <div className="d-grid gap-2">
-                <Button onClick={this.onSubmit} variant="primary" size="lg" className="buttModal">
+                <Button onClick={this.onSubmit} variant="primary" size="lg" className="buttModal" type="submit">
                   Submit
                 </Button>
                 <div className="bad-email">
