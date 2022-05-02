@@ -16,6 +16,11 @@ if(isset($postdata) && !empty($postdata)) {
         http_response_code(409);
     }
     $screenname = $request->screenName;
+    $sql = "SELECT * FROM accounts WHERE screen_name='$screenname'";
+    $result = mysqli_query($db, $sql);
+    if ($result->num_rows === 1) {
+        http_response_code(412);
+    }
     $hash = password_hash($request->password, PASSWORD_DEFAULT);
     $vkey = md5(time().$screenname);
     $sql = "INSERT INTO accounts (email, screen_name, password, vkey, valid) VALUES ('$email', '$screenname', '$hash', '$vkey', 'false')";
@@ -43,6 +48,6 @@ if(isset($postdata) && !empty($postdata)) {
             $headers);
         http_response_code(201);
     } else {
-        http_response_code(422);
+        http_response_code(400);
     }
 }

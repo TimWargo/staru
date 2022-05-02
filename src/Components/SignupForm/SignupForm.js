@@ -154,10 +154,10 @@ class SignupForm extends Component {
           this.openLogin();
         })
         .catch(error => {
-          if (error.responsestatus === 409) {
+          if (error.response.status === 409) {
             emailTakenError = "This email is already in use by another StarU account.";
             this.setState({ emailTakenError });
-          } else if (error.responsestatus === 412) {
+          } else if (error.response.status === 412) {
             nameTakenError = "This username has already been taken.";
             this.setState({ nameTakenError });
           } else {
