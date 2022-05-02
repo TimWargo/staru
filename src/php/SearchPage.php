@@ -8,7 +8,7 @@ $title= $_GET['title'];
 $platform = null;
 
     if($title!=null){
-        $query = "SELECT * FROM games where title = '$title'";
+        $query = "SELECT * FROM games where title LIKE '%$title%'";
     }
     if ($title==null){
         $query = "SELECT AVG(rating), games.platform,games.pic, games.title FROM reviews,games WHERE games.id = reviews.game_id GROUP BY game_id ORDER BY AVG(rating) DESC;";
