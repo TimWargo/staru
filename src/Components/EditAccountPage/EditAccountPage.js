@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 import axios from "axios";
 import React, { Component } from "react";
 import { Button } from "react-bootstrap";
@@ -8,7 +9,10 @@ class EditAccountPage extends Component {
         super(props);
         this.state = {
             screen_name: "",
-            account:[]
+            account:[],
+            screen_nameError:"",
+            changescreen_nameError:"",
+            successmessage:""
         };
         this.handleInputChange = this.handleInputChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -51,10 +55,10 @@ class EditAccountPage extends Component {
 
 
     handleSubmit(event) {
+        let changescreen_nameError="";
+        let successmessage="";
         event.preventDefault();
-        const queryParams = new URLSearchParams(window.location.search);
-        const email1 = queryParams.get('email');
-        console.log(email1);
+
         // temporary
         const user = {
             email: sessionStorage.session,
@@ -66,13 +70,26 @@ class EditAccountPage extends Component {
             console.log(user);
             //submit new password to DB
             axios.post('http://localhost/staru/src/php/editAccount.php', user)
-                .then(res => {
-                    console.log(res.data);
-                    //window.location.href = window.location.href.substring(0, window.location.href.indexOf('/') + 1);
-                })
-                .catch(error => {
-                    console.log(error.response);
-                });
+            .then(res => {
+                console.log(res);
+                if(res.status==201){
+                    console.log("success");
+                    successmessage="screen name has been changed";
+                    this.setState ({successmessage});
+                    changescreen_nameError="";
+                    this.setState ({ changescreen_nameError });
+
+                }
+                //window.location.href = window.location.href.substring(0, window.location.href.indexOf('/') + 1);
+            })
+            .catch(error => {
+                changescreen_nameError="username already exists.Try again.";
+                this.setState ({ changescreen_nameError });
+                console.log(changescreen_nameError);
+                successmessage="";
+                    this.setState ({successmessage});
+            });
+
         }
 
         
@@ -91,10 +108,13 @@ class EditAccountPage extends Component {
                             <br />
                             
                             <label>
-
-                                Screen Name
-                                <br />
-                                
+                            <table className="center">
+                            <tbody>
+                                <tr>
+                                    <td>
+                                    Screen Name:
+                                    </td>
+                                    <td>
                                 {this.state.account.map((account, index)=> (
                                     <div key = {index}>
                                         <input
@@ -108,13 +128,18 @@ class EditAccountPage extends Component {
                                 />
                                     </div>
                                 ))}
-                                <br />                           
+                                </td>
+                                  </tr>
+                                  </tbody>
+                                </table>                         
 
 
                             </label>
 
                             <br />
+                            <span className="text-success">{this.state.successmessage}</span>
                             <span className="text-danger">{this.state.screen_nameError}</span>
+                            <span className="text-danger">{this.state.changescreen_nameError}</span>
 
                         </div>
                         <div className="text-center">
