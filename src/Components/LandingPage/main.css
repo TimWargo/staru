@@ -168,6 +168,11 @@ button:hover {
     color: #8B1E3F;
 }
 
+.aboutBio {
+    margin-left: 350px;
+    margin-right: 350px;
+}
+
 /* Uncomment this shit if you want to hide the scrollbar */
 /* ::-webkit-scrollbar {
     /* width: 0;  /* Remove scrollbar space */
