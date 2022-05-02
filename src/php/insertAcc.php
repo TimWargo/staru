@@ -39,7 +39,7 @@ if(isset($postdata) && !empty($postdata)) {
         $message .= "</br>";
         $message .= "<p>If the button above doesn't work try the link below.</p>";
         $message .= "<a href=http://localhost:3000/verify?vkey=$vkey> validate</a>";
-        $message .= "<p>best,</p>
+        $message .= "<p>Best,</p>
         <p>StarU team</p>";
         $check=mail(
             $email, 

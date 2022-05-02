@@ -24,7 +24,7 @@ if (isset($user) && !empty($user)) {
             <p>There was a change to your username.
             If this was not initiated by you please go into your account and check your screen name.</p>";
             $message .= "</br>";
-            $message .= "<p>best,</p>
+            $message .= "<p>Best,</p>
             <p>StarU team</p>";
             $check = mail($email, "Your screen Name has been changed", $message, $headers);
             http_response_code(201);

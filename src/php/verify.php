@@ -23,7 +23,7 @@ if (isset($user) && !empty($user)) { // problem with if statement
             $message .= "<p>Welcome to StarU,</p>
             <p>We hope you'll enjoy your stay and share your opinion with our community of Gamers.
             </p>
-            <p>best,</p>
+            <p>Best,</p>
             <p>StarU team</p>";
             mail($email, "StarU - Welcome",$message, $headers);
         }

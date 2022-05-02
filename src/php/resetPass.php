@@ -19,7 +19,7 @@ if (isset($user) && !empty($user)) {
             $message .= "<p>Your Password has been changed.</p>
             <p>If this was not your doing simply go to our website and change your password.
             </p>
-            <p>best,</p>
+            <p>Best,</p>
             <p>StarU team</p>";
             $check=mail($email,"reset password", $message, $headers );
             http_response_code(201);
