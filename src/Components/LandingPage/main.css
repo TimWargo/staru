@@ -173,6 +173,15 @@ button:hover {
     margin-right: 350px;
 }
 
+a {
+    text-decoration: none !important;
+}
+
+.searchPlatform {
+    color: #8B1E3F;
+    
+}
+
 /* Uncomment this shit if you want to hide the scrollbar */
 /* ::-webkit-scrollbar {
     /* width: 0;  /* Remove scrollbar space */

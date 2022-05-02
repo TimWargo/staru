@@ -71,7 +71,7 @@ class AccountPage extends Component {
                                 </tbody>
                         </table>
                     
-                    <Nav.Link href="/editaccount">Edit Account</Nav.Link>
+                    <a href="/editaccount" className="ogame">Edit Account</a>
                 </div>
 
             </div>

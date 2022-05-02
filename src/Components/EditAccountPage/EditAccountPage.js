@@ -113,6 +113,7 @@ class EditAccountPage extends Component {
                                 <tr>
                                     <td>
                                     Screen Name:
+                                    
                                     </td>
                                     <td>
                                 {this.state.account.map((account, index)=> (
@@ -151,8 +152,7 @@ class EditAccountPage extends Component {
                         </div>
                     </form>
                     <div>
-                    <Nav.Link href="/account" className="ogame">Account</Nav.Link>
-                    <Nav.Link href="/forgot" className="ogame">Change Password</Nav.Link>
+                    <a href="/forgot" className="ogame">Change Password</a>
                     </div>
                 </div>
           
