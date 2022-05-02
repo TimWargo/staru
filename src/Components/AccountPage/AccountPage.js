@@ -11,61 +11,60 @@ class AccountPage extends Component {
             window.location.pathname = "/";
         }
         this.state = {
-            account:[]
+            account: []
         }
     }
 
-    componentDidMount(){
+    componentDidMount() {
         console.log(sessionStorage.session);
-        const url ='http://localhost/staru/src/php/Accountinfo.php?email='+sessionStorage.session;
-        console.log(url);  
-        axios.get(url).then(response=>response.data)
-        .then((data)=> {
-            this.setState({
-                account:data
+        const url = 'http://localhost/staru/src/php/Accountinfo.php?email=' + sessionStorage.session;
+        console.log(url);
+        axios.get(url).then(response => response.data)
+            .then((data) => {
+                this.setState({
+                    account: data
+                })
+
+                console.log(this.state.account)
             })
-            
-            console.log(this.state.account)
-        })
     }
-    render() { 
+    render() {
         return (
-            
+
             <div className="body">
-               
+
                 <div className="innerBody">
 
                     <h4>Account Page</h4>
-                    
-                    <br/>
 
-                                {this.state.account.map((account, index)=> (
-                                    <div key = {index}>
-                                        Hello {account.screen_name}, 
-                                        <br/>
-                                        <br/>
-                                    </div>
-                                ))}
-                    
-                                {this.state.account.map((account, index)=> (
-                                    <div key = {index}>
-                                        This is account's email is:
-                                        <br/>
-                                        {account.email}.
-                                        <br/>
-                                        <br/>
-                                        <br/>
-                                    </div>
-                                ))}
+                    <br />
 
-                    
+                    {this.state.account.map((account, index) => (
+                        <div key={index}>
+                            Hello <span className="accountSpan">{account.screen_name}</span>,
+                            <br />
+                            <br />
+                        </div>
+                    ))}
+
+                    {this.state.account.map((account, index) => (
+                        <div key={index}>
+                            This is account's email is:
+                            <br />
+                            <span className="accountSpan"> {account.email} </span>
+                            <br />
+                            <br />
+                        </div>
+                    ))}
+
+
                     <Nav.Link href="/editaccount" className='ogame'>Edit Account</Nav.Link>
                 </div>
-                
-             </div>
+
+            </div>
 
         );
     }
 }
- 
+
 export default AccountPage;

@@ -169,7 +169,7 @@ class LoginForm extends Component {
                 <label htmlFor="exampleInputCheckbox">Remember Me</label>
               </div>
               <div className="d-grid gap-2">
-                <Button onClick= {this.onSubmit} variant="primary" size="lg" className="buttModal">
+                <Button onClick= {this.onSubmit} variant="primary" size="lg" className="buttModal" type="submit">
                 Log In
                 </Button>  
                 <div className="bad-creds">

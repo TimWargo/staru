@@ -118,7 +118,7 @@ class EditAccountPage extends Component {
 
                         </div>
                         <div className="text-center">
-                            <Button onClick={this.handleSubmit} variant="primary" size="md" className="buttAcc">
+                            <Button onClick={this.handleSubmit} variant="primary" size="md" className="buttAcc" type="submit">
                                 Submit
                             </Button>
                             <br/>

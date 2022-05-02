@@ -164,6 +164,10 @@ button:hover {
     padding-right: 20px;
 }
 
+.accountSpan {
+    color: #8B1E3F;
+}
+
 /* Uncomment this shit if you want to hide the scrollbar */
 /* ::-webkit-scrollbar {
     /* width: 0;  /* Remove scrollbar space */
