@@ -10,7 +10,9 @@ class EditAccountPage extends Component {
         this.state = {
             screen_name: "",
             account:[],
-            screen_nameError: ""
+            screen_nameError:"",
+            changescreen_nameError:"",
+            successmessage:""
         };
         this.handleInputChange = this.handleInputChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -53,6 +55,8 @@ class EditAccountPage extends Component {
 
 
     handleSubmit(event) {
+        let changescreen_nameError="";
+        let successmessage="";
         event.preventDefault();
 
         // temporary
@@ -66,14 +70,26 @@ class EditAccountPage extends Component {
             console.log(user);
             //submit new password to DB
             axios.post('http://localhost/staru/src/php/editAccount.php', user)
-                .then(res => {
-                    console.log(res.data);
-                    
-                })
-                .catch(error => {
-                    screen_nameError="username is already in use.Try again."
-                    console.log(error.response);
-                });
+            .then(res => {
+                console.log(res);
+                if(res.status==201){
+                    console.log("success");
+                    successmessage="screen name has been changed";
+                    this.setState ({successmessage});
+                    changescreen_nameError="";
+                    this.setState ({ changescreen_nameError });
+
+                }
+                //window.location.href = window.location.href.substring(0, window.location.href.indexOf('/') + 1);
+            })
+            .catch(error => {
+                changescreen_nameError="username already exists.Try again.";
+                this.setState ({ changescreen_nameError });
+                console.log(changescreen_nameError);
+                successmessage="";
+                    this.setState ({successmessage});
+            });
+
         }
 
         
@@ -121,7 +137,9 @@ class EditAccountPage extends Component {
                             </label>
 
                             <br />
+                            <span className="text-success">{this.state.successmessage}</span>
                             <span className="text-danger">{this.state.screen_nameError}</span>
+                            <span className="text-danger">{this.state.changescreen_nameError}</span>
 
                         </div>
                         <p>
