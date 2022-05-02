@@ -2,7 +2,6 @@
 import axios from "axios";
 import React, { Component } from "react";
 import { Button } from "react-bootstrap";
-import { Container, Nav, Navbar } from "react-bootstrap";
 import './EditAccountPage.css';
 class EditAccountPage extends Component {
     constructor(props) {
@@ -25,16 +24,12 @@ class EditAccountPage extends Component {
         });
     }
     componentDidMount(){
-        console.log(sessionStorage.session);
-        const url ='http://localhost/staru/src/php/Accountinfo.php?email='+sessionStorage.session;
-        console.log(url);  
+        const url ='http://localhost/staru/src/php/Accountinfo.php?email='+sessionStorage.session; 
         axios.get(url).then(response=>response.data)
         .then((data)=> {
             this.setState({
                 account:data
             })
-            
-            console.log(this.state.account)
         })
     }
     validate() {
@@ -67,25 +62,20 @@ class EditAccountPage extends Component {
 
         //verify input
         if (this.validate()) {
-            console.log(user);
             //submit new password to DB
             axios.post('http://localhost/staru/src/php/editAccount.php', user)
             .then(res => {
-                console.log(res);
                 if(res.status==201){
-                    console.log("success");
                     successmessage="screen name has been changed";
                     this.setState ({successmessage});
                     changescreen_nameError="";
                     this.setState ({ changescreen_nameError });
 
                 }
-                //window.location.href = window.location.href.substring(0, window.location.href.indexOf('/') + 1);
             })
             .catch(error => {
                 changescreen_nameError="username already exists.Try again.";
                 this.setState ({ changescreen_nameError });
-                console.log(changescreen_nameError);
                 successmessage="";
                     this.setState ({successmessage});
             });

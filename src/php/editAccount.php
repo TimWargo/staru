@@ -9,18 +9,18 @@ if (isset($user) && !empty($user)) {
     $request = json_decode($user);
     $email = $request->email;
     $screen_name = $request->screen_name;
-    $headers  = "From:staru4300@gmail.com\r\n";
-    $headers .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
     $query = "UPDATE accounts SET screen_name = '$screen_name' WHERE email = '$email'";
-    $message  = "<html><body>";
-    $message .= "<p>Hello,</p>
-    <p>There was a change to your username.
-    If this was not initiated by you please go into your account and check your screen name.</p>";
-    $message .= "</br>";
-    $message .= "<p>best,</p>
-    <p>StarU team</p>";
     if ($query) {
         if (mysqli_query($db, $query)) {
+            $headers  = "From:staru4300@gmail.com\r\n";
+            $headers .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
+            $message  = "<html><body>";
+            $message .= "<p>Hello,</p>
+            <p>There was a change to your username.
+            If this was not initiated by you please go into your account and check your screen name.</p>";
+            $message .= "</br>";
+            $message .= "<p>best,</p>
+            <p>StarU team</p>";
             $check = mail($email, "Your screen Name has been changed", $message, $headers);
             http_response_code(201);
         } else {

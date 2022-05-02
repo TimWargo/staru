@@ -142,11 +142,6 @@ class SignupForm extends Component {
     this.setState({ emailTakenError });
     let nameTakenError = "";
     this.setState({ nameTakenError });
-    /*
-    * Enter php script here to check for duplicate username or email.
-    * Then set the state in the if - else if below for each when each conidition 
-    * is met to display the proper error. 
-    */
     if (this.validate()) {
       e.preventDefault();
       const user = {
@@ -160,21 +155,14 @@ class SignupForm extends Component {
         })
         .catch(error => {
           if (error.responsestatus === 409) {
-            alert("Unknown Database Error. Please refer to the README file for this web application.");
-          } else {
             emailTakenError = "This email is already in use by another StarU account.";
             this.setState({ emailTakenError });
+          } else if (error.responsestatus === 412) {
+            nameTakenError = "This username has already been taken.";
+            this.setState({ nameTakenError });
+          } else {
+            alert("Unknown Database Error. Please refer to the README file for this web application.");
           }
-          /* above else will also be an else if for email with same format.
-              Once implemented it is already in place to show error in the same location
-              as the email taken error we have currently. Which right now is 
-              triggering because it is set as a unique value in database. 
-              
-            else if (username is taken) {
-            nameTakenError = "This username has already been taken."
-            this.setState ({ nameTakenError });
-          }
-          */
         });
     }
   }
