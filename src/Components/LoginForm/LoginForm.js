@@ -132,7 +132,7 @@ class LoginForm extends Component {
         <Modal.Header closeButton>
           </Modal.Header>
           <Modal.Body>
-            <form onSubmit={this.onSubmit}>
+            <form onSubmit={() => this.onSubmit()}>
             <h3>Log in</h3> 
             <div className="form-group">
                 <label htmlFor="exampleInputEmail1">Email Address</label>
@@ -170,7 +170,7 @@ class LoginForm extends Component {
                 <label htmlFor="exampleInputCheckbox">Remember Me</label>
               </div>
               <div className="d-grid gap-2">
-                <Button onClick= {this.onSubmit} variant="primary" size="lg" className="buttModal" type="submit">
+                <Button onClick= {() => this.onSubmit()} variant="primary" size="lg" className="buttModal" type="submit">
                 Log In
                 </Button>  
                 <div className="bad-creds">

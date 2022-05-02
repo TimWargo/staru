@@ -227,7 +227,7 @@ class SignupForm extends Component {
                 </div>
                 <br></br>
                 <p className="have-account text-right">
-                  Already have an account? <a href="/#" onClick={this.openLogin}>Log In</a>
+                  Already have an account? <a href="#" onClick={this.openLogin}>Log In</a>
                 </p>
               </div>
             </form>
