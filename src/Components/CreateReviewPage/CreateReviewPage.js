@@ -1,10 +1,12 @@
 import React, { Component } from "react";
-import Form from 'react-bootstrap/Form';
 import './CreateReviewPage.css';
 import { Button} from "react-bootstrap";
 import DarkSouls from '../Images/DarkSouls.jpg';
 import StarRating from '../CreateReviewPage/StarRating.js';
+import 'bootstrap/dist/css/bootstrap.css';
+import { withRouter } from '../withRouter';
 import axios from "axios";
+
 
 class CreateReviewPage extends Component {
     constructor(props) {
@@ -16,9 +18,9 @@ class CreateReviewPage extends Component {
             title: '',
             description: '',
             email: '',
-            gameId: ''
+            gameId: '',
+            formProc: ''
         }
-
         this.onSubmit = this.onSubmit.bind(this);
         this.handleInputChange = this.handleInputChange.bind(this);
     }
@@ -33,6 +35,7 @@ class CreateReviewPage extends Component {
     onSubmit(e) {
           e.preventDefault();
           var pathArray = window.location.pathname.split('/');
+          if (this.validate()) {
           const postdata = {
             title: this.state.title,
             description: this.state.description,
@@ -41,27 +44,63 @@ class CreateReviewPage extends Component {
           };
           console.log(postdata)
           axios.post('http://localhost/staru/src/php/CreateReview.php', postdata)
+          this.setState({
+            formProc: 'Submitting Your Review...'
+         })
+          setTimeout(() => this.props.navigate('/'), 1500);
+        }
       }
 
       onDiscard = () => {
           this.setState({
              title: '',
-             description: '' 
+             description: '', 
+            formProc: 'Discarding Your Review...'
           })
+            setTimeout(() => this.props.navigate('/'), 1500);       
       }
 
+      validate() {
+        let isValid = true;
+        let titleError = "";
+        let descriptionError = "";
+
+        if (!this.state.descriptionError) {
+            descriptionError = "Review field is required.";
+        } else {
+          descriptionError = "";
+          this.setState({ descriptionError });
+        }
+
+       if (!this.state.title) {
+          titleError = "Title field is required.";
+      } else {
+        titleError = "";
+        this.setState({ titleError });
+      }
+
+      if (titleError) {
+        this.setState({ titleError });
+        isValid = false;
+    }
+    if (descriptionError) {
+        this.setState({ descriptionError });
+        isValid = false;
+    }
+    return isValid;
+    }
 
     render() { 
         return (           
             <div className="body">
                 <h1>
-                    Write Review
+                    Write a Review
                     </h1>       
                     <div className="cover-art" > 
                     <img src={DarkSouls} alt="Example1" width="300" height="200"></img>
                     </div>
                     <div className="star-group">
-                    < StarRating />
+                    <StarRating/>                   
                     </div>
                     <div className= "section-format">
                     <section className="col-md-6">
@@ -72,11 +111,11 @@ class CreateReviewPage extends Component {
          type="text" 
          className="form-control" 
          name="title" 
-         placeholder="Game Description"
+         placeholder="Description"
          value={this.state.title}
-         onChange={this.handleInputChange}
-         >
-            </input>
+         onChange={this.handleInputChange}        
+            />
+            <span className="text-danger">{this.state.titleError}</span>
     </div>
     <div className="form-group2">
     <label for="txt-area">Review </label>
@@ -87,6 +126,7 @@ class CreateReviewPage extends Component {
         onChange={this.handleInputChange}
         placeholder="Your feedback helps others decide which games to play."> 
         </textarea>
+        <span className="text-danger">{this.state.descriptionError}</span>
     </div>
 </form>
 </section>
@@ -99,9 +139,12 @@ class CreateReviewPage extends Component {
                     Submit
                     </Button> 
                     </div>
+                    <div className= "review-proc">
+                    <p className="pReview">{this.state.formProc}</p>
+                </div> 
             </div>
         );
     }
 }
  
-export default CreateReviewPage;
+export default withRouter (CreateReviewPage);

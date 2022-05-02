@@ -3,9 +3,11 @@
 }
 .body h1 {
     text-align: center;
+    margin-top: 40px;
 }
 .mysubmit {
-    margin-top: 20px;
+    margin-top: 30px;
+    margin-bottom: 20px;
 }
 .mysubmit .custom {
         background-color: #28B094;
@@ -19,9 +21,16 @@
         margin-right: 7px;
 }
 .mysubmit Button:hover {
-    background: #0C1821;
+    background: #E9AD20;
     border-color: black;
 } 
+
+.mysubmit Button:focus {
+    background-color: grey;
+    border-color: black;
+    color: #0C1821;
+    box-shadow: none;
+}
 
 .mysubmit .discard {
     background-color: #8b1E3F;
@@ -34,7 +43,6 @@
     width: 150px !important;
     margin-right: 7px;
 }
-
 
 .cover-art {
     margin-bottom: 15px;
@@ -55,6 +63,7 @@ input[type="radio"] {
 
 
 .form-group2 {
+    margin-top: 15px;
     display: inline-block; 
 }
 
@@ -66,5 +75,13 @@ input[type="radio"] {
 .form-group2 label {
     margin-right: 600px;
     color: #0C1821;
+}
+
+.pReview {
+    color: #0C1821;
+    font-weight: bold;
+    font-size: 25px;
+    margin-bottom: 25px;
+    margin-left: 25px;
 }
 

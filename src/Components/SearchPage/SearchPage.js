@@ -2,9 +2,7 @@ import React, { Component } from "react";
 import './SearchPage.css';
 import { Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
-import {useState} from 'react';
 import axios from 'axios';
-
 
 class SearchPage extends Component {
     constructor(props) {
@@ -22,16 +20,18 @@ class SearchPage extends Component {
         let inputError = "";
         let isValid = true;
         if (!this.state.input) {
-            inputError = "Game name is required for a search..";
-            isValid = true;
+            inputError = "Game title is required for a search..";
           }else {
             inputError = "";
             this.setState({ inputError });
           }
+
+          if (inputError) {
+            this.setState({ inputError });
+            isValid = false;
+        }
           return isValid;
     }
-
-
 
     handleAdd = e => {
         this.setState({
@@ -58,6 +58,7 @@ axios.get(url).then(response => response.data)
     xboxHandleFilter = e => {
         this.setState({
             filter : 'Xbox',
+            input: ''
         })
         console.log(this.state.filter)
         const url = 'http://localhost/staru/src/php/xboxFilterSearch.php';
@@ -73,7 +74,8 @@ axios.get(url).then(response => response.data)
 
     psHandleFilter = e => {
         this.setState({
-            filter : 'Playstation'
+            filter : 'Playstation',
+            input: ''
         })
         console.log(this.state.filter)
         const url = 'http://localhost/staru/src/php/psFilterSearch.php';
@@ -89,7 +91,8 @@ axios.get(url).then(response => response.data)
 
     nHandleFilter = e => {
         this.setState({
-            filter : 'Nintendo Switch'
+            filter : 'Nintendo Switch',
+            input: ''
         })
         console.log(this.state.filter)
         const url = 'http://localhost/staru/src/php/nFilterSearch.php';
@@ -105,7 +108,8 @@ axios.get(url).then(response => response.data)
 
     pcHandleFilter = e => {
         this.setState({
-            filter : 'PC'
+            filter : 'PC',
+            input: ''
         })
         console.log(this.state.filter)
         const url = 'http://localhost/staru/src/php/pcFilterSearch.php';
@@ -150,11 +154,15 @@ axios.get(url).then(response => response.data)
                     onChange={this.handleAdd}
                     type='text' 
                     className='search-title'
-                    placeholder='Search by Title' />
-                    <span className="text-danger">{this.state.inputError}</span>
+                    value= {this.state.input}
+                    placeholder='Search by Title' 
+                    />
                     <Button onClick= {this.handleSubmit} variant="primary" size="lg" className="custom">
                     Search
                     </Button> 
+                    <div>
+                    <span className="text-danger">{this.state.inputError}</span>
+                    </div>
                 </div>
                 <div className= "console-filter">
                     <Button onClick = { this.xboxHandleFilter } variant="primary" size="lg" className="custom">
@@ -192,22 +200,6 @@ axios.get(url).then(response => response.data)
                         <div className="search-scroll">
                             <div className="row">                               
                             {this.state.games.slice(5,9).map((games) => (
-                                <div className="col">
-                                    <Link to={"/games/" + games.platform.toLowerCase().replace(" ","_") + "/" + games.title.toLowerCase().replaceAll(" ", "_")}>
-                                     <img src={games.pic} className="gamePic" alt={games.title} />
-                                     <div>
-                                     {games.title}
-                                        <br></br>
-                                        {games.platform}
-                                        </div>
-                                 </Link>
-                                </div>
-                            ))}
-                            </div>
-                        </div>
-                        <div className="search-scroll">
-                            <div className="row">                               
-                            {this.state.games.slice(10,14).map((games) => (
                                 <div className="col">
                                     <Link to={"/games/" + games.platform.toLowerCase().replace(" ","_") + "/" + games.title.toLowerCase().replaceAll(" ", "_")}>
                                      <img src={games.pic} className="gamePic" alt={games.title} />
