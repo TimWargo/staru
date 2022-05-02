@@ -1,7 +1,10 @@
+DROP DATABASE IF EXISTS staru;
+CREATE DATABASE staru;
+
 CREATE TABLE accounts (
     id INT PRIMARY KEY AUTO_INCREMENT,
     email VARCHAR(255) NOT NULL UNIQUE,
-    screen_name VARCHAR (255) NOT NULL,
+    screen_name VARCHAR (255) NOT NULL UNIQUE,
     password VARCHAR(255) NOT NULL,
     vkey VARCHAR(255),
     valid tinyint(1)
