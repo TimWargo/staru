@@ -36,6 +36,7 @@ class AccountPage extends Component {
                 <div className="innerBody">
 
                     <h4>Account Page</h4>
+                    <br/>
                     
                     
                     {this.state.account.map((account, index) => (

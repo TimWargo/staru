@@ -108,14 +108,9 @@ class EditAccountPage extends Component {
                             <br />
                             
                             <label>
-                            <table className="center">
-                            <tbody>
-                                <tr>
-                                    <td>
-                                    Screen Name:
-                                    
-                                    </td>
-                                    <td>
+
+                                <p> Screen Name: </p>
+                                
                                 {this.state.account.map((account, index)=> (
                                     <div key = {index}>
                                         <input
@@ -129,10 +124,7 @@ class EditAccountPage extends Component {
                                 />
                                     </div>
                                 ))}
-                                </td>
-                                  </tr>
-                                  </tbody>
-                                </table>                         
+                                <br />                           
 
 
                             </label>
