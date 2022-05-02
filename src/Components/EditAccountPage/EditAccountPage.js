@@ -74,7 +74,7 @@ class EditAccountPage extends Component {
                 }
             })
             .catch(error => {
-                changescreen_nameError="username already exists.Try again.";
+                changescreen_nameError="username already exists. Try again.";
                 this.setState ({ changescreen_nameError });
                 successmessage="";
                     this.setState ({successmessage});

@@ -9,6 +9,11 @@ if (isset($user) && !empty($user)) {
     $request = json_decode($user);
     $email = $request->email;
     $screen_name = $request->screen_name;
+    $sql = "SELECT * FROM accounts WHERE screen_name = '$screen_name'";
+    $result = mysqli_query($db, $sql);
+    if ($result->num_rows === 1) {
+        http_response_code(409);
+    }
     $query = "UPDATE accounts SET screen_name = '$screen_name' WHERE email = '$email'";
     if ($query) {
         if (mysqli_query($db, $query)) {
