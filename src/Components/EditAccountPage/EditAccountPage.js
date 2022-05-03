@@ -24,6 +24,9 @@ class EditAccountPage extends Component {
         });
     }
     componentDidMount(){
+        if (!sessionStorage.getItem("session")) {
+            window.location.pathname = "/";
+        }
         const url ='http://localhost/staru/src/php/Accountinfo.php?email='+sessionStorage.session; 
         axios.get(url).then(response=>response.data)
         .then((data)=> {

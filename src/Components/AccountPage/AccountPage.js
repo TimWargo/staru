@@ -7,15 +7,15 @@ import './AccountPage.css';
 class AccountPage extends Component {
     constructor(props) {
         super(props);
-        if (!sessionStorage.getItem("session")) {
-            window.location.pathname = "/";
-        }
         this.state = {
             account: []
         }
     }
 
     componentDidMount() {
+        if (!sessionStorage.getItem("session")) {
+            window.location.pathname = "/";
+        }
         console.log(sessionStorage.session);
         const url = 'http://localhost/staru/src/php/Accountinfo.php?email=' + sessionStorage.session;
         console.log(url);
@@ -36,9 +36,9 @@ class AccountPage extends Component {
                 <div className="innerBody">
 
                     <h4>Your Account</h4>
-                    <br/>
-                    
-                    
+                    <br />
+
+
                     {this.state.account.map((account, index) => (
                         <div key={index}>
                             Hello <span className="accountSpan">{account.screen_name}</span>
@@ -56,7 +56,7 @@ class AccountPage extends Component {
                             <br />
                         </div>
                     ))}
-                    
+
                     <a href="/editaccount" className="ogame">Edit Account</a>
                 </div>
 

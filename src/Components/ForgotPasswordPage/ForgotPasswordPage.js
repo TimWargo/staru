@@ -10,7 +10,6 @@ class ForgotPasswordPage extends Component {
         this.state = {
             email: '',
         };
-
         this.handleInputChange = this.handleInputChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
     }
@@ -91,6 +90,7 @@ class ForgotPasswordPage extends Component {
                                     />
                                     <span className="text-danger">{this.state.emailError}</span>
                                     <span className="text-danger">{this.state.emailFormatError}</span>
+
                                 </div>
                                 <Button onClick={this.handleSubmit} variant="primary" size="md" className="buttPass" type="submit">
                                     Submit
