@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import './CreateReviewPage.css';
 import { Button } from "react-bootstrap";
-import DarkSouls from '../Images/DarkSouls.jpg';
 import StarRating from '../CreateReviewPage/StarRating.js';
 import 'bootstrap/dist/css/bootstrap.css';
 import { withRouter } from '../withRouter';
@@ -85,7 +84,6 @@ class CreateReviewPage extends Component {
         gameId: this.state.gameId,
         rating: this.state.rating,
       };
-      console.log(postdata)
       axios.post('http://localhost/staru/src/php/CreateReview.php', postdata)
         .then(res => {
           this.setState({

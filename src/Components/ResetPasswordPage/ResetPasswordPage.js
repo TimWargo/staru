@@ -97,7 +97,6 @@ class ResetPasswordPage extends Component {
         event.preventDefault();
         const queryParams = new URLSearchParams(window.location.search);
         const email1 = queryParams.get('email');
-        console.log(email1);
         // temporary
         const user = {
             email: email1,
@@ -106,10 +105,8 @@ class ResetPasswordPage extends Component {
 
         //verify input
         if (this.validate()) {
-            console.log(user);
 
             //submit new password to DB
-            console.log(user);
             axios.post('http://localhost/staru/src/php/resetPass.php', user)
                 .then(res => {
                     this.props.navigate('/');

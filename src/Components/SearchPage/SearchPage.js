@@ -41,7 +41,6 @@ class SearchPage extends Component {
     handleSubmit = e => {
         if (this.validate()) {
             e.preventDefault();
-            console.log(this.state.input)
             const url = 'http://localhost/staru/src/php/SearchPage.php?title=' + this.state.input;
             axios.get(url).then(response => response.data)
                 .then((data) => {
@@ -49,7 +48,6 @@ class SearchPage extends Component {
                         games: data,
                         display: 'Search Results',
                     })
-                    console.log(this.state.games)
                 })
         }
     }
@@ -59,7 +57,6 @@ class SearchPage extends Component {
             filter: 'Xbox',
             input: ''
         })
-        console.log(this.state.filter)
         const url = 'http://localhost/staru/src/php/xboxFilterSearch.php';
         axios.get(url).then(response => response.data)
             .then((data) => {
@@ -67,7 +64,6 @@ class SearchPage extends Component {
                     games: data,
                     display: 'Highest Rated Games on Xbox',
                 })
-                console.log(this.state.games)
             })
     }
 
@@ -76,7 +72,6 @@ class SearchPage extends Component {
             filter: 'Playstation',
             input: ''
         })
-        console.log(this.state.filter)
         const url = 'http://localhost/staru/src/php/psFilterSearch.php';
         axios.get(url).then(response => response.data)
             .then((data) => {
@@ -84,7 +79,6 @@ class SearchPage extends Component {
                     games: data,
                     display: 'Highest Rated Games on PlayStation'
                 })
-                console.log(this.state.games)
             })
     }
 
@@ -93,7 +87,6 @@ class SearchPage extends Component {
             filter: 'Nintendo Switch',
             input: ''
         })
-        console.log(this.state.filter)
         const url = 'http://localhost/staru/src/php/nFilterSearch.php';
         axios.get(url).then(response => response.data)
             .then((data) => {
@@ -101,7 +94,6 @@ class SearchPage extends Component {
                     games: data,
                     display: 'Highest Rated Games on Nintendo'
                 })
-                console.log(this.state.games)
             })
     }
 
@@ -110,7 +102,6 @@ class SearchPage extends Component {
             filter: 'PC',
             input: ''
         })
-        console.log(this.state.filter)
         const url = 'http://localhost/staru/src/php/pcFilterSearch.php';
         axios.get(url).then(response => response.data)
             .then((data) => {
@@ -118,7 +109,6 @@ class SearchPage extends Component {
                     games: data,
                     display: 'Highest Rated Games on PC'
                 })
-                console.log(this.state.games)
             })
     }
 
@@ -129,7 +119,6 @@ class SearchPage extends Component {
                 this.setState({
                     games: data
                 })
-                console.log(this.state.games)
             })
     }
 

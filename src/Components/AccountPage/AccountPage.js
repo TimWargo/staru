@@ -1,7 +1,6 @@
 /* eslint-disable no-undef */
 import axios from 'axios';
 import React, { Component } from 'react'
-import { Container, Nav, Navbar } from "react-bootstrap";
 import './AccountPage.css';
 
 class AccountPage extends Component {
@@ -18,14 +17,11 @@ class AccountPage extends Component {
         }
         console.log(sessionStorage.session);
         const url = 'http://localhost/staru/src/php/Accountinfo.php?email=' + sessionStorage.session;
-        console.log(url);
         axios.get(url).then(response => response.data)
             .then((data) => {
                 this.setState({
                     account: data
                 })
-
-                console.log(this.state.account)
             })
     }
     render() {
