@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import './CreateReviewPage.css';
-import { Button} from "react-bootstrap";
+import { Button } from "react-bootstrap";
 import DarkSouls from '../Images/DarkSouls.jpg';
 import StarRating from '../CreateReviewPage/StarRating.js';
 import 'bootstrap/dist/css/bootstrap.css';
@@ -11,18 +11,52 @@ import axios from "axios";
 class CreateReviewPage extends Component {
     constructor(props) {
         super(props);
-        if (!sessionStorage.getItem("session")) {
-            window.location.pathname = "/";
-        }
         this.state = {
             title: '',
             description: '',
+            rating: 0,
             email: '',
             gameId: '',
-            formProc: ''
+            formProc: '',
+            game: {
+              id: null,
+              title: '',
+              year: null,
+              price: 0.00,
+              popularity: 0.0,
+              platform: '',
+              pic: '',
+              description: '',
+          },
         }
         this.onSubmit = this.onSubmit.bind(this);
         this.handleInputChange = this.handleInputChange.bind(this);
+    }
+
+    componentDidMount() {
+      if (!sessionStorage.getItem("session")) {
+        window.location.pathname = "/";
+      }
+      const { id } = this.props.match.params;
+      axios.get('http://localhost/staru/src/php/viewGameByID.php?id='+id)
+            .then(res => {
+                const data = res.data;
+                this.setState({
+                    game: {
+                        id: Number(data[0]),
+                        title: data[1],
+                        year: Number(data[2]),
+                        price: Number(data[3]),
+                        popularity: Number(data[4]),
+                        platform: data[5],
+                        pic: data[6],
+                        description: data[7]
+                    },
+                    gameId: Number(data[0]),
+                })
+            }).catch(error => {
+                console.log(error.message)
+            });
     }
 
     handleInputChange = (event) => {
@@ -32,22 +66,31 @@ class CreateReviewPage extends Component {
         });
       }
 
+    changeValue = (value) => {
+      this.setState({
+        rating: value,
+      })
+    }
+
     onSubmit(e) {
           e.preventDefault();
-          var pathArray = window.location.pathname.split('/');
           if (this.validate()) {
           const postdata = {
             title: this.state.title,
             description: this.state.description,
             email: sessionStorage.session,
-            gameId: pathArray[3]
+            gameId: this.state.gameId,
+            rating: this.state.rating,
           };
           console.log(postdata)
           axios.post('http://localhost/staru/src/php/CreateReview.php', postdata)
-          this.setState({
-            formProc: 'Submitting Your Review...'
-         })
-          setTimeout(() => this.props.navigate('/'), 1500);
+          .then(res => {
+            this.setState({
+                formProc: 'Submitting Your Review...'
+            })
+            setTimeout(() => this.props.navigate("/games/" + this.state.game.platform.toLowerCase().replace(" ","_") + "/" + this.state.game.title.toLowerCase().replaceAll(" ", "_")), 1500);
+          });
+          
         }
       }
 
@@ -57,7 +100,7 @@ class CreateReviewPage extends Component {
              description: '', 
             formProc: 'Discarding Your Review...'
           })
-            setTimeout(() => this.props.navigate('/'), 1500);       
+          setTimeout(() => this.props.navigate("/games/" + this.state.game.platform.toLowerCase().replace(" ","_") + "/" + this.state.game.title.toLowerCase().replaceAll(" ", "_")), 1500);       
       }
 
       validate() {
@@ -84,11 +127,11 @@ class CreateReviewPage extends Component {
         isValid = false;
     }
     if (descriptionError) {
-        this.setState({ descriptionError });
-        isValid = false;
+      this.setState({ descriptionError });
+      isValid = false;
     }
     return isValid;
-    }
+  }
 
     render() { 
         return (           
@@ -97,10 +140,10 @@ class CreateReviewPage extends Component {
                     Write a Review
                     </h1>       
                     <div className="cover-art" > 
-                    <img src={DarkSouls} alt="Example1" width="300" height="200"></img>
+                    <img src={this.state.game.pic} alt="Example1" height="200"></img>
                     </div>
                     <div className="star-group">
-                    <StarRating/>                   
+                    <StarRating value={this.state.rating} changeValue={this.changeValue}/>                   
                     </div>
                     <div className= "section-format">
                     <section className="col-md-6">
@@ -146,5 +189,5 @@ class CreateReviewPage extends Component {
         );
     }
 }
- 
-export default withRouter (CreateReviewPage);
+
+export default withRouter(CreateReviewPage);

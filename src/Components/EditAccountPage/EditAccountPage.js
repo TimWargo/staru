@@ -2,7 +2,6 @@
 import axios from "axios";
 import React, { Component } from "react";
 import { Button } from "react-bootstrap";
-import { Container, Nav, Navbar } from "react-bootstrap";
 import './EditAccountPage.css';
 class EditAccountPage extends Component {
     constructor(props) {
@@ -10,7 +9,9 @@ class EditAccountPage extends Component {
         this.state = {
             screen_name: "",
             account:[],
-            screen_nameError: ""
+            screen_nameError:"",
+            changescreen_nameError:"",
+            successmessage:""
         };
         this.handleInputChange = this.handleInputChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -23,16 +24,12 @@ class EditAccountPage extends Component {
         });
     }
     componentDidMount(){
-        console.log(sessionStorage.session);
-        const url ='http://localhost/staru/src/php/Accountinfo.php?email='+sessionStorage.session;
-        console.log(url);  
+        const url ='http://localhost/staru/src/php/Accountinfo.php?email='+sessionStorage.session; 
         axios.get(url).then(response=>response.data)
         .then((data)=> {
             this.setState({
                 account:data
             })
-            
-            console.log(this.state.account)
         })
     }
     validate() {
@@ -53,6 +50,8 @@ class EditAccountPage extends Component {
 
 
     handleSubmit(event) {
+        let changescreen_nameError="";
+        let successmessage="";
         event.preventDefault();
 
         // temporary
@@ -63,17 +62,24 @@ class EditAccountPage extends Component {
 
         //verify input
         if (this.validate()) {
-            console.log(user);
             //submit new password to DB
             axios.post('http://localhost/staru/src/php/editAccount.php', user)
-                .then(res => {
-                    console.log(res.data);
-                    
-                })
-                .catch(error => {
-                    screen_nameError="username is already in use.Try again."
-                    console.log(error.response);
-                });
+            .then(res => {
+                if(res.status==201){
+                    successmessage="screen name has been changed";
+                    this.setState ({successmessage});
+                    changescreen_nameError="";
+                    this.setState ({ changescreen_nameError });
+
+                }
+            })
+            .catch(error => {
+                changescreen_nameError="username already exists. Try again.";
+                this.setState ({ changescreen_nameError });
+                successmessage="";
+                    this.setState ({successmessage});
+            });
+
         }
 
         
@@ -92,13 +98,9 @@ class EditAccountPage extends Component {
                             <br />
                             
                             <label>
-                            <table className="center">
-                            <tbody>
-                                <tr>
-                                    <td>
-                                    Screen Name:
-                                    </td>
-                                    <td>
+
+                                <p> Screen Name: </p>
+                                
                                 {this.state.account.map((account, index)=> (
                                     <div key = {index}>
                                         <input
@@ -112,29 +114,28 @@ class EditAccountPage extends Component {
                                 />
                                     </div>
                                 ))}
-                                </td>
-                                  </tr>
-                                  </tbody>
-                                </table>                         
+                                <br />                           
 
 
                             </label>
 
                             <br />
+                            <span className="text-success">{this.state.successmessage}</span>
                             <span className="text-danger">{this.state.screen_nameError}</span>
+                            <span className="text-danger">{this.state.changescreen_nameError}</span>
 
                         </div>
-                        <p>
-                           
-                        </p>
                         <div className="text-center">
-                            <Button onClick={this.handleSubmit} variant="primary" size="md" className="buttPass">
+                            <Button onClick={this.handleSubmit} variant="primary" size="md" className="buttAcc" type="submit">
                                 Submit
                             </Button>
+                            <br/>
+                            <br/>
                         </div>
                     </form>
-                    <Nav.Link href="/account">Account</Nav.Link>
-                    <Nav.Link href="/forgot">Change Password</Nav.Link>
+                    <div>
+                    <a href="/forgot" className="ogame">Change Password</a>
+                    </div>
                 </div>
           
             </div>

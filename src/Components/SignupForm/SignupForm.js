@@ -142,11 +142,6 @@ class SignupForm extends Component {
     this.setState({ emailTakenError });
     let nameTakenError = "";
     this.setState({ nameTakenError });
-    /*
-    * Enter php script here to check for duplicate username or email.
-    * Then set the state in the if - else if below for each when each conidition 
-    * is met to display the proper error. 
-    */
     if (this.validate()) {
       e.preventDefault();
       const user = {
@@ -159,22 +154,15 @@ class SignupForm extends Component {
           this.openLogin();
         })
         .catch(error => {
-          if (error.responsestatus === 409) {
-            alert("Unknown Database Error. Please refer to the README file for this web application.");
-          } else {
+          if (error.response.status === 409) {
             emailTakenError = "This email is already in use by another StarU account.";
             this.setState({ emailTakenError });
+          } else if (error.response.status === 412) {
+            nameTakenError = "This username has already been taken.";
+            this.setState({ nameTakenError });
+          } else {
+            alert("Unknown Database Error. Please refer to the README file for this web application.");
           }
-          /* above else will also be an else if for email with same format.
-              Once implemented it is already in place to show error in the same location
-              as the email taken error we have currently. Which right now is 
-              triggering because it is set as a unique value in database. 
-              
-            else if (username is taken) {
-            nameTakenError = "This username has already been taken."
-            this.setState ({ nameTakenError });
-          }
-          */
         });
     }
   }
@@ -230,7 +218,7 @@ class SignupForm extends Component {
                 <span className="text-danger">{this.state.pwFormatError}</span>
               </div>
               <div className="d-grid gap-2">
-                <Button onClick={this.onSubmit} variant="primary" size="lg" className="buttModal">
+                <Button onClick={this.onSubmit} variant="primary" size="lg" className="buttModal" type="submit">
                   Submit
                 </Button>
                 <div className="bad-email">
@@ -239,7 +227,7 @@ class SignupForm extends Component {
                 </div>
                 <br></br>
                 <p className="have-account text-right">
-                  Already have an account? <a href="/#" onClick={this.openLogin}>Log In</a>
+                  Already have an account? <a href="#" onClick={this.openLogin}>Log In</a>
                 </p>
               </div>
             </form>

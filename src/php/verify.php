@@ -11,14 +11,21 @@ if (isset($user) && !empty($user)) { // problem with if statement
     $vkey = $request->vkey;
     $sql = "SELECT * FROM accounts WHERE valid = 0 AND vkey='$vkey'";
     $result = mysqli_query($db, $sql);
-    if ($result) {
-        echo $vkey;
-    }
+    $rs = mysqli_fetch_array($result);
+    $email = $rs['email'];
     if ($result) {
         $Update = "UPDATE accounts SET valid = '1' WHERE vkey='$vkey'";
         $result1 = mysqli_query($db, $Update);
         if ($result1) {
-            mail("staru4300@gmail.com", "email is now valid", "welcome \r\n¯\(◉◡◔)/¯", "From: staru4300@gmail.com");
+            $headers  = "From:staru4300@gmail.com\r\n"; 
+            $headers .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n"; 
+            $message  = "<html><body>";
+            $message .= "<p>Welcome to StarU,</p>
+            <p>We hope you'll enjoy your stay and share your opinion with our community of Gamers.
+            </p>
+            <p>Best,</p>
+            <p>StarU team</p>";
+            mail($email, "StarU - Welcome",$message, $headers);
         }
     } else {
         echo "this account is already valid";

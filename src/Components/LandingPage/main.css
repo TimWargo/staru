@@ -32,7 +32,7 @@
 }
 
 .navbar {
-    background-color: #0C1821;    
+    background-color: black;  
 }
 
 .link {
@@ -72,6 +72,13 @@ button:hover {
     border: #28B094 !important;
     color: #0C1821 !important;
     float: left;
+}
+
+.buttAcc {
+    background-color: #28B094 !important;
+    border: #28B094 !important;
+    color: #0C1821 !important;
+    float: center;
 }
 
 .pBody {
@@ -155,6 +162,35 @@ button:hover {
 .landingContent {
     padding-left: 20px;
     padding-right: 20px;
+}
+
+.accountSpan {
+    color: #E9AD20;
+}
+
+.aboutBio {
+    margin-left: 350px;
+    margin-right: 350px;
+}
+
+a {
+    text-decoration: none !important;
+    color: #28B094;
+}
+
+a:hover {
+    text-decoration: none !important;
+    color: #8B1E3F !important;
+}
+
+.searchPlatform {
+    color: #8B1E3F;
+    
+}
+
+.reviewInput {
+    justify-content: left;
+
 }
 
 /* Uncomment this shit if you want to hide the scrollbar */

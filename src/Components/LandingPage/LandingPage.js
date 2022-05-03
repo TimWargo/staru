@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import axios from 'axios';
 import './main.css';
-import Banner from '../../resources/Images/StarU_Banner.png'
+import Banner from '../../resources/Images/StarU_Banner_New.png'
 import { Link } from "react-router-dom";
 
 
@@ -21,8 +21,6 @@ class LandingPage extends Component {
                 this.setState({
                     games: data
                 })
-                console.log(this.state.games[2])
-
             })
     }
 
