@@ -69,8 +69,8 @@ input[type="radio"] {
 
 .section-format {
     margin-top: -25px;
-    margin-left: 485px;
-    
+    margin: auto;
+    width: 45%;
 }
 
 .form-group2 label {

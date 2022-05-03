@@ -32,9 +32,6 @@ class CreateReviewPage extends Component {
         this.onSubmit = this.onSubmit.bind(this);
         this.handleInputChange = this.handleInputChange.bind(this);
     }
-    this.onSubmit = this.onSubmit.bind(this);
-    this.handleInputChange = this.handleInputChange.bind(this);
-  }
 
     componentDidMount() {
       if (!sessionStorage.getItem("session")) {
@@ -61,27 +58,13 @@ class CreateReviewPage extends Component {
                 console.log(error.message)
             });
     }
-    const { gameId } = this.props.match.params;
-    axios.get('http://localhost/staru/src/php/viewGameByID.php?id=' + gameId)
-      .then(res => {
-        const data = res.data;
+
+    handleInputChange = (event) => {
+        const { value, name } = event.target;
         this.setState({
-          game: {
-            id: Number(data[0]),
-            title: data[1],
-            year: Number(data[2]),
-            price: Number(data[3]),
-            popularity: Number(data[4]),
-            platform: data[5],
-            pic: data[6],
-            description: data[7]
-          },
-          gameId: Number(data[0]),
-        })
-      }).catch(error => {
-        console.log(error.message)
-      });
-  }
+          [name]: value
+        });
+      }
 
     changeValue = (value) => {
       this.setState({
@@ -111,58 +94,37 @@ class CreateReviewPage extends Component {
         }
       }
 
-  onSubmit(e) {
-    e.preventDefault();
-    if (this.validate()) {
-      const postdata = {
-        title: this.state.title,
-        description: this.state.description,
-        email: sessionStorage.session,
-        gameId: this.state.gameId,
-      };
-      console.log(postdata)
-      axios.post('http://localhost/staru/src/php/CreateReview.php', postdata)
-        .then(res => {
+      onDiscard = () => {
           this.setState({
-            formProc: 'Submitting Your Review...'
+             title: '',
+             description: '', 
+            formProc: 'Discarding Your Review...'
           })
-          setTimeout(() => this.props.navigate("/games/" + this.state.game.platform.toLowerCase().replace(" ", "_") + "/" + this.state.game.title.toLowerCase().replaceAll(" ", "_")), 1500);
-        });
+          setTimeout(() => this.props.navigate("/games/" + this.state.game.platform.toLowerCase().replace(" ","_") + "/" + this.state.game.title.toLowerCase().replaceAll(" ", "_")), 1500);       
+      }
 
-    }
-  }
+      validate() {
+        let isValid = true;
+        let titleError = "";
+        let descriptionError = "";
 
-  onDiscard = () => {
-    this.setState({
-      title: '',
-      description: '',
-      formProc: 'Discarding Your Review...'
-    })
-    setTimeout(() => this.props.navigate("/games/" + this.state.game.platform.toLowerCase().replace(" ", "_") + "/" + this.state.game.title.toLowerCase().replaceAll(" ", "_")), 1500);
-  }
+        if (!this.state.descriptionError) {
+            descriptionError = "Review field is required.";
+        } else {
+          descriptionError = "";
+          this.setState({ descriptionError });
+        }
 
-  validate() {
-    let isValid = true;
-    let titleError = "";
-    let descriptionError = "";
+       if (!this.state.title) {
+          titleError = "Title field is required.";
+      } else {
+        titleError = "";
+        this.setState({ titleError });
+      }
 
-    if (!this.state.descriptionError) {
-      descriptionError = "Review field is required.";
-    } else {
-      descriptionError = "";
-      this.setState({ descriptionError });
-    }
-
-    if (!this.state.title) {
-      titleError = "Title field is required.";
-    } else {
-      titleError = "";
-      this.setState({ titleError });
-    }
-
-    if (titleError) {
-      this.setState({ titleError });
-      isValid = false;
+      if (titleError) {
+        this.setState({ titleError });
+        isValid = false;
     }
     if (descriptionError) {
       this.setState({ descriptionError });

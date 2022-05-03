@@ -150,7 +150,6 @@ class SearchPage extends Component {
         return (
             <div className="body">
                 <div className="searchBar">
-                    <form onSubmit={this.handleSubmit}>
                     <input
                         onChange={this.handleAdd}
                         type='text'
@@ -158,10 +157,9 @@ class SearchPage extends Component {
                         value={this.state.input}
                         placeholder='Search by Title'
                     />
-                    <Button onClick={this.handleSubmit} variant="primary" size="lg" className="custom2" type="submit">
+                    <Button onClick={this.handleSubmit} variant="primary" size="lg" className="custom" type="submit">
                         Search
                     </Button>
-                    </form>
                     <div>
                         <span className="text-danger">{this.state.inputError}</span>
                     </div>
