@@ -118,7 +118,6 @@ h2 {
     box-shadow: none;
 }
 
-
 .custom {
     width: 128px !important;
 }
@@ -177,5 +176,17 @@ margin-right: 25px;
 .search-scroll > .row > .col {
     padding: 10px;
     
+}
+
+.custom2 {
+    width: 128px !important;
+    background-color: #28B094 !important;
+    color: #0C1821 !important;
+}
+
+.custom2:hover {
+    box-shadow: 0 12px 16px 0 rgba(0,0,0,.25), 0 17px 50px 0 rgba(0,0,0,.25) !important;
+    background-color: #28B094 !important;
+    color: #0C1821 !important;
 }
 
