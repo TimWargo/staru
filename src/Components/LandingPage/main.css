@@ -69,16 +69,24 @@ button:hover {
 
 .buttPass {
     background-color: #28B094 !important;
-    border: #28B094 !important;
-    color: #0C1821 !important;
+    border: black !important;
+    color: #E0E0E0 !important;
     float: left;
+}
+
+.buttPass:hover{
+    background-color: #E9AD20 !important;
 }
 
 .buttAcc {
     background-color: #28B094 !important;
-    border: #28B094 !important;
-    color: #0C1821 !important;
+    border: black !important;
+    color: #E0E0E0 !important;
     float: center;
+}
+
+.buttAcc:hover{
+    background-color: #E9AD20 !important;
 }
 
 .pBody {

@@ -35,7 +35,7 @@ class AccountPage extends Component {
 
                 <div className="innerBody">
 
-                    <h4>Account Page</h4>
+                    <h4>Your Account</h4>
                     <br/>
                     
                     
@@ -49,7 +49,7 @@ class AccountPage extends Component {
 
                     {this.state.account.map((account, index) => (
                         <div key={index}>
-                            This is account's email is:
+                            This account's email is:
                             <br />
                             <span className="accountSpan"> {account.email} </span>
                             <br />

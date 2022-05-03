@@ -70,8 +70,12 @@ margin-top: 7px;
 
 .buttModal {
     background-color: #28B094 !important;
-    border: #28B094 !important;
-    color: #0C1821;
+    border: black !important;
+    color: #E0E0E0 !important;
+}
+
+.buttModal:hover {
+  background-color: #E9AD20  !important;
 }
 a {
     text-decoration: none;
