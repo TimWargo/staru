@@ -43,7 +43,7 @@ if(isset($postdata) && !empty($postdata)) {
         <p>StarU team</p>";
         $check=mail(
             $email, 
-            "confirm account",
+            "Confirm Your Account",
             $message, 
             $headers);
         http_response_code(201);
