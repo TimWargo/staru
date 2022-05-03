@@ -23,5 +23,12 @@ if(isset($postdata) && !empty($postdata)) {
 
     $sql1 = "INSERT INTO reviews (account_id, game_id, title, description, rating) VALUES ('$accid','$gameid','$title','$review','$rating')";
     $result1= mysqli_query($db, $sql1);
+
+    $sql3 = "SELECT AVG(rating) FROM reviews WHERE game_id = '$gameid'";
+    $result3 = mysqli_query($db,$sql3);
+    $avgratings = mysqli_fetch_array($result3);
+
+    $sql4 = "UPDATE games SET popularity = '$avgratings[0]' WHERE id = '$gameid'";
+    $result4 = mysqli_query($db, $sql4);
 }
    
