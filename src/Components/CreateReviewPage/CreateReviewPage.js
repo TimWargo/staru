@@ -11,18 +11,51 @@ import axios from "axios";
 class CreateReviewPage extends Component {
     constructor(props) {
         super(props);
-        if (!sessionStorage.getItem("session")) {
-            window.location.pathname = "/";
-        }
         this.state = {
             title: '',
             description: '',
             email: '',
             gameId: '',
-            formProc: ''
+            formProc: '',
+            game: {
+              id: null,
+              title: '',
+              year: null,
+              price: 0.00,
+              popularity: 0.0,
+              platform: '',
+              pic: '',
+              description: '',
+          },
         }
         this.onSubmit = this.onSubmit.bind(this);
         this.handleInputChange = this.handleInputChange.bind(this);
+    }
+
+    componentDidMount() {
+      if (!sessionStorage.getItem("session")) {
+        window.location.pathname = "/";
+      }
+      const { gameId } = this.props.match.params;
+      axios.get('http://localhost/staru/src/php/viewGameByID.php?id='+gameId)
+            .then(res => {
+                const data = res.data;
+                this.setState({
+                    game: {
+                        id: Number(data[0]),
+                        title: data[1],
+                        year: Number(data[2]),
+                        price: Number(data[3]),
+                        popularity: Number(data[4]),
+                        platform: data[5],
+                        pic: data[6],
+                        description: data[7]
+                    },
+                    gameId: Number(data[0]),
+                })
+            }).catch(error => {
+                console.log(error.message)
+            });
     }
 
     handleInputChange = (event) => {
@@ -34,20 +67,22 @@ class CreateReviewPage extends Component {
 
     onSubmit(e) {
           e.preventDefault();
-          var pathArray = window.location.pathname.split('/');
           if (this.validate()) {
           const postdata = {
             title: this.state.title,
             description: this.state.description,
             email: sessionStorage.session,
-            gameId: pathArray[3]
+            gameId: this.state.gameId,
           };
           console.log(postdata)
           axios.post('http://localhost/staru/src/php/CreateReview.php', postdata)
-          this.setState({
-            formProc: 'Submitting Your Review...'
-         })
-          setTimeout(() => this.props.navigate('/'), 1500);
+          .then(res => {
+            this.setState({
+                formProc: 'Submitting Your Review...'
+            })
+            setTimeout(() => this.props.navigate("/games/" + this.state.game.platform.toLowerCase().replace(" ","_") + "/" + this.state.game.title.toLowerCase().replaceAll(" ", "_")), 1500);
+          });
+          
         }
       }
 
@@ -57,7 +92,7 @@ class CreateReviewPage extends Component {
              description: '', 
             formProc: 'Discarding Your Review...'
           })
-            setTimeout(() => this.props.navigate('/'), 1500);       
+          setTimeout(() => this.props.navigate("/games/" + this.state.game.platform.toLowerCase().replace(" ","_") + "/" + this.state.game.title.toLowerCase().replaceAll(" ", "_")), 1500);       
       }
 
       validate() {
@@ -97,7 +132,7 @@ class CreateReviewPage extends Component {
                     Write a Review
                     </h1>       
                     <div className="cover-art" > 
-                    <img src={DarkSouls} alt="Example1" width="300" height="200"></img>
+                    <img src={this.state.game.pic} alt="Example1" height="200"></img>
                     </div>
                     <div className="star-group">
                     <StarRating/>                   
