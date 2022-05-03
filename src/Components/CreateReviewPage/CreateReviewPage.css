@@ -63,13 +63,15 @@ input[type="radio"] {
 
 
 .form-group2 {
-    margin-top: 15px;
+    padding-top: 15px;
     display: inline-block; 
 }
 
 .section-format {
-    margin-top: -25px;
-    margin-left: 485px;
+    width: 40%;
+    margin: auto;
+    margin-top: -20px;
+    padding-bottom: 20px;
 }
 
 .form-group2 label {
