@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import './CreateReviewPage.css';
-import { Button} from "react-bootstrap";
+import { Button } from "react-bootstrap";
 import DarkSouls from '../Images/DarkSouls.jpg';
 import StarRating from '../CreateReviewPage/StarRating.js';
 import 'bootstrap/dist/css/bootstrap.css';
@@ -119,11 +119,11 @@ class CreateReviewPage extends Component {
         isValid = false;
     }
     if (descriptionError) {
-        this.setState({ descriptionError });
-        isValid = false;
+      this.setState({ descriptionError });
+      isValid = false;
     }
     return isValid;
-    }
+  }
 
     render() { 
         return (           
@@ -181,5 +181,5 @@ class CreateReviewPage extends Component {
         );
     }
 }
- 
-export default withRouter (CreateReviewPage);
+
+export default withRouter(CreateReviewPage);
