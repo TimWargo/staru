@@ -14,6 +14,7 @@ class CreateReviewPage extends Component {
         this.state = {
             title: '',
             description: '',
+            rating: 0,
             email: '',
             gameId: '',
             formProc: '',
@@ -36,8 +37,8 @@ class CreateReviewPage extends Component {
       if (!sessionStorage.getItem("session")) {
         window.location.pathname = "/";
       }
-      const { gameId } = this.props.match.params;
-      axios.get('http://localhost/staru/src/php/viewGameByID.php?id='+gameId)
+      const { id } = this.props.match.params;
+      axios.get('http://localhost/staru/src/php/viewGameByID.php?id='+id)
             .then(res => {
                 const data = res.data;
                 this.setState({
@@ -65,6 +66,12 @@ class CreateReviewPage extends Component {
         });
       }
 
+    changeValue = (value) => {
+      this.setState({
+        rating: value,
+      })
+    }
+
     onSubmit(e) {
           e.preventDefault();
           if (this.validate()) {
@@ -73,6 +80,7 @@ class CreateReviewPage extends Component {
             description: this.state.description,
             email: sessionStorage.session,
             gameId: this.state.gameId,
+            rating: this.state.rating,
           };
           console.log(postdata)
           axios.post('http://localhost/staru/src/php/CreateReview.php', postdata)
@@ -135,7 +143,7 @@ class CreateReviewPage extends Component {
                     <img src={this.state.game.pic} alt="Example1" height="200"></img>
                     </div>
                     <div className="star-group">
-                    <StarRating/>                   
+                    <StarRating value={this.state.rating} changeValue={this.changeValue}/>                   
                     </div>
                     <div className= "section-format">
                     <section className="col-md-6">

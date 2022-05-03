@@ -11,7 +11,7 @@ if(isset($postdata) && !empty($postdata)) {
     $title = $request->title;
     $review = $request->description;
     $gameid = $request->gameId;
-   
+    $rating = $request->rating;
 
     $email = $request->email;
     $sql2 = "SELECT accounts.id FROM accounts WHERE email='$email'";
@@ -21,7 +21,7 @@ if(isset($postdata) && !empty($postdata)) {
 
    $accid = $rs['id'];
 
-    $sql1 = "INSERT INTO reviews (account_id, game_id, title, description, rating) VALUES ('$accid','$gameid','$title','$review','5')";
+    $sql1 = "INSERT INTO reviews (account_id, game_id, title, description, rating) VALUES ('$accid','$gameid','$title','$review','$rating')";
     $result1= mysqli_query($db, $sql1);
 }
    
