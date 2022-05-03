@@ -65,7 +65,7 @@ class CreateReviewPage extends Component {
         let titleError = "";
         let descriptionError = "";
 
-        if (!this.state.descriptionError) {
+        if (!this.state.description) {
             descriptionError = "Review field is required.";
         } else {
           descriptionError = "";
