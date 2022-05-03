@@ -13,7 +13,6 @@ class SearchPage extends Component {
             filter: '',
             games: []
         }
-        console.log(this.state.games)
     }
 
     validate() {
