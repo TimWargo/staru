@@ -11,7 +11,6 @@ class LandingPage extends Component {
         this.state = {
             games: []
         }
-        console.log(this.state.games)
     }
 
     componentDidMount() {

@@ -77,6 +77,7 @@
     font-size: 2vmax;
     padding-left: 1%;
     color: #E0E0E0;
+    margin-left: 0px;
 }
 
 .other {
@@ -95,6 +96,7 @@
     font-size: 1.5vmax;
     padding: .25vmax 0px;
     color: #E0E0E0;
+    margin-left: 0px;
 }
 
 .ostar {
