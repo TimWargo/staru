@@ -3,6 +3,8 @@ import axios from "axios";
 import React, { Component } from "react";
 import { Button } from "react-bootstrap";
 import './EditAccountPage.css';
+import { withRouter } from "../withRouter";
+
 class EditAccountPage extends Component {
     constructor(props) {
         super(props);
@@ -73,7 +75,7 @@ class EditAccountPage extends Component {
                     this.setState ({successmessage});
                     changescreen_nameError="";
                     this.setState ({ changescreen_nameError });
-
+                    setTimeout(() => this.props.navigate("/account"), 1500);
                 }
             })
             .catch(error => {
@@ -126,7 +128,6 @@ class EditAccountPage extends Component {
                             <span className="text-success">{this.state.successmessage}</span>
                             <span className="text-danger">{this.state.screen_nameError}</span>
                             <span className="text-danger">{this.state.changescreen_nameError}</span>
-
                         </div>
                         <div className="text-center">
                             <Button onClick={this.handleSubmit} variant="primary" size="md" className="buttAcc" type="submit">
@@ -147,4 +148,4 @@ class EditAccountPage extends Component {
 }
 
 
-export default EditAccountPage;
+export default withRouter(EditAccountPage);
