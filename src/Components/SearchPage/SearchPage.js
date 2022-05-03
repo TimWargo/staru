@@ -150,16 +150,18 @@ class SearchPage extends Component {
         return (
             <div className="body">
                 <div className="searchBar">
-                    <input
-                        onChange={this.handleAdd}
-                        type='text'
-                        className='search-title'
-                        value={this.state.input}
-                        placeholder='Search by Title'
-                    />
-                    <Button onClick={this.handleSubmit} variant="primary" size="lg" className="custom" type="submit">
-                        Search
-                    </Button>
+                    <form onSubmit={this.handleSubmit}>
+                        <input
+                            onChange={this.handleAdd}
+                            type='text'
+                            className='search-title'
+                            value={this.state.input}
+                            placeholder='Search by Title'
+                        />
+                        <Button onClick={this.handleSubmit} variant="primary" size="lg" className="custom" type="submit">
+                            Search
+                        </Button>
+                    </form>
                     <div>
                         <span className="text-danger">{this.state.inputError}</span>
                     </div>
@@ -188,7 +190,7 @@ class SearchPage extends Component {
                                         <img src={games.pic} className="gamePic" alt={games.title} />
                                     </Link>
                                     <div>
-                                    <p className="searchPlatform"> {games.platform} </p>
+                                        <p className="searchPlatform"> {games.platform} </p>
                                     </div>
 
                                 </div>
@@ -205,7 +207,7 @@ class SearchPage extends Component {
                                     </Link>
                                     <div>
 
-                                       <p className="searchPlatform"> {games.platform} </p>
+                                        <p className="searchPlatform"> {games.platform} </p>
                                     </div>
                                 </div>
                             ))}
