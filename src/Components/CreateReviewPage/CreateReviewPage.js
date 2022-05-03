@@ -33,10 +33,13 @@ class CreateReviewPage extends Component {
     this.handleInputChange = this.handleInputChange.bind(this);
   }
 
-  componentDidMount() {
+  componentWillMount() {
     if (!sessionStorage.getItem("session")) {
       window.location.pathname = "/";
     }
+  }
+
+  componentDidMount() {
     const { id } = this.props.match.params;
     axios.get('http://localhost/staru/src/php/viewGameByID.php?id=' + id)
       .then(res => {
