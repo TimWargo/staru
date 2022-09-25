@@ -28,19 +28,5 @@ StarU was designed to work with XAMPP. Therefore, the source code of the project
 ### Setting up the database
 Now that you have the source code, it is now time to set up the database. Begin by booting up the Apache Web Server and MySQL database within XAMPP. Then, procede to localhost/phpmyadmin. From there, open a SQL script and copy the commands found in the data.sql file under src/resources.
 
-## Update the .ini Files
-Under '\xampp\sendmail\sendmail.ini', change the following items (an example sendmail.ini has been provided with the project):  
-```smtp_server=smtp.gmail.com```,  
-```smtp_port=465```,  
-```smtp_ssl=ssl```,  
-```auth_username=staru4300@gmail.com```,  
-```auth_password=staru1023```.  
-
-Under '\xampp\php\php.ini', change the following items under [mail function] (an example php.ini has been provided with the project):  
-```; SMTP=localhost```,  
-```; smtp_port=25```,  
-```sendmail_from = staru4300@gmail.com```,  
-```sendmail_path = "(your_path)\xampp\sendmail\sendmail.exe -t"```.  
-
 ## Starting StarU
 Once you are inside the project directory (staru/), type ```npm start```.  
